@@ -1,0 +1,3651 @@
+{
+  "schema_version": "2.0",
+  "run_id": "6c7448c7-bb15-45f6-864c-9156d1690ef5",
+  "started_at_utc": "2026-08-01T06:17:09.558424+00:00",
+  "completed_at_utc": "2026-08-01T06:19:27.786828+00:00",
+  "duration_seconds": 138.228479,
+  "timing": {
+    "planning_seconds": 21.931087,
+    "tool_execution_seconds": 82.04233,
+    "answer_synthesis_seconds": 18.295587
+  },
+  "question": "What is the activity pattern of the Siberian tiger, and how much temporal niche overlap does it have with other species?",
+  "experiment_id": "TEMP",
+  "species": "Siberian tiger",
+  "plan": {
+    "species": "Siberian tiger",
+    "tasks": [
+      {
+        "tool_name": "check_timestamp_quality",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger."
+      },
+      {
+        "tool_name": "build_independent_events",
+        "args": {
+          "species": "Siberian tiger",
+          "by_camera": true,
+          "min_gap_minutes": 30
+        },
+        "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures."
+      },
+      {
+        "tool_name": "build_hourly_activity_distribution",
+        "args": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30
+        },
+        "reason": "Characterize the Siberian tiger's diel activity pattern from independent events."
+      },
+      {
+        "tool_name": "detect_activity_peaks",
+        "args": {
+          "species": "Siberian tiger",
+          "top_k": 3,
+          "min_gap_minutes": 30
+        },
+        "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern."
+      },
+      {
+        "tool_name": "summarize_community_composition",
+        "args": {
+          "top_k": 20,
+          "min_gap_minutes": 30,
+          "abundance_metric": "rai",
+          "include_unknown": false
+        },
+        "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory."
+      },
+      {
+        "tool_name": "estimate_pairwise_activity_overlap",
+        "args": {
+          "species_a": "Siberian tiger",
+          "top_k": 4,
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500,
+          "min_events": 10,
+          "random_seed": 42
+        },
+        "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset."
+      },
+      {
+        "tool_name": "plot_hourly_activity_curve",
+        "args": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.15,
+          "show_ci": true,
+          "bootstrap_iters": 500,
+          "annotate_peaks": "major_only",
+          "subtitle_level": "short"
+        },
+        "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations."
+      },
+      {
+        "tool_name": "plot_pairwise_activity_overlap_panels",
+        "args": {
+          "species_a": "Siberian tiger",
+          "top_k": 4,
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500
+        },
+        "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results."
+      }
+    ],
+    "_llm_outputs": {
+      "planner_mode": "llm",
+      "planner_system_prompt_sha256": "6f4b15dce63622e2d1ce66bc7329fc2bd13d717e76e0c10aa1ddafdad9537151",
+      "planner_user_prompt_sha256": "2acbd4ce64fceee19087eef92ef78b3c95f40dcacf31aa5c9925d92a95811065",
+      "planner_input_summary": {
+        "user_query": "What is the activity pattern of the Siberian tiger, and how much temporal niche overlap does it have with other species?",
+        "available_tool_names": [
+          "build_independent_events",
+          "prepare_camera_trap_dataset",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "infer_complete_community",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "evaluate_perception_benchmark",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_complete_community_inference",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "9c5be89c3432a51e9c2da446c6641dd716532ebb445889deb17685d03d5235dc",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "dependency_errors": [],
+            "bundle_alignment_errors": [],
+            "analysis_order_errors": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ]
+    },
+    "_planner_validation": {
+      "phase": "initial_plan",
+      "plan_errors": [],
+      "invalid_tools": [],
+      "missing_args": [],
+      "invalid_args": [],
+      "filtered_args": [],
+      "dependency_errors": [],
+      "bundle_alignment_errors": [],
+      "analysis_order_errors": [],
+      "action": "validated",
+      "validation_only": true,
+      "local_tool_rewrite": false,
+      "fallback_used": false
+    }
+  },
+  "selected_tools": [
+    "check_timestamp_quality",
+    "build_independent_events",
+    "build_hourly_activity_distribution",
+    "detect_activity_peaks",
+    "summarize_community_composition",
+    "estimate_pairwise_activity_overlap",
+    "plot_hourly_activity_curve",
+    "plot_pairwise_activity_overlap_panels"
+  ],
+  "executed_results": [
+    {
+      "step": 1,
+      "tool_name": "check_timestamp_quality",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 21.122668,
+      "result": {
+        "species": "Siberian tiger",
+        "total_records": 7745,
+        "valid_timestamp_records": 7745,
+        "invalid_timestamp_count": 0,
+        "observed_clock_time_ratio": 1.0,
+        "synthetic_clock_time_ratio": 0.0,
+        "timestamp_source_summary": {
+          "recordtime": 7745
+        },
+        "timestamp_source": "CamtrapDP tabular",
+        "reliability_status": "passed"
+      }
+    },
+    {
+      "step": 2,
+      "tool_name": "build_independent_events",
+      "args": {
+        "species": "Siberian tiger",
+        "by_camera": true,
+        "min_gap_minutes": 30
+      },
+      "input_args": {
+        "species": "Siberian tiger",
+        "by_camera": true,
+        "min_gap_minutes": 30
+      },
+      "filtered_args": [],
+      "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 4.334065,
+      "result": {
+        "species": "Siberian tiger",
+        "by_camera": true,
+        "min_gap_minutes": 30.0,
+        "raw_record_count": 7745,
+        "valid_record_count": 7745,
+        "independent_event_count": 6570,
+        "event_gap_minutes": 30.0,
+        "note": "Independent events use the requested same-species, same-camera gap. A matching conversion cache is reused; other thresholds are deterministically recomputed from media rows."
+      }
+    },
+    {
+      "step": 3,
+      "tool_name": "build_hourly_activity_distribution",
+      "args": {
+        "species": "Siberian tiger",
+        "min_gap_minutes": 30
+      },
+      "input_args": {
+        "species": "Siberian tiger",
+        "min_gap_minutes": 30
+      },
+      "filtered_args": [],
+      "reason": "Characterize the Siberian tiger's diel activity pattern from independent events.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 1.261566,
+      "result": {
+        "species": "Siberian tiger",
+        "min_gap_minutes": 30,
+        "source_record_count": 6570,
+        "valid_time_records": 6570,
+        "independent_event_count": 6570,
+        "observed_clock_time_ratio": 1.0,
+        "synthetic_clock_time_ratio": 0.0,
+        "timestamp_source_summary": {
+          "camtrap_dp_tabular": 6570
+        },
+        "hourly_distribution": [
+          {
+            "hour": 0,
+            "count": 229,
+            "ratio": 0.0349
+          },
+          {
+            "hour": 1,
+            "count": 217,
+            "ratio": 0.033
+          },
+          {
+            "hour": 2,
+            "count": 226,
+            "ratio": 0.0344
+          },
+          {
+            "hour": 3,
+            "count": 281,
+            "ratio": 0.0428
+          },
+          {
+            "hour": 4,
+            "count": 364,
+            "ratio": 0.0554
+          },
+          {
+            "hour": 5,
+            "count": 300,
+            "ratio": 0.0457
+          },
+          {
+            "hour": 6,
+            "count": 263,
+            "ratio": 0.04
+          },
+          {
+            "hour": 7,
+            "count": 224,
+            "ratio": 0.0341
+          },
+          {
+            "hour": 8,
+            "count": 172,
+            "ratio": 0.0262
+          },
+          {
+            "hour": 9,
+            "count": 134,
+            "ratio": 0.0204
+          },
+          {
+            "hour": 10,
+            "count": 106,
+            "ratio": 0.0161
+          },
+          {
+            "hour": 11,
+            "count": 111,
+            "ratio": 0.0169
+          },
+          {
+            "hour": 12,
+            "count": 94,
+            "ratio": 0.0143
+          },
+          {
+            "hour": 13,
+            "count": 137,
+            "ratio": 0.0209
+          },
+          {
+            "hour": 14,
+            "count": 186,
+            "ratio": 0.0283
+          },
+          {
+            "hour": 15,
+            "count": 323,
+            "ratio": 0.0492
+          },
+          {
+            "hour": 16,
+            "count": 446,
+            "ratio": 0.0679
+          },
+          {
+            "hour": 17,
+            "count": 582,
+            "ratio": 0.0886
+          },
+          {
+            "hour": 18,
+            "count": 569,
+            "ratio": 0.0866
+          },
+          {
+            "hour": 19,
+            "count": 468,
+            "ratio": 0.0712
+          },
+          {
+            "hour": 20,
+            "count": 373,
+            "ratio": 0.0568
+          },
+          {
+            "hour": 21,
+            "count": 295,
+            "ratio": 0.0449
+          },
+          {
+            "hour": 22,
+            "count": 253,
+            "ratio": 0.0385
+          },
+          {
+            "hour": 23,
+            "count": 217,
+            "ratio": 0.033
+          }
+        ],
+        "peak_hours": [
+          17,
+          18,
+          19
+        ],
+        "peak_period_label": "evening / dusk",
+        "activity_window_shares": {
+          "dawn": 0.1752,
+          "daytime": 0.1923,
+          "dusk": 0.3711,
+          "night": 0.2615
+        },
+        "major_peak_window": "dusk",
+        "secondary_peak_window": "night",
+        "activity_pattern_label": "dusk-centered crepuscular",
+        "note": "Hourly analysis uses CamtrapDP independent events with explicit timestamps."
+      }
+    },
+    {
+      "step": 4,
+      "tool_name": "detect_activity_peaks",
+      "args": {
+        "species": "Siberian tiger",
+        "top_k": 3,
+        "min_gap_minutes": 30
+      },
+      "input_args": {
+        "species": "Siberian tiger",
+        "top_k": 3,
+        "min_gap_minutes": 30
+      },
+      "filtered_args": [],
+      "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 1.261538,
+      "result": [
+        {
+          "hour": 17,
+          "count": 582,
+          "ratio": 0.0886
+        },
+        {
+          "hour": 18,
+          "count": 569,
+          "ratio": 0.0866
+        },
+        {
+          "hour": 19,
+          "count": 468,
+          "ratio": 0.0712
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "tool_name": "summarize_community_composition",
+      "args": {
+        "top_k": 20,
+        "min_gap_minutes": 30,
+        "abundance_metric": "rai",
+        "include_unknown": false
+      },
+      "input_args": {
+        "top_k": 20,
+        "min_gap_minutes": 30,
+        "abundance_metric": "rai",
+        "include_unknown": false
+      },
+      "filtered_args": [],
+      "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 5.103056,
+      "result": {
+        "total_record_count": 870752,
+        "total_source_record_count": 1376017,
+        "species_richness": 5,
+        "shannon_index": 0.793,
+        "simpson_index": 0.5057,
+        "abundance_metric": "rai",
+        "excluded_low_effort_species_count": 0,
+        "top_species": [
+          {
+            "species": "Roe deer",
+            "record_count": 505386,
+            "independent_event_count": 505386,
+            "source_record_count": 727090,
+            "camera_count": 16395,
+            "camera_effort_days": 5180816.0,
+            "rai_per_100_camera_days": 9.7549,
+            "observed_span_days": 611,
+            "low_effort_flag": false,
+            "excluded_from_adjusted_abundance": false,
+            "metric_value": 9.754949799413838,
+            "relative_abundance": 0.5804
+          },
+          {
+            "species": "Sika deer",
+            "record_count": 345300,
+            "independent_event_count": 345300,
+            "source_record_count": 625249,
+            "camera_count": 15013,
+            "camera_effort_days": 5180816.0,
+            "rai_per_100_camera_days": 6.665,
+            "observed_span_days": 611,
+            "low_effort_flag": false,
+            "excluded_from_adjusted_abundance": false,
+            "metric_value": 6.664973239736752,
+            "relative_abundance": 0.3966
+          },
+          {
+            "species": "Amur leopard",
+            "record_count": 9882,
+            "independent_event_count": 9882,
+            "source_record_count": 11704,
+            "camera_count": 2556,
+            "camera_effort_days": 5180816.0,
+            "rai_per_100_camera_days": 0.1907,
+            "observed_span_days": 611,
+            "low_effort_flag": false,
+            "excluded_from_adjusted_abundance": false,
+            "metric_value": 0.19074215335962522,
+            "relative_abundance": 0.0113
+          },
+          {
+            "species": "Siberian tiger",
+            "record_count": 6570,
+            "independent_event_count": 6570,
+            "source_record_count": 7745,
+            "camera_count": 1845,
+            "camera_effort_days": 5180816.0,
+            "rai_per_100_camera_days": 0.1268,
+            "observed_span_days": 611,
+            "low_effort_flag": false,
+            "excluded_from_adjusted_abundance": false,
+            "metric_value": 0.12681399995676357,
+            "relative_abundance": 0.0075
+          },
+          {
+            "species": "Black bear",
+            "record_count": 3614,
+            "independent_event_count": 3614,
+            "source_record_count": 4229,
+            "camera_count": 2538,
+            "camera_effort_days": 5180816.0,
+            "rai_per_100_camera_days": 0.0698,
+            "observed_span_days": 547,
+            "low_effort_flag": false,
+            "excluded_from_adjusted_abundance": false,
+            "metric_value": 0.06975735096556218,
+            "relative_abundance": 0.0042
+          }
+        ],
+        "note": "Community composition is computed from CamtrapDP media records and independent events; RAI uses camera deployment spans. Because those spans were inferred from detections, RAI is exploratory until camera operation logs are supplied."
+      }
+    },
+    {
+      "step": 6,
+      "tool_name": "estimate_pairwise_activity_overlap",
+      "args": {
+        "species_a": "Siberian tiger",
+        "top_k": 4,
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.25,
+        "bootstrap_iters": 500,
+        "min_events": 10,
+        "random_seed": 42
+      },
+      "input_args": {
+        "species_a": "Siberian tiger",
+        "top_k": 4,
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.25,
+        "bootstrap_iters": 500,
+        "min_events": 10,
+        "random_seed": 42
+      },
+      "filtered_args": [],
+      "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 11.690527,
+      "result": {
+        "species_a": "Siberian tiger",
+        "comparison_species": [
+          "Roe deer",
+          "Sika deer",
+          "Amur leopard",
+          "Black bear"
+        ],
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.25,
+        "bootstrap_iters": 500,
+        "bootstrap_interval_method": "percentile",
+        "permutation_iters": 0,
+        "pairwise_results": [
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Roe deer",
+            "delta_hat": 0.8768,
+            "delta_ci_low": 0.8644,
+            "delta_ci_high": 0.8885,
+            "relationship": "high_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 505386,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              4,
+              17,
+              18
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+            "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+            "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+            "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+            "overlap_result_reused": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Sika deer",
+            "delta_hat": 0.8843,
+            "delta_ci_low": 0.8728,
+            "delta_ci_high": 0.895,
+            "relationship": "high_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 345300,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              4,
+              18,
+              19
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+            "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+            "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+            "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+            "overlap_result_reused": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Amur leopard",
+            "delta_hat": 0.7148,
+            "delta_ci_low": 0.6974,
+            "delta_ci_high": 0.7326,
+            "relationship": "moderate_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 9882,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              5,
+              6,
+              16
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+            "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+            "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+            "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+            "overlap_result_reused": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Black bear",
+            "delta_hat": 0.7797,
+            "delta_ci_low": 0.7597,
+            "delta_ci_high": 0.8012,
+            "relationship": "moderate_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 3614,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              5,
+              17,
+              18
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+            "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+            "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+            "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+            "overlap_result_reused": true
+          }
+        ],
+        "overlap_result_bundle_ids": [
+          "activity_overlap_eb7d8f49177da7ac0dfe",
+          "activity_overlap_143ff9f60ddc89f3801e",
+          "activity_overlap_bc896fcd862ebc34dcd3",
+          "activity_overlap_2a45a8fd4fcdd68c8f39"
+        ],
+        "overlap_result_bundle_set_sha256": "73e534ce16fff3efa91403b8a8224c985b2e4c2e6fd4be8b4f5d7701c70e09bd",
+        "skipped": [],
+        "note": "Pairwise Delta values use versioned, tamper-evident result bundles from the same independent-event activity-overlap estimator. Plot tools reuse these bundles rather than re-estimating a separate value."
+      }
+    },
+    {
+      "step": 7,
+      "tool_name": "plot_hourly_activity_curve",
+      "args": {
+        "species": "Siberian tiger",
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.15,
+        "show_ci": true,
+        "bootstrap_iters": 500,
+        "annotate_peaks": "major_only",
+        "subtitle_level": "short"
+      },
+      "input_args": {
+        "species": "Siberian tiger",
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.15,
+        "show_ci": true,
+        "bootstrap_iters": 500,
+        "annotate_peaks": "major_only",
+        "subtitle_level": "short"
+      },
+      "filtered_args": [],
+      "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 12.926893,
+      "result": {
+        "status": "success",
+        "species": "Siberian tiger",
+        "min_gap_minutes": 30,
+        "show_ci": true,
+        "independent_event_count": 6570,
+        "valid_time_records": 6570,
+        "observed_clock_time_ratio": 1.0,
+        "synthetic_clock_time_ratio": 0.0,
+        "peak_hours": [
+          17,
+          18,
+          19
+        ],
+        "major_peak": {
+          "hour": 18.083,
+          "value": 0.080146
+        },
+        "secondary_peak": {
+          "hour": 4.583,
+          "value": 0.046893
+        },
+        "day_night_summary": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30,
+          "day_count": 2778,
+          "night_count": 3792,
+          "day_ratio": 0.4228,
+          "night_ratio": 0.5772
+        },
+        "figures": [
+          {
+            "figure_id": "Siberian_tiger_hourly_activity_curve",
+            "label": "Siberian tiger hourly activity curve",
+            "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+          }
+        ],
+        "interpretation_boundary": "The curve describes the distribution of independent detection events across clock time; it does not by itself identify a behavioural mechanism."
+      }
+    },
+    {
+      "step": 8,
+      "tool_name": "plot_pairwise_activity_overlap_panels",
+      "args": {
+        "species_a": "Siberian tiger",
+        "top_k": 4,
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.25,
+        "bootstrap_iters": 500
+      },
+      "input_args": {
+        "species_a": "Siberian tiger",
+        "top_k": 4,
+        "min_gap_minutes": 30,
+        "smooth_sigma": 1.25,
+        "bootstrap_iters": 500
+      },
+      "filtered_args": [],
+      "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 24.341823,
+      "result": {
+        "status": "generated",
+        "figure_count": 4,
+        "figures": [
+          {
+            "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+            "species_a": "Siberian tiger",
+            "species_b": "Roe deer",
+            "status": "generated",
+            "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+            "delta_hat": 0.8768,
+            "delta_ci_low": 0.8644,
+            "delta_ci_high": 0.8885,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+            "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+            "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+            "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+            "overlap_result_reused": true
+          },
+          {
+            "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+            "species_a": "Siberian tiger",
+            "species_b": "Sika deer",
+            "status": "generated",
+            "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+            "delta_hat": 0.8843,
+            "delta_ci_low": 0.8728,
+            "delta_ci_high": 0.895,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+            "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+            "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+            "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+            "overlap_result_reused": true
+          },
+          {
+            "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+            "species_a": "Siberian tiger",
+            "species_b": "Amur leopard",
+            "status": "generated",
+            "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+            "delta_hat": 0.7148,
+            "delta_ci_low": 0.6974,
+            "delta_ci_high": 0.7326,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+            "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+            "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+            "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+            "overlap_result_reused": true
+          },
+          {
+            "figure_id": "siberian_tiger_vs_black_bear_overlap",
+            "species_a": "Siberian tiger",
+            "species_b": "Black bear",
+            "status": "generated",
+            "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+            "delta_hat": 0.7797,
+            "delta_ci_low": 0.7597,
+            "delta_ci_high": 0.8012,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+            "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+            "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+            "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+            "overlap_result_reused": true
+          }
+        ],
+        "overlap_result_bundle_ids": [
+          "activity_overlap_eb7d8f49177da7ac0dfe",
+          "activity_overlap_143ff9f60ddc89f3801e",
+          "activity_overlap_bc896fcd862ebc34dcd3",
+          "activity_overlap_2a45a8fd4fcdd68c8f39"
+        ],
+        "failed_figures": []
+      }
+    }
+  ],
+  "replan": {
+    "need_replan": false,
+    "new_tasks": [],
+    "reason": "All eight planned steps succeeded. Timestamp quality passed (7,745/7,745 valid, observed clock time ratio 1.0). Independent events produced 6,570 Siberian tiger events using 30-minute same-camera gaps. Hourly distribution and peak detection agree on peaks at 17:00-18:00, labeled a dusk-centered crepuscular pattern (dusk share 0.371, night 0.262, dawn 0.175, day 0.192). Pairwise circular-KDE overlap was completed for four comparison species: Roe deer Delta=0.8768 (0.8644-0.8885), Sika deer 0.8843 (0.8728-0.8950), Amur leopard 0.7148 (0.6974-0.7326), and black bear 0.7797 (0.7597-0.8012). The activity curve and all four pairwise overlap-panel figures were generated successfully. The community-composition caveat about inferred camera effort affects RAI abundance metrics only, not the requested activity-pattern or temporal-overlap evidence.",
+    "data_quality": "sufficient",
+    "timestamp_reliability": {
+      "status": "passed",
+      "observed_clock_time_ratio": 1.0,
+      "synthetic_clock_time_ratio": 0.0,
+      "invalid_timestamp_count": 0,
+      "timestamp_source": "CamtrapDP tabular"
+    },
+    "event_independence": {
+      "status": "applied",
+      "min_gap_minutes": 30.0
+    },
+    "event_count_sufficiency": {
+      "status": "passed",
+      "tiger_events": 6570
+    },
+    "overlap_analysis": {
+      "status": "completed",
+      "overall_delta": "not_computed",
+      "pairwise_results": "available",
+      "species_count": 4
+    },
+    "spatial_data_sufficiency": {
+      "status": "not_applicable"
+    },
+    "visualization": "generated",
+    "conservative_answer": false,
+    "figure_count": 5,
+    "figure_outputs": [
+      {
+        "figure_id": "Siberian_tiger_hourly_activity_curve",
+        "label": "Siberian tiger hourly activity curve",
+        "tool_name": "plot_hourly_activity_curve",
+        "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+      },
+      {
+        "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+        "label": "Roe deer",
+        "tool_name": "plot_pairwise_activity_overlap_panels",
+        "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+        "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+        "delta_hat": 0.8768,
+        "delta_ci_low": 0.8644,
+        "delta_ci_high": 0.8885,
+        "estimator_id": "camagent.circular_kde_activity_overlap",
+        "estimator_version": "1.0.0",
+        "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+        "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+        "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+        "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+        "overlap_result_reused": true
+      },
+      {
+        "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+        "label": "Sika deer",
+        "tool_name": "plot_pairwise_activity_overlap_panels",
+        "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+        "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+        "delta_hat": 0.8843,
+        "delta_ci_low": 0.8728,
+        "delta_ci_high": 0.895,
+        "estimator_id": "camagent.circular_kde_activity_overlap",
+        "estimator_version": "1.0.0",
+        "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+        "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+        "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+        "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+        "overlap_result_reused": true
+      },
+      {
+        "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+        "label": "Amur leopard",
+        "tool_name": "plot_pairwise_activity_overlap_panels",
+        "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+        "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+        "delta_hat": 0.7148,
+        "delta_ci_low": 0.6974,
+        "delta_ci_high": 0.7326,
+        "estimator_id": "camagent.circular_kde_activity_overlap",
+        "estimator_version": "1.0.0",
+        "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+        "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+        "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+        "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+        "overlap_result_reused": true
+      },
+      {
+        "figure_id": "siberian_tiger_vs_black_bear_overlap",
+        "label": "Black bear",
+        "tool_name": "plot_pairwise_activity_overlap_panels",
+        "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+        "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+        "delta_hat": 0.7797,
+        "delta_ci_low": 0.7597,
+        "delta_ci_high": 0.8012,
+        "estimator_id": "camagent.circular_kde_activity_overlap",
+        "estimator_version": "1.0.0",
+        "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+        "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+        "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+        "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+        "overlap_result_reused": true
+      }
+    ],
+    "failed_figures": [],
+    "_llm_outputs": {
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "5af533ab5c575c8467c24fe2e8a3ee1e326ca676aad27126cfed10e20f774470",
+      "replanner_user_prompt_char_count": 58976,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "tool_names_and_execution_summaries"
+    },
+    "temporal_activity": {
+      "status": "available",
+      "peak_hours": [
+        17,
+        18,
+        19
+      ],
+      "activity_pattern_label": "dusk-centered crepuscular"
+    },
+    "reflection_mode": "llm_with_deterministic_consistency_check",
+    "consistency_check": {
+      "missing_fields": [],
+      "inconsistency_check": "passed",
+      "corrections": [],
+      "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+    }
+  },
+  "autonomy": {
+    "loop": "plan-act-observe-reflect",
+    "policy": {
+      "max_replan_rounds": 2,
+      "max_tool_calls": 32,
+      "max_tool_retries": 1,
+      "stop_on_repeated_plan": true
+    },
+    "goal_status": "completed",
+    "termination_reason": "goal_satisfied",
+    "round_count": 1,
+    "reflection_count": 1,
+    "tool_call_count": 8,
+    "successful_tool_call_count": 8,
+    "failed_tool_call_count": 0,
+    "retry_call_count": 0,
+    "recovered_failure_count": 0,
+    "unrecovered_failure_count": 0,
+    "rounds": [
+      {
+        "round_index": 0,
+        "phase": "initial_plan",
+        "proposed_task_count": 8,
+        "accepted_tasks": [
+          {
+            "tool_name": "check_timestamp_quality",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger."
+          },
+          {
+            "tool_name": "build_independent_events",
+            "args": {
+              "species": "Siberian tiger",
+              "by_camera": true,
+              "min_gap_minutes": 30
+            },
+            "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures."
+          },
+          {
+            "tool_name": "build_hourly_activity_distribution",
+            "args": {
+              "species": "Siberian tiger",
+              "min_gap_minutes": 30
+            },
+            "reason": "Characterize the Siberian tiger's diel activity pattern from independent events."
+          },
+          {
+            "tool_name": "detect_activity_peaks",
+            "args": {
+              "species": "Siberian tiger",
+              "top_k": 3,
+              "min_gap_minutes": 30
+            },
+            "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern."
+          },
+          {
+            "tool_name": "summarize_community_composition",
+            "args": {
+              "top_k": 20,
+              "min_gap_minutes": 30,
+              "abundance_metric": "rai",
+              "include_unknown": false
+            },
+            "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory."
+          },
+          {
+            "tool_name": "estimate_pairwise_activity_overlap",
+            "args": {
+              "species_a": "Siberian tiger",
+              "top_k": 4,
+              "min_gap_minutes": 30,
+              "smooth_sigma": 1.25,
+              "bootstrap_iters": 500,
+              "min_events": 10,
+              "random_seed": 42
+            },
+            "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset."
+          },
+          {
+            "tool_name": "plot_hourly_activity_curve",
+            "args": {
+              "species": "Siberian tiger",
+              "min_gap_minutes": 30,
+              "smooth_sigma": 1.15,
+              "show_ci": true,
+              "bootstrap_iters": 500,
+              "annotate_peaks": "major_only",
+              "subtitle_level": "short"
+            },
+            "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations."
+          },
+          {
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "args": {
+              "species_a": "Siberian tiger",
+              "top_k": 4,
+              "min_gap_minutes": 30,
+              "smooth_sigma": 1.25,
+              "bootstrap_iters": 500
+            },
+            "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results."
+          }
+        ],
+        "budget_truncated": false,
+        "execution_statuses": [
+          "success",
+          "success",
+          "success",
+          "success",
+          "success",
+          "success",
+          "success",
+          "success"
+        ],
+        "reflection": {
+          "need_replan": false,
+          "reason": "All eight planned steps succeeded. Timestamp quality passed (7,745/7,745 valid, observed clock time ratio 1.0). Independent events produced 6,570 Siberian tiger events using 30-minute same-camera gaps. Hourly distribution and peak detection agree on peaks at 17:00-18:00, labeled a dusk-centered crepuscular pattern (dusk share 0.371, night 0.262, dawn 0.175, day 0.192). Pairwise circular-KDE overlap was completed for four comparison species: Roe deer Delta=0.8768 (0.8644-0.8885), Sika deer 0.8843 (0.8728-0.8950), Amur leopard 0.7148 (0.6974-0.7326), and black bear 0.7797 (0.7597-0.8012). The activity curve and all four pairwise overlap-panel figures were generated successfully. The community-composition caveat about inferred camera effort affects RAI abundance metrics only, not the requested activity-pattern or temporal-overlap evidence.",
+          "conservative_answer": false,
+          "elapsed_seconds": 15.954232
+        }
+      }
+    ]
+  },
+  "runtime": {
+    "client_class": "ChatOpenAI",
+    "model": "deepseek-v4-flash",
+    "deployment": null,
+    "temperature": 0.0
+  },
+  "trace": {
+    "planning": {
+      "planner_mode": "llm",
+      "target_species": "Siberian tiger",
+      "planner_input_summary": {
+        "user_query": "What is the activity pattern of the Siberian tiger, and how much temporal niche overlap does it have with other species?",
+        "available_tool_names": [
+          "build_independent_events",
+          "prepare_camera_trap_dataset",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "infer_complete_community",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "evaluate_perception_benchmark",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_complete_community_inference",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_system_prompt_sha256": "6f4b15dce63622e2d1ce66bc7329fc2bd13d717e76e0c10aa1ddafdad9537151",
+      "planner_user_prompt_sha256": "2acbd4ce64fceee19087eef92ef78b3c95f40dcacf31aa5c9925d92a95811065",
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "9c5be89c3432a51e9c2da446c6641dd716532ebb445889deb17685d03d5235dc",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "dependency_errors": [],
+            "bundle_alignment_errors": [],
+            "analysis_order_errors": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ],
+      "initial_normalized_tasks": [
+        {
+          "tool_name": "check_timestamp_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger."
+        },
+        {
+          "tool_name": "build_independent_events",
+          "args": {
+            "species": "Siberian tiger",
+            "by_camera": true,
+            "min_gap_minutes": 30
+          },
+          "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures."
+        },
+        {
+          "tool_name": "build_hourly_activity_distribution",
+          "args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30
+          },
+          "reason": "Characterize the Siberian tiger's diel activity pattern from independent events."
+        },
+        {
+          "tool_name": "detect_activity_peaks",
+          "args": {
+            "species": "Siberian tiger",
+            "top_k": 3,
+            "min_gap_minutes": 30
+          },
+          "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern."
+        },
+        {
+          "tool_name": "summarize_community_composition",
+          "args": {
+            "top_k": 20,
+            "min_gap_minutes": 30,
+            "abundance_metric": "rai",
+            "include_unknown": false
+          },
+          "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory."
+        },
+        {
+          "tool_name": "estimate_pairwise_activity_overlap",
+          "args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500,
+            "min_events": 10,
+            "random_seed": 42
+          },
+          "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset."
+        },
+        {
+          "tool_name": "plot_hourly_activity_curve",
+          "args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.15,
+            "show_ci": true,
+            "bootstrap_iters": 500,
+            "annotate_peaks": "major_only",
+            "subtitle_level": "short"
+          },
+          "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations."
+        },
+        {
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500
+          },
+          "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results."
+        }
+      ],
+      "normalized_tasks": [
+        {
+          "tool_name": "check_timestamp_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger."
+        },
+        {
+          "tool_name": "build_independent_events",
+          "args": {
+            "species": "Siberian tiger",
+            "by_camera": true,
+            "min_gap_minutes": 30
+          },
+          "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures."
+        },
+        {
+          "tool_name": "build_hourly_activity_distribution",
+          "args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30
+          },
+          "reason": "Characterize the Siberian tiger's diel activity pattern from independent events."
+        },
+        {
+          "tool_name": "detect_activity_peaks",
+          "args": {
+            "species": "Siberian tiger",
+            "top_k": 3,
+            "min_gap_minutes": 30
+          },
+          "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern."
+        },
+        {
+          "tool_name": "summarize_community_composition",
+          "args": {
+            "top_k": 20,
+            "min_gap_minutes": 30,
+            "abundance_metric": "rai",
+            "include_unknown": false
+          },
+          "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory."
+        },
+        {
+          "tool_name": "estimate_pairwise_activity_overlap",
+          "args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500,
+            "min_events": 10,
+            "random_seed": 42
+          },
+          "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset."
+        },
+        {
+          "tool_name": "plot_hourly_activity_curve",
+          "args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.15,
+            "show_ci": true,
+            "bootstrap_iters": 500,
+            "annotate_peaks": "major_only",
+            "subtitle_level": "short"
+          },
+          "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations."
+        },
+        {
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500
+          },
+          "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results."
+        }
+      ],
+      "planner_validation": {
+        "phase": "initial_plan",
+        "plan_errors": [],
+        "invalid_tools": [],
+        "missing_args": [],
+        "invalid_args": [],
+        "filtered_args": [],
+        "dependency_errors": [],
+        "bundle_alignment_errors": [],
+        "analysis_order_errors": [],
+        "action": "validated",
+        "validation_only": true,
+        "local_tool_rewrite": false,
+        "fallback_used": false
+      }
+    },
+    "execution": [
+      {
+        "step": 1,
+        "tool_name": "check_timestamp_quality",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 21.122668,
+        "result": {
+          "species": "Siberian tiger",
+          "total_records": 7745,
+          "valid_timestamp_records": 7745,
+          "invalid_timestamp_count": 0,
+          "observed_clock_time_ratio": 1.0,
+          "synthetic_clock_time_ratio": 0.0,
+          "timestamp_source_summary": {
+            "recordtime": 7745
+          },
+          "timestamp_source": "CamtrapDP tabular",
+          "reliability_status": "passed"
+        }
+      },
+      {
+        "step": 2,
+        "tool_name": "build_independent_events",
+        "args": {
+          "species": "Siberian tiger",
+          "by_camera": true,
+          "min_gap_minutes": 30
+        },
+        "input_args": {
+          "species": "Siberian tiger",
+          "by_camera": true,
+          "min_gap_minutes": 30
+        },
+        "filtered_args": [],
+        "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 4.334065,
+        "result": {
+          "species": "Siberian tiger",
+          "by_camera": true,
+          "min_gap_minutes": 30.0,
+          "raw_record_count": 7745,
+          "valid_record_count": 7745,
+          "independent_event_count": 6570,
+          "event_gap_minutes": 30.0,
+          "note": "Independent events use the requested same-species, same-camera gap. A matching conversion cache is reused; other thresholds are deterministically recomputed from media rows."
+        }
+      },
+      {
+        "step": 3,
+        "tool_name": "build_hourly_activity_distribution",
+        "args": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30
+        },
+        "input_args": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30
+        },
+        "filtered_args": [],
+        "reason": "Characterize the Siberian tiger's diel activity pattern from independent events.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 1.261566,
+        "result": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30,
+          "source_record_count": 6570,
+          "valid_time_records": 6570,
+          "independent_event_count": 6570,
+          "observed_clock_time_ratio": 1.0,
+          "synthetic_clock_time_ratio": 0.0,
+          "timestamp_source_summary": {
+            "camtrap_dp_tabular": 6570
+          },
+          "hourly_distribution": [
+            {
+              "hour": 0,
+              "count": 229,
+              "ratio": 0.0349
+            },
+            {
+              "hour": 1,
+              "count": 217,
+              "ratio": 0.033
+            },
+            {
+              "hour": 2,
+              "count": 226,
+              "ratio": 0.0344
+            },
+            {
+              "hour": 3,
+              "count": 281,
+              "ratio": 0.0428
+            },
+            {
+              "hour": 4,
+              "count": 364,
+              "ratio": 0.0554
+            },
+            {
+              "hour": 5,
+              "count": 300,
+              "ratio": 0.0457
+            },
+            {
+              "hour": 6,
+              "count": 263,
+              "ratio": 0.04
+            },
+            {
+              "hour": 7,
+              "count": 224,
+              "ratio": 0.0341
+            },
+            {
+              "hour": 8,
+              "count": 172,
+              "ratio": 0.0262
+            },
+            {
+              "hour": 9,
+              "count": 134,
+              "ratio": 0.0204
+            },
+            {
+              "hour": 10,
+              "count": 106,
+              "ratio": 0.0161
+            },
+            {
+              "hour": 11,
+              "count": 111,
+              "ratio": 0.0169
+            },
+            {
+              "hour": 12,
+              "count": 94,
+              "ratio": 0.0143
+            },
+            {
+              "hour": 13,
+              "count": 137,
+              "ratio": 0.0209
+            },
+            {
+              "hour": 14,
+              "count": 186,
+              "ratio": 0.0283
+            },
+            {
+              "hour": 15,
+              "count": 323,
+              "ratio": 0.0492
+            },
+            {
+              "hour": 16,
+              "count": 446,
+              "ratio": 0.0679
+            },
+            {
+              "hour": 17,
+              "count": 582,
+              "ratio": 0.0886
+            },
+            {
+              "hour": 18,
+              "count": 569,
+              "ratio": 0.0866
+            },
+            {
+              "hour": 19,
+              "count": 468,
+              "ratio": 0.0712
+            },
+            {
+              "hour": 20,
+              "count": 373,
+              "ratio": 0.0568
+            },
+            {
+              "hour": 21,
+              "count": 295,
+              "ratio": 0.0449
+            },
+            {
+              "hour": 22,
+              "count": 253,
+              "ratio": 0.0385
+            },
+            {
+              "hour": 23,
+              "count": 217,
+              "ratio": 0.033
+            }
+          ],
+          "peak_hours": [
+            17,
+            18,
+            19
+          ],
+          "peak_period_label": "evening / dusk",
+          "activity_window_shares": {
+            "dawn": 0.1752,
+            "daytime": 0.1923,
+            "dusk": 0.3711,
+            "night": 0.2615
+          },
+          "major_peak_window": "dusk",
+          "secondary_peak_window": "night",
+          "activity_pattern_label": "dusk-centered crepuscular",
+          "note": "Hourly analysis uses CamtrapDP independent events with explicit timestamps."
+        }
+      },
+      {
+        "step": 4,
+        "tool_name": "detect_activity_peaks",
+        "args": {
+          "species": "Siberian tiger",
+          "top_k": 3,
+          "min_gap_minutes": 30
+        },
+        "input_args": {
+          "species": "Siberian tiger",
+          "top_k": 3,
+          "min_gap_minutes": 30
+        },
+        "filtered_args": [],
+        "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 1.261538,
+        "result": [
+          {
+            "hour": 17,
+            "count": 582,
+            "ratio": 0.0886
+          },
+          {
+            "hour": 18,
+            "count": 569,
+            "ratio": 0.0866
+          },
+          {
+            "hour": 19,
+            "count": 468,
+            "ratio": 0.0712
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "tool_name": "summarize_community_composition",
+        "args": {
+          "top_k": 20,
+          "min_gap_minutes": 30,
+          "abundance_metric": "rai",
+          "include_unknown": false
+        },
+        "input_args": {
+          "top_k": 20,
+          "min_gap_minutes": 30,
+          "abundance_metric": "rai",
+          "include_unknown": false
+        },
+        "filtered_args": [],
+        "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 5.103056,
+        "result": {
+          "total_record_count": 870752,
+          "total_source_record_count": 1376017,
+          "species_richness": 5,
+          "shannon_index": 0.793,
+          "simpson_index": 0.5057,
+          "abundance_metric": "rai",
+          "excluded_low_effort_species_count": 0,
+          "top_species": [
+            {
+              "species": "Roe deer",
+              "record_count": 505386,
+              "independent_event_count": 505386,
+              "source_record_count": 727090,
+              "camera_count": 16395,
+              "camera_effort_days": 5180816.0,
+              "rai_per_100_camera_days": 9.7549,
+              "observed_span_days": 611,
+              "low_effort_flag": false,
+              "excluded_from_adjusted_abundance": false,
+              "metric_value": 9.754949799413838,
+              "relative_abundance": 0.5804
+            },
+            {
+              "species": "Sika deer",
+              "record_count": 345300,
+              "independent_event_count": 345300,
+              "source_record_count": 625249,
+              "camera_count": 15013,
+              "camera_effort_days": 5180816.0,
+              "rai_per_100_camera_days": 6.665,
+              "observed_span_days": 611,
+              "low_effort_flag": false,
+              "excluded_from_adjusted_abundance": false,
+              "metric_value": 6.664973239736752,
+              "relative_abundance": 0.3966
+            },
+            {
+              "species": "Amur leopard",
+              "record_count": 9882,
+              "independent_event_count": 9882,
+              "source_record_count": 11704,
+              "camera_count": 2556,
+              "camera_effort_days": 5180816.0,
+              "rai_per_100_camera_days": 0.1907,
+              "observed_span_days": 611,
+              "low_effort_flag": false,
+              "excluded_from_adjusted_abundance": false,
+              "metric_value": 0.19074215335962522,
+              "relative_abundance": 0.0113
+            },
+            {
+              "species": "Siberian tiger",
+              "record_count": 6570,
+              "independent_event_count": 6570,
+              "source_record_count": 7745,
+              "camera_count": 1845,
+              "camera_effort_days": 5180816.0,
+              "rai_per_100_camera_days": 0.1268,
+              "observed_span_days": 611,
+              "low_effort_flag": false,
+              "excluded_from_adjusted_abundance": false,
+              "metric_value": 0.12681399995676357,
+              "relative_abundance": 0.0075
+            },
+            {
+              "species": "Black bear",
+              "record_count": 3614,
+              "independent_event_count": 3614,
+              "source_record_count": 4229,
+              "camera_count": 2538,
+              "camera_effort_days": 5180816.0,
+              "rai_per_100_camera_days": 0.0698,
+              "observed_span_days": 547,
+              "low_effort_flag": false,
+              "excluded_from_adjusted_abundance": false,
+              "metric_value": 0.06975735096556218,
+              "relative_abundance": 0.0042
+            }
+          ],
+          "note": "Community composition is computed from CamtrapDP media records and independent events; RAI uses camera deployment spans. Because those spans were inferred from detections, RAI is exploratory until camera operation logs are supplied."
+        }
+      },
+      {
+        "step": 6,
+        "tool_name": "estimate_pairwise_activity_overlap",
+        "args": {
+          "species_a": "Siberian tiger",
+          "top_k": 4,
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500,
+          "min_events": 10,
+          "random_seed": 42
+        },
+        "input_args": {
+          "species_a": "Siberian tiger",
+          "top_k": 4,
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500,
+          "min_events": 10,
+          "random_seed": 42
+        },
+        "filtered_args": [],
+        "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 11.690527,
+        "result": {
+          "species_a": "Siberian tiger",
+          "comparison_species": [
+            "Roe deer",
+            "Sika deer",
+            "Amur leopard",
+            "Black bear"
+          ],
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500,
+          "bootstrap_interval_method": "percentile",
+          "permutation_iters": 0,
+          "pairwise_results": [
+            {
+              "species_a": "Siberian tiger",
+              "species_b": "Roe deer",
+              "delta_hat": 0.8768,
+              "delta_ci_low": 0.8644,
+              "delta_ci_high": 0.8885,
+              "relationship": "high_overlap",
+              "valid_event_count_a": 6570,
+              "valid_event_count_b": 505386,
+              "peak_hours_a": [
+                17,
+                18,
+                19
+              ],
+              "peak_hours_b": [
+                4,
+                17,
+                18
+              ],
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+              "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+              "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+              "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+              "overlap_result_reused": true
+            },
+            {
+              "species_a": "Siberian tiger",
+              "species_b": "Sika deer",
+              "delta_hat": 0.8843,
+              "delta_ci_low": 0.8728,
+              "delta_ci_high": 0.895,
+              "relationship": "high_overlap",
+              "valid_event_count_a": 6570,
+              "valid_event_count_b": 345300,
+              "peak_hours_a": [
+                17,
+                18,
+                19
+              ],
+              "peak_hours_b": [
+                4,
+                18,
+                19
+              ],
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+              "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+              "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+              "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+              "overlap_result_reused": true
+            },
+            {
+              "species_a": "Siberian tiger",
+              "species_b": "Amur leopard",
+              "delta_hat": 0.7148,
+              "delta_ci_low": 0.6974,
+              "delta_ci_high": 0.7326,
+              "relationship": "moderate_overlap",
+              "valid_event_count_a": 6570,
+              "valid_event_count_b": 9882,
+              "peak_hours_a": [
+                17,
+                18,
+                19
+              ],
+              "peak_hours_b": [
+                5,
+                6,
+                16
+              ],
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+              "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+              "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+              "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+              "overlap_result_reused": true
+            },
+            {
+              "species_a": "Siberian tiger",
+              "species_b": "Black bear",
+              "delta_hat": 0.7797,
+              "delta_ci_low": 0.7597,
+              "delta_ci_high": 0.8012,
+              "relationship": "moderate_overlap",
+              "valid_event_count_a": 6570,
+              "valid_event_count_b": 3614,
+              "peak_hours_a": [
+                17,
+                18,
+                19
+              ],
+              "peak_hours_b": [
+                5,
+                17,
+                18
+              ],
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+              "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+              "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+              "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+              "overlap_result_reused": true
+            }
+          ],
+          "overlap_result_bundle_ids": [
+            "activity_overlap_eb7d8f49177da7ac0dfe",
+            "activity_overlap_143ff9f60ddc89f3801e",
+            "activity_overlap_bc896fcd862ebc34dcd3",
+            "activity_overlap_2a45a8fd4fcdd68c8f39"
+          ],
+          "overlap_result_bundle_set_sha256": "73e534ce16fff3efa91403b8a8224c985b2e4c2e6fd4be8b4f5d7701c70e09bd",
+          "skipped": [],
+          "note": "Pairwise Delta values use versioned, tamper-evident result bundles from the same independent-event activity-overlap estimator. Plot tools reuse these bundles rather than re-estimating a separate value."
+        }
+      },
+      {
+        "step": 7,
+        "tool_name": "plot_hourly_activity_curve",
+        "args": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.15,
+          "show_ci": true,
+          "bootstrap_iters": 500,
+          "annotate_peaks": "major_only",
+          "subtitle_level": "short"
+        },
+        "input_args": {
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.15,
+          "show_ci": true,
+          "bootstrap_iters": 500,
+          "annotate_peaks": "major_only",
+          "subtitle_level": "short"
+        },
+        "filtered_args": [],
+        "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 12.926893,
+        "result": {
+          "status": "success",
+          "species": "Siberian tiger",
+          "min_gap_minutes": 30,
+          "show_ci": true,
+          "independent_event_count": 6570,
+          "valid_time_records": 6570,
+          "observed_clock_time_ratio": 1.0,
+          "synthetic_clock_time_ratio": 0.0,
+          "peak_hours": [
+            17,
+            18,
+            19
+          ],
+          "major_peak": {
+            "hour": 18.083,
+            "value": 0.080146
+          },
+          "secondary_peak": {
+            "hour": 4.583,
+            "value": 0.046893
+          },
+          "day_night_summary": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "day_count": 2778,
+            "night_count": 3792,
+            "day_ratio": 0.4228,
+            "night_ratio": 0.5772
+          },
+          "figures": [
+            {
+              "figure_id": "Siberian_tiger_hourly_activity_curve",
+              "label": "Siberian tiger hourly activity curve",
+              "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+            }
+          ],
+          "interpretation_boundary": "The curve describes the distribution of independent detection events across clock time; it does not by itself identify a behavioural mechanism."
+        }
+      },
+      {
+        "step": 8,
+        "tool_name": "plot_pairwise_activity_overlap_panels",
+        "args": {
+          "species_a": "Siberian tiger",
+          "top_k": 4,
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500
+        },
+        "input_args": {
+          "species_a": "Siberian tiger",
+          "top_k": 4,
+          "min_gap_minutes": 30,
+          "smooth_sigma": 1.25,
+          "bootstrap_iters": 500
+        },
+        "filtered_args": [],
+        "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 24.341823,
+        "result": {
+          "status": "generated",
+          "figure_count": 4,
+          "figures": [
+            {
+              "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+              "species_a": "Siberian tiger",
+              "species_b": "Roe deer",
+              "status": "generated",
+              "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+              "delta_hat": 0.8768,
+              "delta_ci_low": 0.8644,
+              "delta_ci_high": 0.8885,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+              "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+              "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+              "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+              "overlap_result_reused": true
+            },
+            {
+              "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+              "species_a": "Siberian tiger",
+              "species_b": "Sika deer",
+              "status": "generated",
+              "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+              "delta_hat": 0.8843,
+              "delta_ci_low": 0.8728,
+              "delta_ci_high": 0.895,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+              "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+              "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+              "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+              "overlap_result_reused": true
+            },
+            {
+              "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+              "species_a": "Siberian tiger",
+              "species_b": "Amur leopard",
+              "status": "generated",
+              "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+              "delta_hat": 0.7148,
+              "delta_ci_low": 0.6974,
+              "delta_ci_high": 0.7326,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+              "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+              "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+              "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+              "overlap_result_reused": true
+            },
+            {
+              "figure_id": "siberian_tiger_vs_black_bear_overlap",
+              "species_a": "Siberian tiger",
+              "species_b": "Black bear",
+              "status": "generated",
+              "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+              "delta_hat": 0.7797,
+              "delta_ci_low": 0.7597,
+              "delta_ci_high": 0.8012,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+              "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+              "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+              "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+              "overlap_result_reused": true
+            }
+          ],
+          "overlap_result_bundle_ids": [
+            "activity_overlap_eb7d8f49177da7ac0dfe",
+            "activity_overlap_143ff9f60ddc89f3801e",
+            "activity_overlap_bc896fcd862ebc34dcd3",
+            "activity_overlap_2a45a8fd4fcdd68c8f39"
+          ],
+          "failed_figures": []
+        }
+      }
+    ],
+    "replanning": {
+      "need_replan": false,
+      "new_tasks": [],
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "5af533ab5c575c8467c24fe2e8a3ee1e326ca676aad27126cfed10e20f774470",
+      "replanner_user_prompt_char_count": 58976,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "tool_names_and_execution_summaries",
+      "timestamp_reliability": {
+        "status": "passed",
+        "observed_clock_time_ratio": 1.0,
+        "synthetic_clock_time_ratio": 0.0,
+        "invalid_timestamp_count": 0,
+        "timestamp_source": "CamtrapDP tabular"
+      },
+      "event_independence": {
+        "status": "applied",
+        "min_gap_minutes": 30.0
+      },
+      "event_count_sufficiency": {
+        "status": "passed",
+        "tiger_events": 6570
+      },
+      "overlap_analysis": {
+        "status": "completed",
+        "overall_delta": "not_computed",
+        "pairwise_results": "available",
+        "species_count": 4
+      },
+      "visualization": "generated",
+      "figure_count": 5,
+      "figure_outputs": [
+        {
+          "figure_id": "Siberian_tiger_hourly_activity_curve",
+          "label": "Siberian tiger hourly activity curve",
+          "tool_name": "plot_hourly_activity_curve",
+          "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+        },
+        {
+          "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+          "label": "Roe deer",
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+          "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+          "delta_hat": 0.8768,
+          "delta_ci_low": 0.8644,
+          "delta_ci_high": 0.8885,
+          "estimator_id": "camagent.circular_kde_activity_overlap",
+          "estimator_version": "1.0.0",
+          "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+          "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+          "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+          "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+          "overlap_result_reused": true
+        },
+        {
+          "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+          "label": "Sika deer",
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+          "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+          "delta_hat": 0.8843,
+          "delta_ci_low": 0.8728,
+          "delta_ci_high": 0.895,
+          "estimator_id": "camagent.circular_kde_activity_overlap",
+          "estimator_version": "1.0.0",
+          "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+          "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+          "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+          "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+          "overlap_result_reused": true
+        },
+        {
+          "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+          "label": "Amur leopard",
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+          "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+          "delta_hat": 0.7148,
+          "delta_ci_low": 0.6974,
+          "delta_ci_high": 0.7326,
+          "estimator_id": "camagent.circular_kde_activity_overlap",
+          "estimator_version": "1.0.0",
+          "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+          "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+          "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+          "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+          "overlap_result_reused": true
+        },
+        {
+          "figure_id": "siberian_tiger_vs_black_bear_overlap",
+          "label": "Black bear",
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+          "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+          "delta_hat": 0.7797,
+          "delta_ci_low": 0.7597,
+          "delta_ci_high": 0.8012,
+          "estimator_id": "camagent.circular_kde_activity_overlap",
+          "estimator_version": "1.0.0",
+          "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+          "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+          "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+          "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+          "overlap_result_reused": true
+        }
+      ],
+      "failed_figures": [],
+      "reason": "All eight planned steps succeeded. Timestamp quality passed (7,745/7,745 valid, observed clock time ratio 1.0). Independent events produced 6,570 Siberian tiger events using 30-minute same-camera gaps. Hourly distribution and peak detection agree on peaks at 17:00-18:00, labeled a dusk-centered crepuscular pattern (dusk share 0.371, night 0.262, dawn 0.175, day 0.192). Pairwise circular-KDE overlap was completed for four comparison species: Roe deer Delta=0.8768 (0.8644-0.8885), Sika deer 0.8843 (0.8728-0.8950), Amur leopard 0.7148 (0.6974-0.7326), and black bear 0.7797 (0.7597-0.8012). The activity curve and all four pairwise overlap-panel figures were generated successfully. The community-composition caveat about inferred camera effort affects RAI abundance metrics only, not the requested activity-pattern or temporal-overlap evidence.",
+      "conservative_answer": false,
+      "reflection_mode": "llm_with_deterministic_consistency_check",
+      "consistency_check": {
+        "missing_fields": [],
+        "inconsistency_check": "passed",
+        "corrections": [],
+        "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+      },
+      "temporal_activity": {
+        "status": "available",
+        "peak_hours": [
+          17,
+          18,
+          19
+        ],
+        "activity_pattern_label": "dusk-centered crepuscular"
+      },
+      "termination_reason": "goal_satisfied",
+      "rounds": [
+        {
+          "round_index": 0,
+          "phase": "initial_plan",
+          "proposed_task_count": 8,
+          "accepted_tasks": [
+            {
+              "tool_name": "check_timestamp_quality",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger."
+            },
+            {
+              "tool_name": "build_independent_events",
+              "args": {
+                "species": "Siberian tiger",
+                "by_camera": true,
+                "min_gap_minutes": 30
+              },
+              "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures."
+            },
+            {
+              "tool_name": "build_hourly_activity_distribution",
+              "args": {
+                "species": "Siberian tiger",
+                "min_gap_minutes": 30
+              },
+              "reason": "Characterize the Siberian tiger's diel activity pattern from independent events."
+            },
+            {
+              "tool_name": "detect_activity_peaks",
+              "args": {
+                "species": "Siberian tiger",
+                "top_k": 3,
+                "min_gap_minutes": 30
+              },
+              "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern."
+            },
+            {
+              "tool_name": "summarize_community_composition",
+              "args": {
+                "top_k": 20,
+                "min_gap_minutes": 30,
+                "abundance_metric": "rai",
+                "include_unknown": false
+              },
+              "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory."
+            },
+            {
+              "tool_name": "estimate_pairwise_activity_overlap",
+              "args": {
+                "species_a": "Siberian tiger",
+                "top_k": 4,
+                "min_gap_minutes": 30,
+                "smooth_sigma": 1.25,
+                "bootstrap_iters": 500,
+                "min_events": 10,
+                "random_seed": 42
+              },
+              "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset."
+            },
+            {
+              "tool_name": "plot_hourly_activity_curve",
+              "args": {
+                "species": "Siberian tiger",
+                "min_gap_minutes": 30,
+                "smooth_sigma": 1.15,
+                "show_ci": true,
+                "bootstrap_iters": 500,
+                "annotate_peaks": "major_only",
+                "subtitle_level": "short"
+              },
+              "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations."
+            },
+            {
+              "tool_name": "plot_pairwise_activity_overlap_panels",
+              "args": {
+                "species_a": "Siberian tiger",
+                "top_k": 4,
+                "min_gap_minutes": 30,
+                "smooth_sigma": 1.25,
+                "bootstrap_iters": 500
+              },
+              "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results."
+            }
+          ],
+          "budget_truncated": false,
+          "execution_statuses": [
+            "success",
+            "success",
+            "success",
+            "success",
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "reflection": {
+            "need_replan": false,
+            "reason": "All eight planned steps succeeded. Timestamp quality passed (7,745/7,745 valid, observed clock time ratio 1.0). Independent events produced 6,570 Siberian tiger events using 30-minute same-camera gaps. Hourly distribution and peak detection agree on peaks at 17:00-18:00, labeled a dusk-centered crepuscular pattern (dusk share 0.371, night 0.262, dawn 0.175, day 0.192). Pairwise circular-KDE overlap was completed for four comparison species: Roe deer Delta=0.8768 (0.8644-0.8885), Sika deer 0.8843 (0.8728-0.8950), Amur leopard 0.7148 (0.6974-0.7326), and black bear 0.7797 (0.7597-0.8012). The activity curve and all four pairwise overlap-panel figures were generated successfully. The community-composition caveat about inferred camera effort affects RAI abundance metrics only, not the requested activity-pattern or temporal-overlap evidence.",
+            "conservative_answer": false,
+            "elapsed_seconds": 15.954232
+          }
+        }
+      ]
+    },
+    "synthesis": {
+      "synthesis_mode": "llm_synthesis",
+      "answer_guard": {
+        "planner_mode": "llm",
+        "target_species": "Siberian tiger",
+        "target_species_display": "Siberian tiger",
+        "local_empty": false,
+        "local_empty_summary": "",
+        "used_tools": [
+          "check_timestamp_quality",
+          "build_independent_events",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "summarize_community_composition",
+          "estimate_pairwise_activity_overlap",
+          "plot_hourly_activity_curve",
+          "plot_pairwise_activity_overlap_panels"
+        ],
+        "must_not_expand_local_to_global": false,
+        "visual_outputs": [
+          {
+            "tool_name": "plot_hourly_activity_curve",
+            "path": "outputs/Siberian_tiger_hourly_activity_curve.svg",
+            "figure_id": "Siberian_tiger_hourly_activity_curve"
+          },
+          {
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+            "figure_id": "siberian_tiger_vs_roe_deer_overlap"
+          },
+          {
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+            "figure_id": "siberian_tiger_vs_sika_deer_overlap"
+          },
+          {
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+            "figure_id": "siberian_tiger_vs_amur_leopard_overlap"
+          },
+          {
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+            "figure_id": "siberian_tiger_vs_black_bear_overlap"
+          }
+        ],
+        "temporal_visualization_has_synthetic_time": false
+      },
+      "compact_tool_results_used": [
+        {
+          "step": 1,
+          "tool_name": "check_timestamp_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Validate that timestamps are reliable before performing hourly activity analysis for the Siberian tiger.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 21.122668,
+          "result": {
+            "species": "Siberian tiger",
+            "total_records": 7745,
+            "valid_timestamp_records": 7745,
+            "invalid_timestamp_count": 0,
+            "observed_clock_time_ratio": 1.0,
+            "synthetic_clock_time_ratio": 0.0,
+            "timestamp_source_summary": {
+              "recordtime": 7745
+            },
+            "timestamp_source": "CamtrapDP tabular",
+            "reliability_status": "passed"
+          }
+        },
+        {
+          "step": 2,
+          "tool_name": "build_independent_events",
+          "args": {
+            "species": "Siberian tiger",
+            "by_camera": true,
+            "min_gap_minutes": 30
+          },
+          "input_args": {
+            "species": "Siberian tiger",
+            "by_camera": true,
+            "min_gap_minutes": 30
+          },
+          "filtered_args": [],
+          "reason": "Construct independent detection events for the Siberian tiger so activity analyses are not biased by burst captures.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 4.334065,
+          "result": {
+            "species": "Siberian tiger",
+            "by_camera": true,
+            "min_gap_minutes": 30.0,
+            "raw_record_count": 7745,
+            "valid_record_count": 7745,
+            "independent_event_count": 6570,
+            "event_gap_minutes": 30.0,
+            "note": "Independent events use the requested same-species, same-camera gap. A matching conversion cache is reused; other thresholds are deterministically recomputed from media rows."
+          }
+        },
+        {
+          "step": 3,
+          "tool_name": "build_hourly_activity_distribution",
+          "args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30
+          },
+          "input_args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30
+          },
+          "filtered_args": [],
+          "reason": "Characterize the Siberian tiger's diel activity pattern from independent events.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 1.261566,
+          "result": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "source_record_count": 6570,
+            "valid_time_records": 6570,
+            "independent_event_count": 6570,
+            "observed_clock_time_ratio": 1.0,
+            "synthetic_clock_time_ratio": 0.0,
+            "timestamp_source_summary": {
+              "camtrap_dp_tabular": 6570
+            },
+            "hourly_distribution": [
+              {
+                "hour": 0,
+                "count": 229,
+                "ratio": 0.0349
+              },
+              {
+                "hour": 1,
+                "count": 217,
+                "ratio": 0.033
+              },
+              {
+                "hour": 2,
+                "count": 226,
+                "ratio": 0.0344
+              },
+              {
+                "hour": 3,
+                "count": 281,
+                "ratio": 0.0428
+              },
+              {
+                "hour": 4,
+                "count": 364,
+                "ratio": 0.0554
+              },
+              {
+                "hour": 5,
+                "count": 300,
+                "ratio": 0.0457
+              },
+              {
+                "hour": 6,
+                "count": 263,
+                "ratio": 0.04
+              },
+              {
+                "hour": 7,
+                "count": 224,
+                "ratio": 0.0341
+              },
+              {
+                "hour": 8,
+                "count": 172,
+                "ratio": 0.0262
+              },
+              {
+                "hour": 9,
+                "count": 134,
+                "ratio": 0.0204
+              },
+              {
+                "hour": 10,
+                "count": 106,
+                "ratio": 0.0161
+              },
+              {
+                "hour": 11,
+                "count": 111,
+                "ratio": 0.0169
+              },
+              {
+                "hour": 12,
+                "count": 94,
+                "ratio": 0.0143
+              },
+              {
+                "hour": 13,
+                "count": 137,
+                "ratio": 0.0209
+              },
+              {
+                "hour": 14,
+                "count": 186,
+                "ratio": 0.0283
+              },
+              {
+                "hour": 15,
+                "count": 323,
+                "ratio": 0.0492
+              },
+              {
+                "hour": 16,
+                "count": 446,
+                "ratio": 0.0679
+              },
+              {
+                "hour": 17,
+                "count": 582,
+                "ratio": 0.0886
+              },
+              {
+                "hour": 18,
+                "count": 569,
+                "ratio": 0.0866
+              },
+              {
+                "hour": 19,
+                "count": 468,
+                "ratio": 0.0712
+              },
+              {
+                "hour": 20,
+                "count": 373,
+                "ratio": 0.0568
+              },
+              {
+                "hour": 21,
+                "count": 295,
+                "ratio": 0.0449
+              },
+              {
+                "hour": 22,
+                "count": 253,
+                "ratio": 0.0385
+              },
+              {
+                "hour": 23,
+                "count": 217,
+                "ratio": 0.033
+              }
+            ],
+            "peak_hours": [
+              17,
+              18,
+              19
+            ],
+            "peak_period_label": "evening / dusk",
+            "activity_window_shares": {
+              "dawn": 0.1752,
+              "daytime": 0.1923,
+              "dusk": 0.3711,
+              "night": 0.2615
+            },
+            "major_peak_window": "dusk",
+            "secondary_peak_window": "night",
+            "activity_pattern_label": "dusk-centered crepuscular",
+            "note": "Hourly analysis uses CamtrapDP independent events with explicit timestamps."
+          }
+        },
+        {
+          "step": 4,
+          "tool_name": "detect_activity_peaks",
+          "args": {
+            "species": "Siberian tiger",
+            "top_k": 3,
+            "min_gap_minutes": 30
+          },
+          "input_args": {
+            "species": "Siberian tiger",
+            "top_k": 3,
+            "min_gap_minutes": 30
+          },
+          "filtered_args": [],
+          "reason": "Identify the major activity peaks that summarize the Siberian tiger's temporal activity pattern.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 1.261538,
+          "result": [
+            {
+              "hour": 17,
+              "count": 582,
+              "ratio": 0.0886
+            },
+            {
+              "hour": 18,
+              "count": 569,
+              "ratio": 0.0866
+            },
+            {
+              "hour": 19,
+              "count": 468,
+              "ratio": 0.0712
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "tool_name": "summarize_community_composition",
+          "args": {
+            "top_k": 20,
+            "min_gap_minutes": 30,
+            "abundance_metric": "rai",
+            "include_unknown": false
+          },
+          "input_args": {
+            "top_k": 20,
+            "min_gap_minutes": 30,
+            "abundance_metric": "rai",
+            "include_unknown": false
+          },
+          "filtered_args": [],
+          "reason": "Document the actively detected comparison-species community so pairwise temporal overlap can be derived from the dataset inventory.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 5.103056,
+          "result": {
+            "total_record_count": 870752,
+            "total_source_record_count": 1376017,
+            "species_richness": 5,
+            "shannon_index": 0.793,
+            "simpson_index": 0.5057,
+            "abundance_metric": "rai",
+            "excluded_low_effort_species_count": 0,
+            "top_species": [
+              {
+                "species": "Roe deer",
+                "record_count": 505386,
+                "independent_event_count": 505386,
+                "source_record_count": 727090,
+                "camera_count": 16395,
+                "camera_effort_days": 5180816.0,
+                "rai_per_100_camera_days": 9.7549,
+                "observed_span_days": 611,
+                "low_effort_flag": false,
+                "excluded_from_adjusted_abundance": false,
+                "metric_value": 9.754949799413838,
+                "relative_abundance": 0.5804
+              },
+              {
+                "species": "Sika deer",
+                "record_count": 345300,
+                "independent_event_count": 345300,
+                "source_record_count": 625249,
+                "camera_count": 15013,
+                "camera_effort_days": 5180816.0,
+                "rai_per_100_camera_days": 6.665,
+                "observed_span_days": 611,
+                "low_effort_flag": false,
+                "excluded_from_adjusted_abundance": false,
+                "metric_value": 6.664973239736752,
+                "relative_abundance": 0.3966
+              },
+              {
+                "species": "Amur leopard",
+                "record_count": 9882,
+                "independent_event_count": 9882,
+                "source_record_count": 11704,
+                "camera_count": 2556,
+                "camera_effort_days": 5180816.0,
+                "rai_per_100_camera_days": 0.1907,
+                "observed_span_days": 611,
+                "low_effort_flag": false,
+                "excluded_from_adjusted_abundance": false,
+                "metric_value": 0.19074215335962522,
+                "relative_abundance": 0.0113
+              },
+              {
+                "species": "Siberian tiger",
+                "record_count": 6570,
+                "independent_event_count": 6570,
+                "source_record_count": 7745,
+                "camera_count": 1845,
+                "camera_effort_days": 5180816.0,
+                "rai_per_100_camera_days": 0.1268,
+                "observed_span_days": 611,
+                "low_effort_flag": false,
+                "excluded_from_adjusted_abundance": false,
+                "metric_value": 0.12681399995676357,
+                "relative_abundance": 0.0075
+              },
+              {
+                "species": "Black bear",
+                "record_count": 3614,
+                "independent_event_count": 3614,
+                "source_record_count": 4229,
+                "camera_count": 2538,
+                "camera_effort_days": 5180816.0,
+                "rai_per_100_camera_days": 0.0698,
+                "observed_span_days": 547,
+                "low_effort_flag": false,
+                "excluded_from_adjusted_abundance": false,
+                "metric_value": 0.06975735096556218,
+                "relative_abundance": 0.0042
+              }
+            ],
+            "note": "Community composition is computed from CamtrapDP media records and independent events; RAI uses camera deployment spans. Because those spans were inferred from detections, RAI is exploratory until camera operation logs are supplied."
+          }
+        },
+        {
+          "step": 6,
+          "tool_name": "estimate_pairwise_activity_overlap",
+          "args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500,
+            "min_events": 10,
+            "random_seed": 42
+          },
+          "input_args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500,
+            "min_events": 10,
+            "random_seed": 42
+          },
+          "filtered_args": [],
+          "reason": "Estimate temporal niche overlap between the Siberian tiger and other detected species using pairwise Delta values, deriving comparison species from the active dataset.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 11.690527,
+          "result": {
+            "species_a": "Siberian tiger",
+            "comparison_species": [
+              "Roe deer",
+              "Sika deer",
+              "Amur leopard",
+              "Black bear"
+            ],
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500,
+            "bootstrap_interval_method": "percentile",
+            "permutation_iters": 0,
+            "pairwise_results": [
+              {
+                "species_a": "Siberian tiger",
+                "species_b": "Roe deer",
+                "delta_hat": 0.8768,
+                "delta_ci_low": 0.8644,
+                "delta_ci_high": 0.8885,
+                "relationship": "high_overlap",
+                "valid_event_count_a": 6570,
+                "valid_event_count_b": 505386,
+                "peak_hours_a": [
+                  17,
+                  18,
+                  19
+                ],
+                "peak_hours_b": [
+                  4,
+                  17,
+                  18
+                ],
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+                "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+                "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+                "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+                "overlap_result_reused": true
+              },
+              {
+                "species_a": "Siberian tiger",
+                "species_b": "Sika deer",
+                "delta_hat": 0.8843,
+                "delta_ci_low": 0.8728,
+                "delta_ci_high": 0.895,
+                "relationship": "high_overlap",
+                "valid_event_count_a": 6570,
+                "valid_event_count_b": 345300,
+                "peak_hours_a": [
+                  17,
+                  18,
+                  19
+                ],
+                "peak_hours_b": [
+                  4,
+                  18,
+                  19
+                ],
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+                "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+                "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+                "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+                "overlap_result_reused": true
+              },
+              {
+                "species_a": "Siberian tiger",
+                "species_b": "Amur leopard",
+                "delta_hat": 0.7148,
+                "delta_ci_low": 0.6974,
+                "delta_ci_high": 0.7326,
+                "relationship": "moderate_overlap",
+                "valid_event_count_a": 6570,
+                "valid_event_count_b": 9882,
+                "peak_hours_a": [
+                  17,
+                  18,
+                  19
+                ],
+                "peak_hours_b": [
+                  5,
+                  6,
+                  16
+                ],
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+                "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+                "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+                "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+                "overlap_result_reused": true
+              },
+              {
+                "species_a": "Siberian tiger",
+                "species_b": "Black bear",
+                "delta_hat": 0.7797,
+                "delta_ci_low": 0.7597,
+                "delta_ci_high": 0.8012,
+                "relationship": "moderate_overlap",
+                "valid_event_count_a": 6570,
+                "valid_event_count_b": 3614,
+                "peak_hours_a": [
+                  17,
+                  18,
+                  19
+                ],
+                "peak_hours_b": [
+                  5,
+                  17,
+                  18
+                ],
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+                "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+                "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+                "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+                "overlap_result_reused": true
+              }
+            ],
+            "overlap_result_bundle_ids": [
+              "activity_overlap_eb7d8f49177da7ac0dfe",
+              "activity_overlap_143ff9f60ddc89f3801e",
+              "activity_overlap_bc896fcd862ebc34dcd3",
+              "activity_overlap_2a45a8fd4fcdd68c8f39"
+            ],
+            "overlap_result_bundle_set_sha256": "73e534ce16fff3efa91403b8a8224c985b2e4c2e6fd4be8b4f5d7701c70e09bd",
+            "skipped": [],
+            "note": "Pairwise Delta values use versioned, tamper-evident result bundles from the same independent-event activity-overlap estimator. Plot tools reuse these bundles rather than re-estimating a separate value."
+          }
+        },
+        {
+          "step": 7,
+          "tool_name": "plot_hourly_activity_curve",
+          "args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.15,
+            "show_ci": true,
+            "bootstrap_iters": 500,
+            "annotate_peaks": "major_only",
+            "subtitle_level": "short"
+          },
+          "input_args": {
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.15,
+            "show_ci": true,
+            "bootstrap_iters": 500,
+            "annotate_peaks": "major_only",
+            "subtitle_level": "short"
+          },
+          "filtered_args": [],
+          "reason": "Visualize the Siberian tiger's diel activity pattern with confidence bands and major peak annotations.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 12.926893,
+          "result": {
+            "status": "success",
+            "species": "Siberian tiger",
+            "min_gap_minutes": 30,
+            "show_ci": true,
+            "independent_event_count": 6570,
+            "valid_time_records": 6570,
+            "observed_clock_time_ratio": 1.0,
+            "synthetic_clock_time_ratio": 0.0,
+            "peak_hours": [
+              17,
+              18,
+              19
+            ],
+            "major_peak": {
+              "hour": 18.083,
+              "value": 0.080146
+            },
+            "secondary_peak": {
+              "hour": 4.583,
+              "value": 0.046893
+            },
+            "day_night_summary": {
+              "species": "Siberian tiger",
+              "min_gap_minutes": 30,
+              "day_count": 2778,
+              "night_count": 3792,
+              "day_ratio": 0.4228,
+              "night_ratio": 0.5772
+            },
+            "figures": [
+              {
+                "figure_id": "Siberian_tiger_hourly_activity_curve",
+                "label": "Siberian tiger hourly activity curve",
+                "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+              }
+            ],
+            "interpretation_boundary": "The curve describes the distribution of independent detection events across clock time; it does not by itself identify a behavioural mechanism."
+          }
+        },
+        {
+          "step": 8,
+          "tool_name": "plot_pairwise_activity_overlap_panels",
+          "args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500
+          },
+          "input_args": {
+            "species_a": "Siberian tiger",
+            "top_k": 4,
+            "min_gap_minutes": 30,
+            "smooth_sigma": 1.25,
+            "bootstrap_iters": 500
+          },
+          "filtered_args": [],
+          "reason": "Visualize the estimated temporal niche overlap between the Siberian tiger and other detected species using the persisted pairwise overlap results.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 24.341823,
+          "result": {
+            "status": "generated",
+            "figure_count": 4,
+            "figures": [
+              {
+                "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+                "species_a": "Siberian tiger",
+                "species_b": "Roe deer",
+                "status": "generated",
+                "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+                "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+                "delta_hat": 0.8768,
+                "delta_ci_low": 0.8644,
+                "delta_ci_high": 0.8885,
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+                "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+                "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+                "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+                "overlap_result_reused": true
+              },
+              {
+                "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+                "species_a": "Siberian tiger",
+                "species_b": "Sika deer",
+                "status": "generated",
+                "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+                "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+                "delta_hat": 0.8843,
+                "delta_ci_low": 0.8728,
+                "delta_ci_high": 0.895,
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+                "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+                "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+                "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+                "overlap_result_reused": true
+              },
+              {
+                "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+                "species_a": "Siberian tiger",
+                "species_b": "Amur leopard",
+                "status": "generated",
+                "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+                "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+                "delta_hat": 0.7148,
+                "delta_ci_low": 0.6974,
+                "delta_ci_high": 0.7326,
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+                "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+                "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+                "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+                "overlap_result_reused": true
+              },
+              {
+                "figure_id": "siberian_tiger_vs_black_bear_overlap",
+                "species_a": "Siberian tiger",
+                "species_b": "Black bear",
+                "status": "generated",
+                "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+                "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+                "delta_hat": 0.7797,
+                "delta_ci_low": 0.7597,
+                "delta_ci_high": 0.8012,
+                "estimator_id": "camagent.circular_kde_activity_overlap",
+                "estimator_version": "1.0.0",
+                "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+                "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+                "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+                "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+                "overlap_result_reused": true
+              }
+            ],
+            "overlap_result_bundle_ids": [
+              "activity_overlap_eb7d8f49177da7ac0dfe",
+              "activity_overlap_143ff9f60ddc89f3801e",
+              "activity_overlap_bc896fcd862ebc34dcd3",
+              "activity_overlap_2a45a8fd4fcdd68c8f39"
+            ],
+            "failed_figures": []
+          }
+        }
+      ],
+      "synthesis_input_evidence": {
+        "activity_pattern": {
+          "species": "Siberian tiger",
+          "peak_hours": [
+            17,
+            18,
+            19
+          ],
+          "peak_period": "evening / dusk",
+          "major_peak_window": "dusk",
+          "secondary_peak_window": "night",
+          "activity_pattern_label": "dusk-centered crepuscular",
+          "activity_window_shares": {
+            "dawn": 0.1752,
+            "daytime": 0.1923,
+            "dusk": 0.3711,
+            "night": 0.2615
+          }
+        },
+        "pairwise_overlap": [
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Roe deer",
+            "delta_hat": 0.8768,
+            "delta_ci_low": 0.8644,
+            "delta_ci_high": 0.8885,
+            "relationship": "high_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 505386,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              4,
+              17,
+              18
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+            "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+            "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+            "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+            "overlap_result_reused": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Sika deer",
+            "delta_hat": 0.8843,
+            "delta_ci_low": 0.8728,
+            "delta_ci_high": 0.895,
+            "relationship": "high_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 345300,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              4,
+              18,
+              19
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+            "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+            "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+            "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+            "overlap_result_reused": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Amur leopard",
+            "delta_hat": 0.7148,
+            "delta_ci_low": 0.6974,
+            "delta_ci_high": 0.7326,
+            "relationship": "moderate_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 9882,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              5,
+              6,
+              16
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+            "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+            "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+            "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+            "overlap_result_reused": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Black bear",
+            "delta_hat": 0.7797,
+            "delta_ci_low": 0.7597,
+            "delta_ci_high": 0.8012,
+            "relationship": "moderate_overlap",
+            "valid_event_count_a": 6570,
+            "valid_event_count_b": 3614,
+            "peak_hours_a": [
+              17,
+              18,
+              19
+            ],
+            "peak_hours_b": [
+              5,
+              17,
+              18
+            ],
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+            "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+            "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+            "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+            "overlap_result_reused": true
+          }
+        ],
+        "visualization": [
+          {
+            "figure_id": "Siberian_tiger_hourly_activity_curve",
+            "label": "Siberian tiger hourly activity curve",
+            "tool_name": "plot_hourly_activity_curve",
+            "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+          },
+          {
+            "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+            "label": "Roe deer",
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+            "delta_hat": 0.8768,
+            "delta_ci_low": 0.8644,
+            "delta_ci_high": 0.8885,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+            "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+            "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+            "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+            "overlap_result_reused": true
+          },
+          {
+            "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+            "label": "Sika deer",
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+            "delta_hat": 0.8843,
+            "delta_ci_low": 0.8728,
+            "delta_ci_high": 0.895,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+            "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+            "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+            "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+            "overlap_result_reused": true
+          },
+          {
+            "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+            "label": "Amur leopard",
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+            "delta_hat": 0.7148,
+            "delta_ci_low": 0.6974,
+            "delta_ci_high": 0.7326,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+            "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+            "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+            "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+            "overlap_result_reused": true
+          },
+          {
+            "figure_id": "siberian_tiger_vs_black_bear_overlap",
+            "label": "Black bear",
+            "tool_name": "plot_pairwise_activity_overlap_panels",
+            "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+            "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+            "delta_hat": 0.7797,
+            "delta_ci_low": 0.7597,
+            "delta_ci_high": 0.8012,
+            "estimator_id": "camagent.circular_kde_activity_overlap",
+            "estimator_version": "1.0.0",
+            "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+            "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+            "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+            "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+            "overlap_result_reused": true
+          }
+        ],
+        "limitations": [
+          "Use only values present in tool execution or reflection.",
+          "Delta measures similarity in diel activity rhythm, not direct interaction.",
+          "A data-quality audit alone does not establish that formal occupancy modelling is supported; independent camera-operation effort must be confirmed by successful tool evidence.",
+          "Use relative paths only."
+        ],
+        "reflection": {
+          "need_replan": false,
+          "new_tasks": [],
+          "reason": "All eight planned steps succeeded. Timestamp quality passed (7,745/7,745 valid, observed clock time ratio 1.0). Independent events produced 6,570 Siberian tiger events using 30-minute same-camera gaps. Hourly distribution and peak detection agree on peaks at 17:00-18:00, labeled a dusk-centered crepuscular pattern (dusk share 0.371, night 0.262, dawn 0.175, day 0.192). Pairwise circular-KDE overlap was completed for four comparison species: Roe deer Delta=0.8768 (0.8644-0.8885), Sika deer 0.8843 (0.8728-0.8950), Amur leopard 0.7148 (0.6974-0.7326), and black bear 0.7797 (0.7597-0.8012). The activity curve and all four pairwise overlap-panel figures were generated successfully. The community-composition caveat about inferred camera effort affects RAI abundance metrics only, not the requested activity-pattern or temporal-overlap evidence.",
+          "data_quality": "sufficient",
+          "timestamp_reliability": {
+            "status": "passed",
+            "observed_clock_time_ratio": 1.0,
+            "synthetic_clock_time_ratio": 0.0,
+            "invalid_timestamp_count": 0,
+            "timestamp_source": "CamtrapDP tabular"
+          },
+          "event_independence": {
+            "status": "applied",
+            "min_gap_minutes": 30.0
+          },
+          "event_count_sufficiency": {
+            "status": "passed",
+            "tiger_events": 6570
+          },
+          "overlap_analysis": {
+            "status": "completed",
+            "overall_delta": "not_computed",
+            "pairwise_results": "available",
+            "species_count": 4
+          },
+          "spatial_data_sufficiency": {
+            "status": "not_applicable"
+          },
+          "visualization": "generated",
+          "conservative_answer": false,
+          "figure_count": 5,
+          "figure_outputs": [
+            {
+              "figure_id": "Siberian_tiger_hourly_activity_curve",
+              "label": "Siberian tiger hourly activity curve",
+              "tool_name": "plot_hourly_activity_curve",
+              "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg"
+            },
+            {
+              "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+              "label": "Roe deer",
+              "tool_name": "plot_pairwise_activity_overlap_panels",
+              "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+              "delta_hat": 0.8768,
+              "delta_ci_low": 0.8644,
+              "delta_ci_high": 0.8885,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "8c9c5a0f1d09cabb3fae33a8051fc1d02ac162d09dc33801d898bae1bad48cfb",
+              "overlap_result_bundle_id": "activity_overlap_eb7d8f49177da7ac0dfe",
+              "overlap_result_bundle_sha256": "5dc8b5a90cd3d7b864aca45b7c6672e3313c6426b100d647be0233b47ea26672",
+              "overlap_result_sha256": "11746cd0cd624f824d38c4ae3d49592cf67634d5ff2da0ff09507fd19890fedc",
+              "overlap_result_reused": true
+            },
+            {
+              "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+              "label": "Sika deer",
+              "tool_name": "plot_pairwise_activity_overlap_panels",
+              "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+              "delta_hat": 0.8843,
+              "delta_ci_low": 0.8728,
+              "delta_ci_high": 0.895,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "7c4e930e5fd1b54d3bb699b931feb816a5680fecc9c628ab9e3c6515fce5d1f5",
+              "overlap_result_bundle_id": "activity_overlap_143ff9f60ddc89f3801e",
+              "overlap_result_bundle_sha256": "f00dcd0374a5ca7424d56b778b5bf83ad7e0b55ef75028f2a7f00eaebea12031",
+              "overlap_result_sha256": "07de439b6471a676830c0d60a0a8e2b1ace86ce6e42e36ec73f154f990a4d6f3",
+              "overlap_result_reused": true
+            },
+            {
+              "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+              "label": "Amur leopard",
+              "tool_name": "plot_pairwise_activity_overlap_panels",
+              "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+              "delta_hat": 0.7148,
+              "delta_ci_low": 0.6974,
+              "delta_ci_high": 0.7326,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "b6e1d591ea7463b0ac2c56c9440240f342b3c8410bd1947453c08ded2bfdd93f",
+              "overlap_result_bundle_id": "activity_overlap_bc896fcd862ebc34dcd3",
+              "overlap_result_bundle_sha256": "ab4e99f76085c7bb4d6abe144c995afc72adc461301f2fc8f47ee475ecac1047",
+              "overlap_result_sha256": "9f8f786f76804035d20abb70ab3bc94c212a38aa773fc4a82a090df7b0624c6f",
+              "overlap_result_reused": true
+            },
+            {
+              "figure_id": "siberian_tiger_vs_black_bear_overlap",
+              "label": "Black bear",
+              "tool_name": "plot_pairwise_activity_overlap_panels",
+              "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+              "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+              "delta_hat": 0.7797,
+              "delta_ci_low": 0.7597,
+              "delta_ci_high": 0.8012,
+              "estimator_id": "camagent.circular_kde_activity_overlap",
+              "estimator_version": "1.0.0",
+              "source_events_sha256": "f10c04de0e22de8e35ba9a97e27cc934f18282bce7043700ca9b88d938c5491b",
+              "overlap_result_bundle_id": "activity_overlap_2a45a8fd4fcdd68c8f39",
+              "overlap_result_bundle_sha256": "b9237afe45addfc2af0510d55bfe3ac050bbc97a0b88e77562e97f88caf24f90",
+              "overlap_result_sha256": "ad1575e913da213c80b5f53fe6c41136af8be1a44da6c0982cbd5e1982e64eb1",
+              "overlap_result_reused": true
+            }
+          ],
+          "failed_figures": [],
+          "_llm_outputs": {
+            "replanner_raw_response": "{\"need_replan\":false,\"new_tasks\":[],\"reason\":\"All eight planned steps succeeded. Timestamp quality passed (7,745/7,745 valid, observed clock time ratio 1.0). Independent events produced 6,570 Siberian tiger events using 30-minute same-camera gaps. Hourly distribution and peak detection agree on peaks at 17:00-18:00, labeled a dusk-centered crepuscular pattern (dusk share 0.371, night 0.262, dawn 0.175, day 0.192). Pairwise circular-KDE overlap was completed for four comparison species: Roe deer Delta=0.8768 (0.8644-0.8885), Sika deer 0.8843 (0.8728-0.8950), Amur leopard 0.7148 (0.6974-0.7326), and black bear 0.7797 (0.7597-0.8012). The activity curve and all four pairwise overlap-panel figures were generated successfully. The community-composition caveat about inferred camera effort affects RAI abundance metrics only, not the requested activity-pattern or temporal-overlap evidence.\",\"data_quality\":\"sufficient\",\"timestamp_reliability\":{\"status\":\"passed\"},\"event_independence\":{\"status\":\"applied\",\"min_gap_minutes\":\"30\"},\"event_count_sufficiency\":{\"status\":\"passed\"},\"overlap_analysis\":{\"status\":\"completed\"},\"spatial_data_sufficiency\":{\"status\":\"not_applicable\"},\"visualization\":\"generated\",\"conservative_answer\":false}",
+            "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+            "replanner_user_prompt_sha256": "5af533ab5c575c8467c24fe2e8a3ee1e326ca676aad27126cfed10e20f774470",
+            "replanner_user_prompt_char_count": 58976,
+            "replanner_user_prompt_budget_chars": 60000,
+            "replanner_prompt_budget_fallback": "tool_names_and_execution_summaries"
+          },
+          "temporal_activity": {
+            "status": "available",
+            "peak_hours": [
+              17,
+              18,
+              19
+            ],
+            "activity_pattern_label": "dusk-centered crepuscular"
+          },
+          "reflection_mode": "llm_with_deterministic_consistency_check",
+          "consistency_check": {
+            "missing_fields": [],
+            "inconsistency_check": "passed",
+            "corrections": [],
+            "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+          }
+        }
+      },
+      "answer_system_prompt_sha256": "d13c1a2da5b7db80fc861491d5ebd701416499ae5b68744d94c7dd0148767641",
+      "answer_user_prompt_sha256": "2787bfbcdbbc8b9d8eddba6178ea28b38d121f91f6e5575877afc7d22a335cdc",
+      "answer_user_prompt_char_count": 24974,
+      "answer_user_prompt_budget_chars": 40000,
+      "answer_prompt_budget_fallback": "none"
+    }
+  },
+  "final_answer": "## Siberian tiger activity pattern\n\n- **Timestamp reliability:** All 7,745 Siberian tiger records passed timestamp-quality checks (7,745 valid, 0 invalid; 100% observed clock time, no synthetic/imputed timestamps).\n- **Independent events:** Collapsing burst captures to a 30-minute same-camera gap yielded **6,570 independent detection events** from the 7,745 raw records.\n- **Diel pattern:** The activity pattern is described as **dusk-centered crepuscular**. The three major activity peaks by hourly event share were **17:00 (8.9%), 18:00 (8.7%), and 19:00 (7.1%)**, with the smoothed curve placing the major peak around **18:08** and a secondary early-morning peak around **04:35**. Time-window shares were dusk 37.1%, night 26.2%, dawn 17.5%, and daytime 19.2%; day/night comparison showed 57.7% night detections versus 42.3% daytime detections.\n\nThese estimates are based on the current camera-trap data, restricted to independent events (same-species, same-camera detections separated by ≥30 minutes), with timestamps taken directly from the imported tabular records; circular kernel density smoothing was used for the curve and overlap estimates.\n\n## Temporal niche overlap with other species\n\nCommunity composition in the current dataset (5 species, RAI metric) placed Siberian tiger fourth in relative abundance, at **0.127 independent events per 100 camera-days** (RAI), below Roe deer (9.75), Sika deer (6.67), and Amur leopard (0.19), and above Black bear (0.07). As a reminder, RAI means independent events per 100 camera-days and is not a true population density; here it is also exploratory because camera deployment spans were inferred from detections rather than supplied operation logs.\n\nPairwise diel overlap (Delta, with 500-iteration percentile bootstrap CIs, smoothing sigma = 1.25):\n\n| Species pair | Delta (95% CI) | Descriptive category |\n|---|---|---|\n| Siberian tiger vs Roe deer | 0.877 (0.864–0.889) | High overlap |\n| Siberian tiger vs Sika deer | 0.884 (0.873–0.895) | High overlap |\n| Siberian tiger vs Amur leopard | 0.715 (0.697–0.733) | Moderate overlap |\n| Siberian tiger vs Black bear | 0.780 (0.760–0.801) | Moderate overlap |\n\nThe highest diel rhythm similarity is with the two deer species, which share the tiger's evening (17:00–19:00) activity peaks; Roe deer and Sika deer also show an additional early-morning peak. Overlap with Amur leopard and Black bear is moderate, with those species peaking more in early morning (05:00–06:00) while still showing some evening activity.\n\nDelta measures similarity in diel activity rhythms and does not prove predation, competition, or any direct relationship between species; these values describe timing of detection activity only, not spatially confirmed interactions.\n\n## Generated visualization\n\n- outputs/Siberian_tiger_hourly_activity_curve.svg\n- outputs/siberian_tiger_vs_roe_deer_overlap.png\n- outputs/siberian_tiger_vs_sika_deer_overlap.png\n- outputs/siberian_tiger_vs_amur_leopard_overlap.png\n- outputs/siberian_tiger_vs_black_bear_overlap.png",
+  "visualizations": [
+    {
+      "tool_name": "plot_hourly_activity_curve",
+      "path": "outputs/Siberian_tiger_hourly_activity_curve.svg",
+      "figure_id": "Siberian_tiger_hourly_activity_curve",
+      "svg_path": "outputs/Siberian_tiger_hourly_activity_curve.svg",
+      "png_path": "",
+      "pdf_path": ""
+    },
+    {
+      "tool_name": "plot_pairwise_activity_overlap_panels",
+      "path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+      "figure_id": "siberian_tiger_vs_roe_deer_overlap",
+      "svg_path": "outputs/siberian_tiger_vs_roe_deer_overlap.svg",
+      "png_path": "outputs/siberian_tiger_vs_roe_deer_overlap.png",
+      "pdf_path": ""
+    },
+    {
+      "tool_name": "plot_pairwise_activity_overlap_panels",
+      "path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+      "figure_id": "siberian_tiger_vs_sika_deer_overlap",
+      "svg_path": "outputs/siberian_tiger_vs_sika_deer_overlap.svg",
+      "png_path": "outputs/siberian_tiger_vs_sika_deer_overlap.png",
+      "pdf_path": ""
+    },
+    {
+      "tool_name": "plot_pairwise_activity_overlap_panels",
+      "path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+      "figure_id": "siberian_tiger_vs_amur_leopard_overlap",
+      "svg_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.svg",
+      "png_path": "outputs/siberian_tiger_vs_amur_leopard_overlap.png",
+      "pdf_path": ""
+    },
+    {
+      "tool_name": "plot_pairwise_activity_overlap_panels",
+      "path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+      "figure_id": "siberian_tiger_vs_black_bear_overlap",
+      "svg_path": "outputs/siberian_tiger_vs_black_bear_overlap.svg",
+      "png_path": "outputs/siberian_tiger_vs_black_bear_overlap.png",
+      "pdf_path": ""
+    }
+  ],
+  "trace_export": {
+    "detail": "public",
+    "raw_tool_results_included": false,
+    "raw_model_responses_included": false,
+    "sensitive_camera_locations_redacted": true
+  }
+}

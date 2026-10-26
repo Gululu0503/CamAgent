@@ -1,0 +1,1449 @@
+{
+  "schema_version": "2.0",
+  "run_id": "0f9a9387-7884-4782-8d04-dc25109aa763",
+  "started_at_utc": "2026-07-27T17:36:41.936700+00:00",
+  "completed_at_utc": "2026-07-27T17:37:28.080005+00:00",
+  "duration_seconds": 46.143328,
+  "timing": {
+    "planning_seconds": 18.477092,
+    "tool_execution_seconds": 5.239826,
+    "answer_synthesis_seconds": 15.224913
+  },
+  "question": "For Amur leopard detections separated by no more than 72 hours and 100 km, summarize candidate inter-camera distances, directions, and repeated camera pairs. Treat them as adjacency hypotheses, not individual tracks or confirmed corridors.",
+  "experiment_id": "MOVE",
+  "species": "Siberian tiger",
+  "plan": {
+    "species": "Amur leopard",
+    "tasks": [
+      {
+        "tool_name": "analyze_animal_movement_pattern",
+        "args": {
+          "species": "Amur leopard",
+          "max_time_gap_hours": 72,
+          "max_distance_km": 100
+        },
+        "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses."
+      }
+    ],
+    "_llm_outputs": {
+      "planner_mode": "llm",
+      "planner_system_prompt_sha256": "83acff9758f8539922b1345ee735f55641c0888c1ba851704366ff9400b4dcad",
+      "planner_user_prompt_sha256": "1cb36406821c8e81667ba27d3e5083ae28c0ce2ab4a61774861c54cc7ee9848d",
+      "planner_input_summary": {
+        "user_query": "For Amur leopard detections separated by no more than 72 hours and 100 km, summarize candidate inter-camera distances, directions, and repeated camera pairs. Treat them as adjacency hypotheses, not individual tracks or confirmed corridors.",
+        "available_tool_names": [
+          "build_independent_events",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_predator_prey_temporal_panel",
+          "plot_tiger_spatial_transition_panel",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "7f521c8a5e9367f385ebe257a7fe4e2885ffba58f134f7207b4f9779754abd1c",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ]
+    },
+    "_planner_validation": {
+      "phase": "initial_plan",
+      "plan_errors": [],
+      "invalid_tools": [],
+      "missing_args": [],
+      "invalid_args": [],
+      "filtered_args": [],
+      "action": "validated",
+      "validation_only": true,
+      "local_tool_rewrite": false,
+      "fallback_used": false
+    }
+  },
+  "selected_tools": [
+    "analyze_animal_movement_pattern"
+  ],
+  "executed_results": [
+    {
+      "step": 1,
+      "tool_name": "analyze_animal_movement_pattern",
+      "args": {
+        "species": "Amur leopard",
+        "max_time_gap_hours": 72,
+        "max_distance_km": 100
+      },
+      "input_args": {
+        "species": "Amur leopard",
+        "max_time_gap_hours": 72,
+        "max_distance_km": 100
+      },
+      "filtered_args": [],
+      "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 5.239765,
+      "result": {
+        "note": "This module summarizes potential transition patterns derived from temporally adjacent records. It is not an individual trajectory reconstruction and should not be interpreted as confirmed migration routes.",
+        "species": "Amur leopard",
+        "movement_step_count": 9466,
+        "movement_distance_summary": {
+          "species": "Amur leopard",
+          "step_count": 9466,
+          "mean_distance_km": 33.534,
+          "max_distance_km": 99.823,
+          "min_distance_km": 0.007,
+          "distance_quantiles_km": {
+            "p25": 16.462,
+            "median": 30.777,
+            "p75": 47.655,
+            "p90": 65.555
+          },
+          "distance_method": "Haversine great-circle distance between camera coordinates",
+          "interpretation_boundary": "These distances connect temporally adjacent camera detections without individual identity evidence; they are adjacency hypotheses, not verified animal movement steps."
+        },
+        "movement_direction_summary": [
+          {
+            "direction": "northeast",
+            "count": 1350,
+            "ratio": 0.1426
+          },
+          {
+            "direction": "southwest",
+            "count": 1315,
+            "ratio": 0.1389
+          },
+          {
+            "direction": "south",
+            "count": 1208,
+            "ratio": 0.1276
+          },
+          {
+            "direction": "north",
+            "count": 1176,
+            "ratio": 0.1242
+          },
+          {
+            "direction": "east",
+            "count": 1160,
+            "ratio": 0.1225
+          },
+          {
+            "direction": "west",
+            "count": 1149,
+            "ratio": 0.1214
+          },
+          {
+            "direction": "southeast",
+            "count": 1073,
+            "ratio": 0.1134
+          },
+          {
+            "direction": "northwest",
+            "count": 1035,
+            "ratio": 0.1093
+          }
+        ],
+        "top_transition_corridors": [
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 16,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 10,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 7,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 6,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 6,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 5,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 5,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 5,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 5,
+            "inference_level": "potential_transition_edge"
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "count": 5,
+            "inference_level": "potential_transition_edge"
+          }
+        ],
+        "longest_transition_steps": [
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2024-03-12 07:25:00",
+            "to_time": "2024-03-12 08:41:00",
+            "time_gap_hours": 1.267,
+            "distance_km": 99.823,
+            "speed_km_h": 78.8073,
+            "bearing_degrees": 313.08,
+            "direction": "northwest",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2024-03-30 09:05:00",
+            "to_time": "2024-03-30 12:09:00",
+            "time_gap_hours": 3.067,
+            "distance_km": 99.814,
+            "speed_km_h": 32.5482,
+            "bearing_degrees": 149.3,
+            "direction": "southeast",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2023-05-18 05:02:00",
+            "to_time": "2023-05-18 05:13:00",
+            "time_gap_hours": 0.183,
+            "distance_km": 99.744,
+            "speed_km_h": 544.0565,
+            "bearing_degrees": 339.75,
+            "direction": "north",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2023-06-28 21:28:00",
+            "to_time": "2023-06-29 03:52:00",
+            "time_gap_hours": 6.4,
+            "distance_km": 99.702,
+            "speed_km_h": 15.5784,
+            "bearing_degrees": 192.13,
+            "direction": "south",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2023-11-08 15:25:00",
+            "to_time": "2023-11-08 20:54:00",
+            "time_gap_hours": 5.483,
+            "distance_km": 99.624,
+            "speed_km_h": 18.1685,
+            "bearing_degrees": 133.1,
+            "direction": "southeast",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2024-06-22 15:00:00",
+            "to_time": "2024-06-22 18:38:00",
+            "time_gap_hours": 3.633,
+            "distance_km": 99.564,
+            "speed_km_h": 27.4029,
+            "bearing_degrees": 228.96,
+            "direction": "southwest",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2023-01-08 09:22:00",
+            "to_time": "2023-01-08 09:50:00",
+            "time_gap_hours": 0.467,
+            "distance_km": 99.339,
+            "speed_km_h": 212.8701,
+            "bearing_degrees": 324.46,
+            "direction": "northwest",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2023-11-12 14:02:00",
+            "to_time": "2023-11-12 15:27:00",
+            "time_gap_hours": 1.417,
+            "distance_km": 99.277,
+            "speed_km_h": 70.0781,
+            "bearing_degrees": 168.7,
+            "direction": "south",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2024-03-14 08:23:30",
+            "to_time": "2024-03-14 10:42:00",
+            "time_gap_hours": 2.308,
+            "distance_km": 99.265,
+            "speed_km_h": 43.0027,
+            "bearing_degrees": 118.66,
+            "direction": "southeast",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          },
+          {
+            "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+            "from_time": "2024-05-25 18:38:00",
+            "to_time": "2024-05-25 18:39:00",
+            "time_gap_hours": 0.017,
+            "distance_km": 99.227,
+            "speed_km_h": 5953.6354,
+            "bearing_degrees": 316.63,
+            "direction": "northwest",
+            "inference_level": "camera_detection_adjacency_hypothesis",
+            "identity_evidence": "none",
+            "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+          }
+        ]
+      }
+    }
+  ],
+  "replan": {
+    "need_replan": false,
+    "new_tasks": [],
+    "reason": "The analyze_animal_movement_pattern tool succeeded and returned all requested summaries: distance summary with quartiles, direction counts/ratios for 8 compass directions, and top repeated camera pairs (transition corridors) with counts. The output explicitly treats these as adjacency hypotheses, matching the user's constraint.",
+    "data_quality": "not_applicable",
+    "timestamp_reliability": {
+      "status": "not_applicable"
+    },
+    "event_independence": {
+      "status": "not_applicable"
+    },
+    "event_count_sufficiency": {
+      "status": "not_applicable"
+    },
+    "overlap_analysis": {
+      "status": "not_applicable"
+    },
+    "spatial_data_sufficiency": {
+      "status": "not_applicable"
+    },
+    "visualization": "not_applicable",
+    "conservative_answer": false,
+    "figure_count": 0,
+    "figure_outputs": [],
+    "failed_figures": [],
+    "_llm_outputs": {
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "4554e2917a909eb3944d3a18047bea1e1de5f039de49b7c71fe2532281fe3672",
+      "replanner_user_prompt_char_count": 50340,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "none"
+    },
+    "reflection_mode": "llm_with_deterministic_consistency_check",
+    "consistency_check": {
+      "missing_fields": [],
+      "inconsistency_check": "passed",
+      "corrections": [],
+      "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+    }
+  },
+  "autonomy": {
+    "loop": "plan-act-observe-reflect",
+    "policy": {
+      "max_replan_rounds": 2,
+      "max_tool_calls": 32,
+      "max_tool_retries": 1,
+      "stop_on_repeated_plan": true
+    },
+    "goal_status": "completed",
+    "termination_reason": "goal_satisfied",
+    "round_count": 1,
+    "reflection_count": 1,
+    "tool_call_count": 1,
+    "successful_tool_call_count": 1,
+    "failed_tool_call_count": 0,
+    "retry_call_count": 0,
+    "recovered_failure_count": 0,
+    "unrecovered_failure_count": 0,
+    "rounds": [
+      {
+        "round_index": 0,
+        "phase": "initial_plan",
+        "proposed_task_count": 1,
+        "accepted_tasks": [
+          {
+            "tool_name": "analyze_animal_movement_pattern",
+            "args": {
+              "species": "Amur leopard",
+              "max_time_gap_hours": 72,
+              "max_distance_km": 100
+            },
+            "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses."
+          }
+        ],
+        "budget_truncated": false,
+        "execution_statuses": [
+          "success"
+        ],
+        "reflection": {
+          "need_replan": false,
+          "reason": "The analyze_animal_movement_pattern tool succeeded and returned all requested summaries: distance summary with quartiles, direction counts/ratios for 8 compass directions, and top repeated camera pairs (transition corridors) with counts. The output explicitly treats these as adjacency hypotheses, matching the user's constraint.",
+          "conservative_answer": false,
+          "elapsed_seconds": 7.199341
+        }
+      }
+    ]
+  },
+  "runtime": {
+    "client_class": "ChatOpenAI",
+    "model": "deepseek-v4-flash",
+    "deployment": null,
+    "temperature": 0.0
+  },
+  "trace": {
+    "planning": {
+      "planner_mode": "llm",
+      "target_species": "Amur leopard",
+      "planner_input_summary": {
+        "user_query": "For Amur leopard detections separated by no more than 72 hours and 100 km, summarize candidate inter-camera distances, directions, and repeated camera pairs. Treat them as adjacency hypotheses, not individual tracks or confirmed corridors.",
+        "available_tool_names": [
+          "build_independent_events",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_predator_prey_temporal_panel",
+          "plot_tiger_spatial_transition_panel",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_system_prompt_sha256": "83acff9758f8539922b1345ee735f55641c0888c1ba851704366ff9400b4dcad",
+      "planner_user_prompt_sha256": "1cb36406821c8e81667ba27d3e5083ae28c0ce2ab4a61774861c54cc7ee9848d",
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "7f521c8a5e9367f385ebe257a7fe4e2885ffba58f134f7207b4f9779754abd1c",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ],
+      "initial_normalized_tasks": [
+        {
+          "tool_name": "analyze_animal_movement_pattern",
+          "args": {
+            "species": "Amur leopard",
+            "max_time_gap_hours": 72,
+            "max_distance_km": 100
+          },
+          "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses."
+        }
+      ],
+      "normalized_tasks": [
+        {
+          "tool_name": "analyze_animal_movement_pattern",
+          "args": {
+            "species": "Amur leopard",
+            "max_time_gap_hours": 72,
+            "max_distance_km": 100
+          },
+          "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses."
+        }
+      ],
+      "planner_validation": {
+        "phase": "initial_plan",
+        "plan_errors": [],
+        "invalid_tools": [],
+        "missing_args": [],
+        "invalid_args": [],
+        "filtered_args": [],
+        "action": "validated",
+        "validation_only": true,
+        "local_tool_rewrite": false,
+        "fallback_used": false
+      }
+    },
+    "execution": [
+      {
+        "step": 1,
+        "tool_name": "analyze_animal_movement_pattern",
+        "args": {
+          "species": "Amur leopard",
+          "max_time_gap_hours": 72,
+          "max_distance_km": 100
+        },
+        "input_args": {
+          "species": "Amur leopard",
+          "max_time_gap_hours": 72,
+          "max_distance_km": 100
+        },
+        "filtered_args": [],
+        "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 5.239765,
+        "result": {
+          "note": "This module summarizes potential transition patterns derived from temporally adjacent records. It is not an individual trajectory reconstruction and should not be interpreted as confirmed migration routes.",
+          "species": "Amur leopard",
+          "movement_step_count": 9466,
+          "movement_distance_summary": {
+            "species": "Amur leopard",
+            "step_count": 9466,
+            "mean_distance_km": 33.534,
+            "max_distance_km": 99.823,
+            "min_distance_km": 0.007,
+            "distance_quantiles_km": {
+              "p25": 16.462,
+              "median": 30.777,
+              "p75": 47.655,
+              "p90": 65.555
+            },
+            "distance_method": "Haversine great-circle distance between camera coordinates",
+            "interpretation_boundary": "These distances connect temporally adjacent camera detections without individual identity evidence; they are adjacency hypotheses, not verified animal movement steps."
+          },
+          "movement_direction_summary": [
+            {
+              "direction": "northeast",
+              "count": 1350,
+              "ratio": 0.1426
+            },
+            {
+              "direction": "southwest",
+              "count": 1315,
+              "ratio": 0.1389
+            },
+            {
+              "direction": "south",
+              "count": 1208,
+              "ratio": 0.1276
+            },
+            {
+              "direction": "north",
+              "count": 1176,
+              "ratio": 0.1242
+            },
+            {
+              "direction": "east",
+              "count": 1160,
+              "ratio": 0.1225
+            },
+            {
+              "direction": "west",
+              "count": 1149,
+              "ratio": 0.1214
+            },
+            {
+              "direction": "southeast",
+              "count": 1073,
+              "ratio": 0.1134
+            },
+            {
+              "direction": "northwest",
+              "count": 1035,
+              "ratio": 0.1093
+            }
+          ],
+          "top_transition_corridors": [
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 16,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 10,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 7,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 6,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 6,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 5,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 5,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 5,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 5,
+              "inference_level": "potential_transition_edge"
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "count": 5,
+              "inference_level": "potential_transition_edge"
+            }
+          ],
+          "longest_transition_steps": [
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2024-03-12 07:25:00",
+              "to_time": "2024-03-12 08:41:00",
+              "time_gap_hours": 1.267,
+              "distance_km": 99.823,
+              "speed_km_h": 78.8073,
+              "bearing_degrees": 313.08,
+              "direction": "northwest",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2024-03-30 09:05:00",
+              "to_time": "2024-03-30 12:09:00",
+              "time_gap_hours": 3.067,
+              "distance_km": 99.814,
+              "speed_km_h": 32.5482,
+              "bearing_degrees": 149.3,
+              "direction": "southeast",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2023-05-18 05:02:00",
+              "to_time": "2023-05-18 05:13:00",
+              "time_gap_hours": 0.183,
+              "distance_km": 99.744,
+              "speed_km_h": 544.0565,
+              "bearing_degrees": 339.75,
+              "direction": "north",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2023-06-28 21:28:00",
+              "to_time": "2023-06-29 03:52:00",
+              "time_gap_hours": 6.4,
+              "distance_km": 99.702,
+              "speed_km_h": 15.5784,
+              "bearing_degrees": 192.13,
+              "direction": "south",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2023-11-08 15:25:00",
+              "to_time": "2023-11-08 20:54:00",
+              "time_gap_hours": 5.483,
+              "distance_km": 99.624,
+              "speed_km_h": 18.1685,
+              "bearing_degrees": 133.1,
+              "direction": "southeast",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2024-06-22 15:00:00",
+              "to_time": "2024-06-22 18:38:00",
+              "time_gap_hours": 3.633,
+              "distance_km": 99.564,
+              "speed_km_h": 27.4029,
+              "bearing_degrees": 228.96,
+              "direction": "southwest",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2023-01-08 09:22:00",
+              "to_time": "2023-01-08 09:50:00",
+              "time_gap_hours": 0.467,
+              "distance_km": 99.339,
+              "speed_km_h": 212.8701,
+              "bearing_degrees": 324.46,
+              "direction": "northwest",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2023-11-12 14:02:00",
+              "to_time": "2023-11-12 15:27:00",
+              "time_gap_hours": 1.417,
+              "distance_km": 99.277,
+              "speed_km_h": 70.0781,
+              "bearing_degrees": 168.7,
+              "direction": "south",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2024-03-14 08:23:30",
+              "to_time": "2024-03-14 10:42:00",
+              "time_gap_hours": 2.308,
+              "distance_km": 99.265,
+              "speed_km_h": 43.0027,
+              "bearing_degrees": 118.66,
+              "direction": "southeast",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            },
+            {
+              "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+              "from_time": "2024-05-25 18:38:00",
+              "to_time": "2024-05-25 18:39:00",
+              "time_gap_hours": 0.017,
+              "distance_km": 99.227,
+              "speed_km_h": 5953.6354,
+              "bearing_degrees": 316.63,
+              "direction": "northwest",
+              "inference_level": "camera_detection_adjacency_hypothesis",
+              "identity_evidence": "none",
+              "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+            }
+          ]
+        }
+      }
+    ],
+    "replanning": {
+      "need_replan": false,
+      "new_tasks": [],
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "4554e2917a909eb3944d3a18047bea1e1de5f039de49b7c71fe2532281fe3672",
+      "replanner_user_prompt_char_count": 50340,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "none",
+      "timestamp_reliability": {
+        "status": "not_applicable"
+      },
+      "event_independence": {
+        "status": "not_applicable"
+      },
+      "event_count_sufficiency": {
+        "status": "not_applicable"
+      },
+      "overlap_analysis": {
+        "status": "not_applicable"
+      },
+      "visualization": "not_applicable",
+      "figure_count": 0,
+      "figure_outputs": [],
+      "failed_figures": [],
+      "reason": "The analyze_animal_movement_pattern tool succeeded and returned all requested summaries: distance summary with quartiles, direction counts/ratios for 8 compass directions, and top repeated camera pairs (transition corridors) with counts. The output explicitly treats these as adjacency hypotheses, matching the user's constraint.",
+      "conservative_answer": false,
+      "reflection_mode": "llm_with_deterministic_consistency_check",
+      "consistency_check": {
+        "missing_fields": [],
+        "inconsistency_check": "passed",
+        "corrections": [],
+        "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+      },
+      "temporal_activity": {},
+      "termination_reason": "goal_satisfied",
+      "rounds": [
+        {
+          "round_index": 0,
+          "phase": "initial_plan",
+          "proposed_task_count": 1,
+          "accepted_tasks": [
+            {
+              "tool_name": "analyze_animal_movement_pattern",
+              "args": {
+                "species": "Amur leopard",
+                "max_time_gap_hours": 72,
+                "max_distance_km": 100
+              },
+              "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses."
+            }
+          ],
+          "budget_truncated": false,
+          "execution_statuses": [
+            "success"
+          ],
+          "reflection": {
+            "need_replan": false,
+            "reason": "The analyze_animal_movement_pattern tool succeeded and returned all requested summaries: distance summary with quartiles, direction counts/ratios for 8 compass directions, and top repeated camera pairs (transition corridors) with counts. The output explicitly treats these as adjacency hypotheses, matching the user's constraint.",
+            "conservative_answer": false,
+            "elapsed_seconds": 7.199341
+          }
+        }
+      ]
+    },
+    "synthesis": {
+      "synthesis_mode": "llm_synthesis",
+      "answer_guard": {
+        "planner_mode": "llm",
+        "target_species": "Amur leopard",
+        "target_species_display": "Amur leopard",
+        "local_empty": false,
+        "local_empty_summary": "",
+        "used_tools": [
+          "analyze_animal_movement_pattern"
+        ],
+        "must_not_expand_local_to_global": false,
+        "visual_outputs": [],
+        "temporal_visualization_has_synthetic_time": false
+      },
+      "compact_tool_results_used": [
+        {
+          "step": 1,
+          "tool_name": "analyze_animal_movement_pattern",
+          "args": {
+            "species": "Amur leopard",
+            "max_time_gap_hours": 72,
+            "max_distance_km": 100
+          },
+          "input_args": {
+            "species": "Amur leopard",
+            "max_time_gap_hours": 72,
+            "max_distance_km": 100
+          },
+          "filtered_args": [],
+          "reason": "Summarize candidate inter-camera distances, directions, and repeated camera pairs for Amur leopard detections within 72 hours and 100 km, treating them as adjacency hypotheses.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 5.239765,
+          "result": {
+            "note": "This module summarizes potential transition patterns derived from temporally adjacent records. It is not an individual trajectory reconstruction and should not be interpreted as confirmed migration routes.",
+            "species": "Amur leopard",
+            "movement_step_count": 9466,
+            "movement_distance_summary": {
+              "species": "Amur leopard",
+              "step_count": 9466,
+              "mean_distance_km": 33.534,
+              "max_distance_km": 99.823,
+              "min_distance_km": 0.007,
+              "distance_quantiles_km": {
+                "p25": 16.462,
+                "median": 30.777,
+                "p75": 47.655,
+                "p90": 65.555
+              },
+              "distance_method": "Haversine great-circle distance between camera coordinates",
+              "interpretation_boundary": "These distances connect temporally adjacent camera detections without individual identity evidence; they are adjacency hypotheses, not verified animal movement steps."
+            },
+            "movement_direction_summary": [
+              {
+                "direction": "northeast",
+                "count": 1350,
+                "ratio": 0.1426
+              },
+              {
+                "direction": "southwest",
+                "count": 1315,
+                "ratio": 0.1389
+              },
+              {
+                "direction": "south",
+                "count": 1208,
+                "ratio": 0.1276
+              },
+              {
+                "direction": "north",
+                "count": 1176,
+                "ratio": 0.1242
+              },
+              {
+                "direction": "east",
+                "count": 1160,
+                "ratio": 0.1225
+              },
+              {
+                "direction": "west",
+                "count": 1149,
+                "ratio": 0.1214
+              },
+              {
+                "direction": "southeast",
+                "count": 1073,
+                "ratio": 0.1134
+              },
+              {
+                "direction": "northwest",
+                "count": 1035,
+                "ratio": 0.1093
+              }
+            ],
+            "top_transition_corridors": [
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 16,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 10,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 7,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 6,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 6,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 5,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 5,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 5,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 5,
+                "inference_level": "potential_transition_edge"
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "count": 5,
+                "inference_level": "potential_transition_edge"
+              }
+            ],
+            "longest_transition_steps": [
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2024-03-12 07:25:00",
+                "to_time": "2024-03-12 08:41:00",
+                "time_gap_hours": 1.267,
+                "distance_km": 99.823,
+                "speed_km_h": 78.8073,
+                "bearing_degrees": 313.08,
+                "direction": "northwest",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2024-03-30 09:05:00",
+                "to_time": "2024-03-30 12:09:00",
+                "time_gap_hours": 3.067,
+                "distance_km": 99.814,
+                "speed_km_h": 32.5482,
+                "bearing_degrees": 149.3,
+                "direction": "southeast",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2023-05-18 05:02:00",
+                "to_time": "2023-05-18 05:13:00",
+                "time_gap_hours": 0.183,
+                "distance_km": 99.744,
+                "speed_km_h": 544.0565,
+                "bearing_degrees": 339.75,
+                "direction": "north",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2023-06-28 21:28:00",
+                "to_time": "2023-06-29 03:52:00",
+                "time_gap_hours": 6.4,
+                "distance_km": 99.702,
+                "speed_km_h": 15.5784,
+                "bearing_degrees": 192.13,
+                "direction": "south",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2023-11-08 15:25:00",
+                "to_time": "2023-11-08 20:54:00",
+                "time_gap_hours": 5.483,
+                "distance_km": 99.624,
+                "speed_km_h": 18.1685,
+                "bearing_degrees": 133.1,
+                "direction": "southeast",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2024-06-22 15:00:00",
+                "to_time": "2024-06-22 18:38:00",
+                "time_gap_hours": 3.633,
+                "distance_km": 99.564,
+                "speed_km_h": 27.4029,
+                "bearing_degrees": 228.96,
+                "direction": "southwest",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2023-01-08 09:22:00",
+                "to_time": "2023-01-08 09:50:00",
+                "time_gap_hours": 0.467,
+                "distance_km": 99.339,
+                "speed_km_h": 212.8701,
+                "bearing_degrees": 324.46,
+                "direction": "northwest",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2023-11-12 14:02:00",
+                "to_time": "2023-11-12 15:27:00",
+                "time_gap_hours": 1.417,
+                "distance_km": 99.277,
+                "speed_km_h": 70.0781,
+                "bearing_degrees": 168.7,
+                "direction": "south",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2024-03-14 08:23:30",
+                "to_time": "2024-03-14 10:42:00",
+                "time_gap_hours": 2.308,
+                "distance_km": 99.265,
+                "speed_km_h": 43.0027,
+                "bearing_degrees": 118.66,
+                "direction": "southeast",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              },
+              {
+                "from_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "to_camera": "[REDACTED_SENSITIVE_LOCATION]",
+                "from_time": "2024-05-25 18:38:00",
+                "to_time": "2024-05-25 18:39:00",
+                "time_gap_hours": 0.017,
+                "distance_km": 99.227,
+                "speed_km_h": 5953.6354,
+                "bearing_degrees": 316.63,
+                "direction": "northwest",
+                "inference_level": "camera_detection_adjacency_hypothesis",
+                "identity_evidence": "none",
+                "warning": "Adjacent detections may represent different individuals; this is not an animal movement step."
+              }
+            ]
+          }
+        }
+      ],
+      "synthesis_input_evidence": {
+        "activity_pattern": {},
+        "pairwise_overlap": [],
+        "visualization": [],
+        "limitations": [
+          "Use only values present in tool execution or reflection.",
+          "Delta measures similarity in diel activity rhythm, not direct interaction.",
+          "A data-quality audit alone does not establish that formal occupancy modelling is supported; independent camera-operation effort must be confirmed by successful tool evidence.",
+          "Use relative paths only."
+        ],
+        "reflection": {
+          "need_replan": false,
+          "new_tasks": [],
+          "reason": "The analyze_animal_movement_pattern tool succeeded and returned all requested summaries: distance summary with quartiles, direction counts/ratios for 8 compass directions, and top repeated camera pairs (transition corridors) with counts. The output explicitly treats these as adjacency hypotheses, matching the user's constraint.",
+          "data_quality": "not_applicable",
+          "timestamp_reliability": {
+            "status": "not_applicable"
+          },
+          "event_independence": {
+            "status": "not_applicable"
+          },
+          "event_count_sufficiency": {
+            "status": "not_applicable"
+          },
+          "overlap_analysis": {
+            "status": "not_applicable"
+          },
+          "spatial_data_sufficiency": {
+            "status": "not_applicable"
+          },
+          "visualization": "not_applicable",
+          "conservative_answer": false,
+          "figure_count": 0,
+          "figure_outputs": [],
+          "failed_figures": [],
+          "_llm_outputs": {
+            "replanner_raw_response": "{\n  \"need_replan\": false,\n  \"new_tasks\": [],\n  \"reason\": \"The analyze_animal_movement_pattern tool succeeded and returned all requested summaries: distance summary with quartiles, direction counts/ratios for 8 compass directions, and top repeated camera pairs (transition corridors) with counts. The output explicitly treats these as adjacency hypotheses, matching the user's constraint.\",\n  \"data_quality\": \"not_applicable\",\n  \"timestamp_reliability\": {\"status\": \"not_applicable\"},\n  \"event_independence\": {\"status\": \"not_applicable\"},\n  \"event_count_sufficiency\": {\"status\": \"not_applicable\"},\n  \"overlap_analysis\": {\"status\": \"not_applicable\"},\n  \"spatial_data_sufficiency\": {\"status\": \"not_applicable\"},\n  \"visualization\": \"not_applicable\",\n  \"conservative_answer\": false\n}",
+            "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+            "replanner_user_prompt_sha256": "4554e2917a909eb3944d3a18047bea1e1de5f039de49b7c71fe2532281fe3672",
+            "replanner_user_prompt_char_count": 50340,
+            "replanner_user_prompt_budget_chars": 60000,
+            "replanner_prompt_budget_fallback": "none"
+          },
+          "reflection_mode": "llm_with_deterministic_consistency_check",
+          "consistency_check": {
+            "missing_fields": [],
+            "inconsistency_check": "passed",
+            "corrections": [],
+            "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+          }
+        }
+      },
+      "answer_system_prompt_sha256": "e0fdc66b7d9eb9a0d1b3c34c9ce067b83af292b3c639a67ff83fc935d3b020dd",
+      "answer_user_prompt_sha256": "d7b8c9984a35478f83a540c7b7790e02d87add94e69ed443169d503302b1873f",
+      "answer_user_prompt_char_count": 12684,
+      "answer_user_prompt_budget_chars": 40000,
+      "answer_prompt_budget_fallback": "none"
+    }
+  },
+  "final_answer": "Based on the analysis of Amur leopard detections separated by no more than 72 hours and 100 km — treating each link as an adjacency hypothesis, not a confirmed track — the results are summarized below.\n\n**Data & assumption context**  \nAll Amur leopard detection events in the current camera‑trap dataset were linked into candidate steps where consecutive detections occurred within the specified temporal and spatial thresholds. The analysis assumes each step may involve the same individual, but individual identity is unconfirmed; vast speed differences in some extreme steps (e.g., >5000 km/h) clearly indicate that different individuals are likely represented in many cases.\n\n---\n\n### Candidate inter‑camera distances\n- **Number of candidate steps:** 9,466  \n- **Mean Haversine distance:** 33.5 km  \n- **Minimum distance:** 0.007 km (7 m)  \n- **Maximum distance:** 99.8 km  \n- **Distance quantiles:**  \n  - 25th percentile: 16.5 km  \n  - Median: 30.8 km  \n  - 75th percentile: 47.7 km  \n  - 90th percentile: 65.6 km  \n\nThese distances represent straight‑line connections between camera locations; they are potential movement approximations, not verified travel paths.\n\n---\n\n### Candidate directions (compass octants)\nThe following direction counts reflect the bearing of each adjacency link, ranked from most to least frequent:\n\n| Direction   | Count  | Proportion |\n|-------------|--------|------------|\n| Northeast   | 1,350  | 14.3 %    |\n| Southwest   | 1,315  | 13.9 %    |\n| South       | 1,208  | 12.8 %    |\n| North       | 1,176  | 12.4 %    |\n| East        | 1,160  | 12.3 %    |\n| West        | 1,149  | 12.1 %    |\n| Southeast   | 1,073  | 11.3 %    |\n| Northwest   | 1,035  | 10.9 %    |\n\nNo single direction strongly dominates; northeast and southwest are marginally more common, but the differences are small (14.3 % vs. 10.9 %). These are descriptive detection‑order summaries and should not be interpreted as a species‑wide movement strategy.\n\n---\n\n### Repeated camera pairs (potential transition edges)\nThe ten most frequently observed camera‑to‑camera links, each classified as a *potential transition edge*, are listed below in descending order:\n\n| From camera | To camera | Count |\n|-------------|-----------|-------|\n| 140669      | 140668    | 16    |\n| 140668      | 140666    | 10    |\n| 105130      | 105127    | 7     |\n| 140668      | 140669    | 6     |\n| 140137      | 104020    | 6     |\n| 160297      | 160296    | 5     |\n| 108707      | 170223    | 5     |\n| 160287      | 160288    | 5     |\n| 134740      | 134741    | 5     |\n| 160287      | 160286    | 5     |\n\nAll are adjacency hypotheses; the repeated appearance of a pair does not prove that the same animal moved between those cameras, nor does it confirm an ecological corridor.\n\n---\n\n### Summary\nIn total, 9,466 candidate transition steps were identified for Amur leopard under the 72‑hour/100‑km constraint. Distance distribution is right‑skewed (median 30.8 km), direction frequencies are fairly even, and ten camera‑pairs appear five or more times in the link set. Every result is a **potential movement hypothesis** derived from temporally adjacent detection events; no individual trajectories are confirmed.",
+  "visualizations": [],
+  "trace_export": {
+    "detail": "public",
+    "raw_tool_results_included": false,
+    "raw_model_responses_included": false,
+    "sensitive_camera_locations_redacted": true
+  }
+}

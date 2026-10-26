@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use CamAgent, please cite the paper below."
+title: "CamAgent"
+type: software
+license: MIT
+repository-code: "https://github.com/Gululu0503/CamAgent"
+authors:
+  - family-names: Deng
+    given-names: Yutong
+    affiliation: Beijing Normal University
+    email: ytdeng2005@gmail.com
+  - family-names: Song
+    given-names: Qi
+    affiliation: Beijing Normal University
+preferred-citation:
+  type: article
+  title: "CamAgent: An LLM-Agent Framework for Multi-Species Camera-Trap Workflows"
+  authors:
+    - family-names: Deng
+      given-names: Yutong
+      affiliation: Beijing Normal University
+    - family-names: Song
+      given-names: Qi
+      affiliation: Beijing Normal University
+    - family-names: Guo
+      given-names: Xi
+      affiliation: Beijing Normal University
+    - family-names: Wang
+      given-names: Tianming
+      affiliation: Beijing Normal University
+    - family-names: Bao
+      given-names: Lei
+      affiliation: Beijing Normal University
+    - family-names: Ge
+      given-names: Jianping
+      affiliation: Beijing Normal University
+  journal: "arXiv preprint arXiv:2609.39112"
+  year: 2026
+  url: "http://arxiv.org/abs/2609.39112"

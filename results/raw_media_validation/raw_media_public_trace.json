@@ -1,0 +1,1190 @@
+{
+  "schema_version": "2.0",
+  "run_id": "551266db-d0ca-4a0b-9ecc-d4804237e745",
+  "started_at_utc": "2026-08-01T18:27:09.050928+00:00",
+  "completed_at_utc": "2026-08-01T18:28:14.523360+00:00",
+  "duration_seconds": 65.472337,
+  "timing": {
+    "planning_seconds": 13.023881,
+    "tool_execution_seconds": 10.568028,
+    "answer_synthesis_seconds": 15.367482
+  },
+  "question": "Prepare the supplied raw camera-trap video at '[REDACTED_LOCAL_PATH]' for ecological analysis using the deployment metadata table '[REDACTED_LOCAL_PATH]' and write the prepared dataset under '[REDACTED_LOCAL_PATH]'. Treat the input as raw media, run real MegaDetector and SpeciesNet inference, sample the video every 1.0 seconds with at most one frame, recover the field timestamp with PaddleOCR using at most one frame, use Asia/Shanghai field time, construct and validate a CamtrapDP package, activate it as the current analysis backend without persisting that selection, and report whether registered ecological analyses are ready to run.",
+  "experiment_id": "RAW_MEDIA_PIPELINE",
+  "species": null,
+  "plan": {
+    "species": null,
+    "clarification_request": null,
+    "tasks": [
+      {
+        "tool_name": "prepare_camera_trap_dataset",
+        "args": {
+          "input_path": "[REDACTED_LOCAL_PATH]",
+          "input_type": "raw_media",
+          "metadata_table": "[REDACTED_LOCAL_PATH]",
+          "output_dir": "[REDACTED_LOCAL_PATH]",
+          "detector": "megadetector",
+          "classifier": "speciesnet",
+          "run_inference": true,
+          "video_frame_interval_seconds": 1.0,
+          "max_video_frames": 1,
+          "run_timestamp_ocr": true,
+          "timestamp_ocr_max_frames": 1,
+          "source_timezone": "Asia/Shanghai",
+          "activate_backend": true,
+          "persist_active": false,
+          "allow_metadata_only": false
+        },
+        "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection."
+      },
+      {
+        "tool_name": "summarize_species_inventory",
+        "args": {
+          "top_k": 50
+        },
+        "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run."
+      }
+    ],
+    "_llm_outputs": {
+      "planner_mode": "llm",
+      "planner_system_prompt_sha256": "a04275b80e020ef42e31126f77b332f3837084c0aa64d9880a805cf15e10eeb0",
+      "planner_user_prompt_sha256": "a4d2ffa495cc4c4dab611ef052df0400d293502bbec82128c9df5049e1e68ec9",
+      "planner_input_summary": {
+        "user_query": "Prepare the supplied raw camera-trap video at '[REDACTED_LOCAL_PATH]' for ecological analysis using the deployment metadata table '[REDACTED_LOCAL_PATH]' and write the prepared dataset under '[REDACTED_LOCAL_PATH]'. Treat the input as raw media, run real MegaDetector and SpeciesNet inference, sample the video every 1.0 seconds with at most one frame, recover the field timestamp with PaddleOCR using at most one frame, use Asia/Shanghai field time, construct and validate a CamtrapDP package, activate it as the current analysis backend without persisting that selection, and report whether registered ecological analyses are ready to run.",
+        "available_tool_names": [
+          "build_independent_events",
+          "prepare_camera_trap_dataset",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "infer_complete_community",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "evaluate_perception_benchmark",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_complete_community_inference",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "active_species_inventory": [
+          {
+            "species": "Roe deer",
+            "record_count": 727090
+          },
+          {
+            "species": "Sika deer",
+            "record_count": 625249
+          },
+          {
+            "species": "Amur leopard",
+            "record_count": 11704
+          },
+          {
+            "species": "Siberian tiger",
+            "record_count": 7745
+          },
+          {
+            "species": "Black bear",
+            "record_count": 4229
+          }
+        ],
+        "configured_default_species": null,
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries",
+          "request clarification rather than guess an ambiguous focal species"
+        ]
+      },
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "3cb7a0da04edac3e67c503a2937d1f38b044064b5f426968d323fed8f17e2407",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "dependency_errors": [],
+            "bundle_alignment_errors": [],
+            "analysis_order_errors": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ]
+    },
+    "_planner_validation": {
+      "phase": "initial_plan",
+      "plan_errors": [],
+      "invalid_tools": [],
+      "missing_args": [],
+      "invalid_args": [],
+      "filtered_args": [],
+      "dependency_errors": [],
+      "bundle_alignment_errors": [],
+      "analysis_order_errors": [],
+      "action": "validated",
+      "validation_only": true,
+      "local_tool_rewrite": false,
+      "fallback_used": false
+    }
+  },
+  "selected_tools": [
+    "prepare_camera_trap_dataset",
+    "summarize_species_inventory"
+  ],
+  "executed_results": [
+    {
+      "step": 1,
+      "tool_name": "prepare_camera_trap_dataset",
+      "args": {
+        "input_path": "[REDACTED_LOCAL_PATH]",
+        "input_type": "raw_media",
+        "metadata_table": "[REDACTED_LOCAL_PATH]",
+        "output_dir": "[REDACTED_LOCAL_PATH]",
+        "detector": "megadetector",
+        "classifier": "speciesnet",
+        "run_inference": true,
+        "video_frame_interval_seconds": 1.0,
+        "max_video_frames": 1,
+        "run_timestamp_ocr": true,
+        "timestamp_ocr_max_frames": 1,
+        "source_timezone": "Asia/Shanghai",
+        "activate_backend": true,
+        "persist_active": false,
+        "allow_metadata_only": false
+      },
+      "input_args": {
+        "input_path": "[REDACTED_LOCAL_PATH]",
+        "input_type": "raw_media",
+        "metadata_table": "[REDACTED_LOCAL_PATH]",
+        "output_dir": "[REDACTED_LOCAL_PATH]",
+        "detector": "megadetector",
+        "classifier": "speciesnet",
+        "run_inference": true,
+        "video_frame_interval_seconds": 1.0,
+        "max_video_frames": 1,
+        "run_timestamp_ocr": true,
+        "timestamp_ocr_max_frames": 1,
+        "source_timezone": "Asia/Shanghai",
+        "activate_backend": true,
+        "persist_active": false,
+        "allow_metadata_only": false
+      },
+      "filtered_args": [],
+      "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 10.567838,
+      "result": {
+        "status": "ok",
+        "input_type": "raw_media",
+        "pipeline_stages": [
+          "raw-media discovery",
+          "sampled-video-frame perception",
+          "structured observation records",
+          "CamtrapDP export",
+          "CamtrapDP validation",
+          "backend activation"
+        ],
+        "perception_executed": true,
+        "data_to_camtrap_pipeline_complete": true,
+        "full_raw_media_pipeline_complete": true,
+        "record_count": 1,
+        "model_inferred_video_frame_count": 1,
+        "perception_evidence": {
+          "detector": "megadetector",
+          "classifier": "speciesnet",
+          "model_versions": {
+            "4.0.2a": 1
+          },
+          "prediction_sources": {
+            "classifier": 1
+          },
+          "video_sampling": {
+            "frame_interval_seconds": 1.0,
+            "max_frames": 1
+          },
+          "species_breakdown": {
+            "tiger": 1
+          },
+          "sample_predictions": [
+            {
+              "species": "Siberian tiger",
+              "scientific_name": "Panthera tigris",
+              "confidence": 0.9989,
+              "timestamp": "2024-09-22 16:56:28",
+              "timestamp_source": "paddleocr_video_timestamp",
+              "timestamp_ocr_score": 0.9762184023857117,
+              "timestamp_ocr_vote_count": 1.0,
+              "model_version": "4.0.2a",
+              "prediction_source": "classifier",
+              "frame_offset_seconds": 0.0
+            }
+          ]
+        },
+        "camtrap_validation_status": "ok",
+        "camtrap_validation_error_count": 0,
+        "camtrap_validation_warning_count": 0,
+        "active_backend": {
+          "backend": "camtrap_dp_tabular",
+          "activated": true
+        },
+        "analysis_readiness": {
+          "taxonomic_analysis_ready": true,
+          "temporal_analysis_ready": true,
+          "spatial_analysis_ready": true,
+          "camtrap_export_ready": true,
+          "camtrap_dp_ready": true,
+          "active_for_downstream_tools": true
+        },
+        "routing_note": "The LLM selected this registered, format-agnostic preparation tool. Its internal branching uses only the supplied data format; it contains no ecological-question keyword router."
+      }
+    },
+    {
+      "step": 2,
+      "tool_name": "summarize_species_inventory",
+      "args": {
+        "top_k": 50
+      },
+      "input_args": {
+        "top_k": 50
+      },
+      "filtered_args": [],
+      "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 0.000113,
+      "result": {
+        "species_count": 1,
+        "total_record_count": 1,
+        "species_inventory": [
+          {
+            "species": "Panthera tigris",
+            "record_count": 1,
+            "date_start": "2024-09-22T08:56:28+00:00",
+            "date_end": "2024-09-22T08:56:28+00:00"
+          }
+        ],
+        "note": "Species inventory and time range are summarized from the current imported CamtrapDP conversion report."
+      }
+    }
+  ],
+  "replan": {
+    "need_replan": false,
+    "new_tasks": [],
+    "reason": "Step 1 completed the full raw-media pipeline: the video was sampled at 1.0-s intervals with at most one frame, MegaDetector and SpeciesNet inference produced one Siberian tiger prediction (confidence 0.9989), PaddleOCR recovered the field timestamp 2024-09-22 16:56:28 Asia/Shanghai at score 0.976, the CamtrapDP package validated with 0 errors and 0 warnings, and the backend was activated without persistent selection. Step 2 confirmed one queryable structured record. The tool-reported readiness flags are therefore supported; no additional tools are needed. The only limitation is sample size: one record from one event gives limited inferential power for substantive ecological analyses.",
+    "data_quality": "limited",
+    "timestamp_reliability": {
+      "status": "passed"
+    },
+    "event_independence": {
+      "status": "not_applicable",
+      "min_gap_minutes": "not_applicable"
+    },
+    "event_count_sufficiency": {
+      "status": "limited"
+    },
+    "overlap_analysis": {
+      "status": "not_applicable"
+    },
+    "spatial_data_sufficiency": {
+      "status": "limited"
+    },
+    "visualization": "not_applicable",
+    "conservative_answer": true,
+    "figure_count": 0,
+    "figure_outputs": [],
+    "failed_figures": [],
+    "_llm_outputs": {
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "7c7733b07784c5eaf62a3c41c350473510592c58558fccf7aedf1b4ccce2b8eb",
+      "replanner_user_prompt_char_count": 49245,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_compaction_mode": "schemas_and_result_summaries",
+      "replanner_attempt_count": 1,
+      "replanner_attempts": [
+        {
+          "attempt_index": 1,
+          "status": "parsed"
+        }
+      ]
+    },
+    "reflection_mode": "llm_with_deterministic_consistency_check",
+    "consistency_check": {
+      "missing_fields": [],
+      "inconsistency_check": "passed",
+      "corrections": [],
+      "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+    }
+  },
+  "autonomy": {
+    "loop": "plan-act-observe-reflect",
+    "policy": {
+      "max_replan_rounds": 2,
+      "max_tool_calls": 8,
+      "max_tool_retries": 1,
+      "stop_on_repeated_plan": true
+    },
+    "goal_status": "completed",
+    "termination_reason": "goal_satisfied",
+    "round_count": 1,
+    "reflection_count": 1,
+    "tool_call_count": 2,
+    "successful_tool_call_count": 2,
+    "failed_tool_call_count": 0,
+    "retry_call_count": 0,
+    "recovered_failure_count": 0,
+    "unrecovered_failure_count": 0,
+    "rounds": [
+      {
+        "round_index": 0,
+        "phase": "initial_plan",
+        "proposed_task_count": 2,
+        "accepted_tasks": [
+          {
+            "tool_name": "prepare_camera_trap_dataset",
+            "args": {
+              "input_path": "[REDACTED_LOCAL_PATH]",
+              "input_type": "raw_media",
+              "metadata_table": "[REDACTED_LOCAL_PATH]",
+              "output_dir": "[REDACTED_LOCAL_PATH]",
+              "detector": "megadetector",
+              "classifier": "speciesnet",
+              "run_inference": true,
+              "video_frame_interval_seconds": 1.0,
+              "max_video_frames": 1,
+              "run_timestamp_ocr": true,
+              "timestamp_ocr_max_frames": 1,
+              "source_timezone": "Asia/Shanghai",
+              "activate_backend": true,
+              "persist_active": false,
+              "allow_metadata_only": false
+            },
+            "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection."
+          },
+          {
+            "tool_name": "summarize_species_inventory",
+            "args": {
+              "top_k": 50
+            },
+            "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run."
+          }
+        ],
+        "budget_truncated": false,
+        "execution_statuses": [
+          "success",
+          "success"
+        ],
+        "reflection": {
+          "need_replan": false,
+          "reason": "Step 1 completed the full raw-media pipeline: the video was sampled at 1.0-s intervals with at most one frame, MegaDetector and SpeciesNet inference produced one Siberian tiger prediction (confidence 0.9989), PaddleOCR recovered the field timestamp 2024-09-22 16:56:28 Asia/Shanghai at score 0.976, the CamtrapDP package validated with 0 errors and 0 warnings, and the backend was activated without persistent selection. Step 2 confirmed one queryable structured record. The tool-reported readiness flags are therefore supported; no additional tools are needed. The only limitation is sample size: one record from one event gives limited inferential power for substantive ecological analyses.",
+          "conservative_answer": true,
+          "elapsed_seconds": 26.510575
+        }
+      }
+    ]
+  },
+  "runtime": {
+    "client_class": "ChatOpenAI",
+    "model": "deepseek-v4-flash",
+    "deployment": null,
+    "temperature": 0.0
+  },
+  "trace": {
+    "planning": {
+      "planner_mode": "llm",
+      "target_species": null,
+      "planner_input_summary": {
+        "user_query": "Prepare the supplied raw camera-trap video at '[REDACTED_LOCAL_PATH]' for ecological analysis using the deployment metadata table '[REDACTED_LOCAL_PATH]' and write the prepared dataset under '[REDACTED_LOCAL_PATH]'. Treat the input as raw media, run real MegaDetector and SpeciesNet inference, sample the video every 1.0 seconds with at most one frame, recover the field timestamp with PaddleOCR using at most one frame, use Asia/Shanghai field time, construct and validate a CamtrapDP package, activate it as the current analysis backend without persisting that selection, and report whether registered ecological analyses are ready to run.",
+        "available_tool_names": [
+          "build_independent_events",
+          "prepare_camera_trap_dataset",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "infer_complete_community",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "evaluate_perception_benchmark",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_complete_community_inference",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "active_species_inventory": [
+          {
+            "species": "Roe deer",
+            "record_count": 727090
+          },
+          {
+            "species": "Sika deer",
+            "record_count": 625249
+          },
+          {
+            "species": "Amur leopard",
+            "record_count": 11704
+          },
+          {
+            "species": "Siberian tiger",
+            "record_count": 7745
+          },
+          {
+            "species": "Black bear",
+            "record_count": 4229
+          }
+        ],
+        "configured_default_species": null,
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries",
+          "request clarification rather than guess an ambiguous focal species"
+        ]
+      },
+      "planner_system_prompt_sha256": "a04275b80e020ef42e31126f77b332f3837084c0aa64d9880a805cf15e10eeb0",
+      "planner_user_prompt_sha256": "a4d2ffa495cc4c4dab611ef052df0400d293502bbec82128c9df5049e1e68ec9",
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "3cb7a0da04edac3e67c503a2937d1f38b044064b5f426968d323fed8f17e2407",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "dependency_errors": [],
+            "bundle_alignment_errors": [],
+            "analysis_order_errors": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ],
+      "initial_normalized_tasks": [
+        {
+          "tool_name": "prepare_camera_trap_dataset",
+          "args": {
+            "input_path": "[REDACTED_LOCAL_PATH]",
+            "input_type": "raw_media",
+            "metadata_table": "[REDACTED_LOCAL_PATH]",
+            "output_dir": "[REDACTED_LOCAL_PATH]",
+            "detector": "megadetector",
+            "classifier": "speciesnet",
+            "run_inference": true,
+            "video_frame_interval_seconds": 1.0,
+            "max_video_frames": 1,
+            "run_timestamp_ocr": true,
+            "timestamp_ocr_max_frames": 1,
+            "source_timezone": "Asia/Shanghai",
+            "activate_backend": true,
+            "persist_active": false,
+            "allow_metadata_only": false
+          },
+          "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection."
+        },
+        {
+          "tool_name": "summarize_species_inventory",
+          "args": {
+            "top_k": 50
+          },
+          "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run."
+        }
+      ],
+      "normalized_tasks": [
+        {
+          "tool_name": "prepare_camera_trap_dataset",
+          "args": {
+            "input_path": "[REDACTED_LOCAL_PATH]",
+            "input_type": "raw_media",
+            "metadata_table": "[REDACTED_LOCAL_PATH]",
+            "output_dir": "[REDACTED_LOCAL_PATH]",
+            "detector": "megadetector",
+            "classifier": "speciesnet",
+            "run_inference": true,
+            "video_frame_interval_seconds": 1.0,
+            "max_video_frames": 1,
+            "run_timestamp_ocr": true,
+            "timestamp_ocr_max_frames": 1,
+            "source_timezone": "Asia/Shanghai",
+            "activate_backend": true,
+            "persist_active": false,
+            "allow_metadata_only": false
+          },
+          "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection."
+        },
+        {
+          "tool_name": "summarize_species_inventory",
+          "args": {
+            "top_k": 50
+          },
+          "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run."
+        }
+      ],
+      "planner_validation": {
+        "phase": "initial_plan",
+        "plan_errors": [],
+        "invalid_tools": [],
+        "missing_args": [],
+        "invalid_args": [],
+        "filtered_args": [],
+        "dependency_errors": [],
+        "bundle_alignment_errors": [],
+        "analysis_order_errors": [],
+        "action": "validated",
+        "validation_only": true,
+        "local_tool_rewrite": false,
+        "fallback_used": false
+      }
+    },
+    "execution": [
+      {
+        "step": 1,
+        "tool_name": "prepare_camera_trap_dataset",
+        "args": {
+          "input_path": "[REDACTED_LOCAL_PATH]",
+          "input_type": "raw_media",
+          "metadata_table": "[REDACTED_LOCAL_PATH]",
+          "output_dir": "[REDACTED_LOCAL_PATH]",
+          "detector": "megadetector",
+          "classifier": "speciesnet",
+          "run_inference": true,
+          "video_frame_interval_seconds": 1.0,
+          "max_video_frames": 1,
+          "run_timestamp_ocr": true,
+          "timestamp_ocr_max_frames": 1,
+          "source_timezone": "Asia/Shanghai",
+          "activate_backend": true,
+          "persist_active": false,
+          "allow_metadata_only": false
+        },
+        "input_args": {
+          "input_path": "[REDACTED_LOCAL_PATH]",
+          "input_type": "raw_media",
+          "metadata_table": "[REDACTED_LOCAL_PATH]",
+          "output_dir": "[REDACTED_LOCAL_PATH]",
+          "detector": "megadetector",
+          "classifier": "speciesnet",
+          "run_inference": true,
+          "video_frame_interval_seconds": 1.0,
+          "max_video_frames": 1,
+          "run_timestamp_ocr": true,
+          "timestamp_ocr_max_frames": 1,
+          "source_timezone": "Asia/Shanghai",
+          "activate_backend": true,
+          "persist_active": false,
+          "allow_metadata_only": false
+        },
+        "filtered_args": [],
+        "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 10.567838,
+        "result": {
+          "status": "ok",
+          "input_type": "raw_media",
+          "pipeline_stages": [
+            "raw-media discovery",
+            "sampled-video-frame perception",
+            "structured observation records",
+            "CamtrapDP export",
+            "CamtrapDP validation",
+            "backend activation"
+          ],
+          "perception_executed": true,
+          "data_to_camtrap_pipeline_complete": true,
+          "full_raw_media_pipeline_complete": true,
+          "record_count": 1,
+          "model_inferred_video_frame_count": 1,
+          "perception_evidence": {
+            "detector": "megadetector",
+            "classifier": "speciesnet",
+            "model_versions": {
+              "4.0.2a": 1
+            },
+            "prediction_sources": {
+              "classifier": 1
+            },
+            "video_sampling": {
+              "frame_interval_seconds": 1.0,
+              "max_frames": 1
+            },
+            "species_breakdown": {
+              "tiger": 1
+            },
+            "sample_predictions": [
+              {
+                "species": "Siberian tiger",
+                "scientific_name": "Panthera tigris",
+                "confidence": 0.9989,
+                "timestamp": "2024-09-22 16:56:28",
+                "timestamp_source": "paddleocr_video_timestamp",
+                "timestamp_ocr_score": 0.9762184023857117,
+                "timestamp_ocr_vote_count": 1.0,
+                "model_version": "4.0.2a",
+                "prediction_source": "classifier",
+                "frame_offset_seconds": 0.0
+              }
+            ]
+          },
+          "camtrap_validation_status": "ok",
+          "camtrap_validation_error_count": 0,
+          "camtrap_validation_warning_count": 0,
+          "active_backend": {
+            "backend": "camtrap_dp_tabular",
+            "activated": true
+          },
+          "analysis_readiness": {
+            "taxonomic_analysis_ready": true,
+            "temporal_analysis_ready": true,
+            "spatial_analysis_ready": true,
+            "camtrap_export_ready": true,
+            "camtrap_dp_ready": true,
+            "active_for_downstream_tools": true
+          },
+          "routing_note": "The LLM selected this registered, format-agnostic preparation tool. Its internal branching uses only the supplied data format; it contains no ecological-question keyword router."
+        }
+      },
+      {
+        "step": 2,
+        "tool_name": "summarize_species_inventory",
+        "args": {
+          "top_k": 50
+        },
+        "input_args": {
+          "top_k": 50
+        },
+        "filtered_args": [],
+        "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 0.000113,
+        "result": {
+          "species_count": 1,
+          "total_record_count": 1,
+          "species_inventory": [
+            {
+              "species": "Panthera tigris",
+              "record_count": 1,
+              "date_start": "2024-09-22T08:56:28+00:00",
+              "date_end": "2024-09-22T08:56:28+00:00"
+            }
+          ],
+          "note": "Species inventory and time range are summarized from the current imported CamtrapDP conversion report."
+        }
+      }
+    ],
+    "replanning": {
+      "need_replan": false,
+      "new_tasks": [],
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "7c7733b07784c5eaf62a3c41c350473510592c58558fccf7aedf1b4ccce2b8eb",
+      "replanner_user_prompt_char_count": 49245,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_compaction_mode": "schemas_and_result_summaries",
+      "timestamp_reliability": {
+        "status": "passed"
+      },
+      "event_independence": {
+        "status": "not_applicable",
+        "min_gap_minutes": "not_applicable"
+      },
+      "event_count_sufficiency": {
+        "status": "limited"
+      },
+      "overlap_analysis": {
+        "status": "not_applicable"
+      },
+      "visualization": "not_applicable",
+      "figure_count": 0,
+      "figure_outputs": [],
+      "failed_figures": [],
+      "reason": "Step 1 completed the full raw-media pipeline: the video was sampled at 1.0-s intervals with at most one frame, MegaDetector and SpeciesNet inference produced one Siberian tiger prediction (confidence 0.9989), PaddleOCR recovered the field timestamp 2024-09-22 16:56:28 Asia/Shanghai at score 0.976, the CamtrapDP package validated with 0 errors and 0 warnings, and the backend was activated without persistent selection. Step 2 confirmed one queryable structured record. The tool-reported readiness flags are therefore supported; no additional tools are needed. The only limitation is sample size: one record from one event gives limited inferential power for substantive ecological analyses.",
+      "conservative_answer": true,
+      "reflection_mode": "llm_with_deterministic_consistency_check",
+      "consistency_check": {
+        "missing_fields": [],
+        "inconsistency_check": "passed",
+        "corrections": [],
+        "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+      },
+      "temporal_activity": {},
+      "termination_reason": "goal_satisfied",
+      "rounds": [
+        {
+          "round_index": 0,
+          "phase": "initial_plan",
+          "proposed_task_count": 2,
+          "accepted_tasks": [
+            {
+              "tool_name": "prepare_camera_trap_dataset",
+              "args": {
+                "input_path": "[REDACTED_LOCAL_PATH]",
+                "input_type": "raw_media",
+                "metadata_table": "[REDACTED_LOCAL_PATH]",
+                "output_dir": "[REDACTED_LOCAL_PATH]",
+                "detector": "megadetector",
+                "classifier": "speciesnet",
+                "run_inference": true,
+                "video_frame_interval_seconds": 1.0,
+                "max_video_frames": 1,
+                "run_timestamp_ocr": true,
+                "timestamp_ocr_max_frames": 1,
+                "source_timezone": "Asia/Shanghai",
+                "activate_backend": true,
+                "persist_active": false,
+                "allow_metadata_only": false
+              },
+              "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection."
+            },
+            {
+              "tool_name": "summarize_species_inventory",
+              "args": {
+                "top_k": 50
+              },
+              "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run."
+            }
+          ],
+          "budget_truncated": false,
+          "execution_statuses": [
+            "success",
+            "success"
+          ],
+          "reflection": {
+            "need_replan": false,
+            "reason": "Step 1 completed the full raw-media pipeline: the video was sampled at 1.0-s intervals with at most one frame, MegaDetector and SpeciesNet inference produced one Siberian tiger prediction (confidence 0.9989), PaddleOCR recovered the field timestamp 2024-09-22 16:56:28 Asia/Shanghai at score 0.976, the CamtrapDP package validated with 0 errors and 0 warnings, and the backend was activated without persistent selection. Step 2 confirmed one queryable structured record. The tool-reported readiness flags are therefore supported; no additional tools are needed. The only limitation is sample size: one record from one event gives limited inferential power for substantive ecological analyses.",
+            "conservative_answer": true,
+            "elapsed_seconds": 26.510575
+          }
+        }
+      ]
+    },
+    "synthesis": {
+      "synthesis_mode": "llm_synthesis",
+      "answer_guard": {
+        "planner_mode": "llm",
+        "target_species": null,
+        "target_species_display": null,
+        "local_empty": false,
+        "local_empty_summary": "",
+        "used_tools": [
+          "prepare_camera_trap_dataset",
+          "summarize_species_inventory"
+        ],
+        "must_not_expand_local_to_global": false,
+        "visual_outputs": [],
+        "temporal_visualization_has_synthetic_time": false
+      },
+      "compact_tool_results_used": [
+        {
+          "step": 1,
+          "tool_name": "prepare_camera_trap_dataset",
+          "args": {
+            "input_path": "[REDACTED_LOCAL_PATH]",
+            "input_type": "raw_media",
+            "metadata_table": "[REDACTED_LOCAL_PATH]",
+            "output_dir": "[REDACTED_LOCAL_PATH]",
+            "detector": "megadetector",
+            "classifier": "speciesnet",
+            "run_inference": true,
+            "video_frame_interval_seconds": 1.0,
+            "max_video_frames": 1,
+            "run_timestamp_ocr": true,
+            "timestamp_ocr_max_frames": 1,
+            "source_timezone": "Asia/Shanghai",
+            "activate_backend": true,
+            "persist_active": false,
+            "allow_metadata_only": false
+          },
+          "input_args": {
+            "input_path": "[REDACTED_LOCAL_PATH]",
+            "input_type": "raw_media",
+            "metadata_table": "[REDACTED_LOCAL_PATH]",
+            "output_dir": "[REDACTED_LOCAL_PATH]",
+            "detector": "megadetector",
+            "classifier": "speciesnet",
+            "run_inference": true,
+            "video_frame_interval_seconds": 1.0,
+            "max_video_frames": 1,
+            "run_timestamp_ocr": true,
+            "timestamp_ocr_max_frames": 1,
+            "source_timezone": "Asia/Shanghai",
+            "activate_backend": true,
+            "persist_active": false,
+            "allow_metadata_only": false
+          },
+          "filtered_args": [],
+          "reason": "The raw video must be sampled at 1.0-second intervals with at most one frame, processed by real MegaDetector and SpeciesNet inference, joined to the deployment metadata table, have its field timestamp recovered by PaddleOCR from at most one frame with Asia/Shanghai field time, and be built and validated as a CamtrapDP package that is activated as the current backend without persisting the selection.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 10.567838,
+          "result": {
+            "status": "ok",
+            "input_type": "raw_media",
+            "pipeline_stages": [
+              "raw-media discovery",
+              "sampled-video-frame perception",
+              "structured observation records",
+              "CamtrapDP export",
+              "CamtrapDP validation",
+              "backend activation"
+            ],
+            "perception_executed": true,
+            "data_to_camtrap_pipeline_complete": true,
+            "full_raw_media_pipeline_complete": true,
+            "record_count": 1,
+            "model_inferred_video_frame_count": 1,
+            "perception_evidence": {
+              "detector": "megadetector",
+              "classifier": "speciesnet",
+              "model_versions": {
+                "4.0.2a": 1
+              },
+              "prediction_sources": {
+                "classifier": 1
+              },
+              "video_sampling": {
+                "frame_interval_seconds": 1.0,
+                "max_frames": 1
+              },
+              "species_breakdown": {
+                "tiger": 1
+              },
+              "sample_predictions": [
+                {
+                  "species": "Siberian tiger",
+                  "scientific_name": "Panthera tigris",
+                  "confidence": 0.9989,
+                  "timestamp": "2024-09-22 16:56:28",
+                  "timestamp_source": "paddleocr_video_timestamp",
+                  "timestamp_ocr_score": 0.9762184023857117,
+                  "timestamp_ocr_vote_count": 1.0,
+                  "model_version": "4.0.2a",
+                  "prediction_source": "classifier",
+                  "frame_offset_seconds": 0.0
+                }
+              ]
+            },
+            "camtrap_validation_status": "ok",
+            "camtrap_validation_error_count": 0,
+            "camtrap_validation_warning_count": 0,
+            "active_backend": {
+              "backend": "camtrap_dp_tabular",
+              "activated": true
+            },
+            "analysis_readiness": {
+              "taxonomic_analysis_ready": true,
+              "temporal_analysis_ready": true,
+              "spatial_analysis_ready": true,
+              "camtrap_export_ready": true,
+              "camtrap_dp_ready": true,
+              "active_for_downstream_tools": true
+            },
+            "routing_note": "The LLM selected this registered, format-agnostic preparation tool. Its internal branching uses only the supplied data format; it contains no ecological-question keyword router."
+          }
+        },
+        {
+          "step": 2,
+          "tool_name": "summarize_species_inventory",
+          "args": {
+            "top_k": 50
+          },
+          "input_args": {
+            "top_k": 50
+          },
+          "filtered_args": [],
+          "reason": "After activation, summarize the newly prepared CamtrapDP backend to verify structured records are queryable and registered, providing the evidence needed to report whether ecological analyses are ready to run.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 0.000113,
+          "result": {
+            "species_count": 1,
+            "total_record_count": 1,
+            "species_inventory": [
+              {
+                "species": "Panthera tigris",
+                "record_count": 1,
+                "date_start": "2024-09-22T08:56:28+00:00",
+                "date_end": "2024-09-22T08:56:28+00:00"
+              }
+            ],
+            "note": "Species inventory and time range are summarized from the current imported CamtrapDP conversion report."
+          }
+        }
+      ],
+      "synthesis_input_evidence": {
+        "activity_pattern": {},
+        "pairwise_overlap": [],
+        "visualization": [],
+        "limitations": [
+          "Use only values present in tool execution or reflection.",
+          "Delta measures similarity in diel activity rhythm, not direct interaction.",
+          "A data-quality audit alone does not establish that formal occupancy modelling is supported; independent camera-operation effort must be confirmed by successful tool evidence.",
+          "Use relative paths only."
+        ],
+        "reflection": {
+          "need_replan": false,
+          "new_tasks": [],
+          "reason": "Step 1 completed the full raw-media pipeline: the video was sampled at 1.0-s intervals with at most one frame, MegaDetector and SpeciesNet inference produced one Siberian tiger prediction (confidence 0.9989), PaddleOCR recovered the field timestamp 2024-09-22 16:56:28 Asia/Shanghai at score 0.976, the CamtrapDP package validated with 0 errors and 0 warnings, and the backend was activated without persistent selection. Step 2 confirmed one queryable structured record. The tool-reported readiness flags are therefore supported; no additional tools are needed. The only limitation is sample size: one record from one event gives limited inferential power for substantive ecological analyses.",
+          "data_quality": "limited",
+          "timestamp_reliability": {
+            "status": "passed"
+          },
+          "event_independence": {
+            "status": "not_applicable",
+            "min_gap_minutes": "not_applicable"
+          },
+          "event_count_sufficiency": {
+            "status": "limited"
+          },
+          "overlap_analysis": {
+            "status": "not_applicable"
+          },
+          "spatial_data_sufficiency": {
+            "status": "limited"
+          },
+          "visualization": "not_applicable",
+          "conservative_answer": true,
+          "figure_count": 0,
+          "figure_outputs": [],
+          "failed_figures": [],
+          "_llm_outputs": {
+            "replanner_raw_response": "{\"need_replan\":false,\"new_tasks\":[],\"reason\":\"Step 1 completed the full raw-media pipeline: the video was sampled at 1.0-s intervals with at most one frame, MegaDetector and SpeciesNet inference produced one Siberian tiger prediction (confidence 0.9989), PaddleOCR recovered the field timestamp 2024-09-22 16:56:28 Asia/Shanghai at score 0.976, the CamtrapDP package validated with 0 errors and 0 warnings, and the backend was activated without persistent selection. Step 2 confirmed one queryable structured record. The tool-reported readiness flags are therefore supported; no additional tools are needed. The only limitation is sample size: one record from one event gives limited inferential power for substantive ecological analyses.\", \"data_quality\":\"limited\",\"timestamp_reliability\":{\"status\":\"passed\"},\"event_independence\":{\"status\":\"not_applicable\",\"min_gap_minutes\":\"not_applicable\"},\"event_count_sufficiency\":{\"status\":\"limited\"},\"overlap_analysis\":{\"status\":\"not_applicable\"},\"spatial_data_sufficiency\":{\"status\":\"limited\"},\"visualization\":\"not_applicable\",\"conservative_answer\":true}",
+            "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+            "replanner_user_prompt_sha256": "7c7733b07784c5eaf62a3c41c350473510592c58558fccf7aedf1b4ccce2b8eb",
+            "replanner_user_prompt_char_count": 49245,
+            "replanner_user_prompt_budget_chars": 60000,
+            "replanner_prompt_compaction_mode": "schemas_and_result_summaries",
+            "replanner_attempt_count": 1,
+            "replanner_attempts": [
+              {
+                "attempt_index": 1,
+                "status": "parsed"
+              }
+            ]
+          },
+          "reflection_mode": "llm_with_deterministic_consistency_check",
+          "consistency_check": {
+            "missing_fields": [],
+            "inconsistency_check": "passed",
+            "corrections": [],
+            "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+          }
+        }
+      },
+      "answer_system_prompt_sha256": "d13c1a2da5b7db80fc861491d5ebd701416499ae5b68744d94c7dd0148767641",
+      "answer_user_prompt_sha256": "603716bacd4439a12f859a7da0cd6713a877d6c9bcd32d307aafbec13f3062c2",
+      "answer_user_prompt_char_count": 11708,
+      "answer_user_prompt_budget_chars": 40000,
+      "answer_prompt_compaction_mode": "none",
+      "answer_attempt_count": 1,
+      "answer_attempts": [
+        {
+          "attempt_index": 1,
+          "status": "nonempty"
+        }
+      ]
+    }
+  },
+  "final_answer": "## Raw camera-trap video preparation report\n\nThe raw camera-trap video preparation completed successfully using the supplied deployment metadata table, with the prepared CamtrapDP dataset written to the requested output directory.\n\n### Pipeline stages executed\nThe tool ran the full raw-media pipeline: raw-media discovery, sampled-video-frame perception, structured observation record construction, CamtrapDP export, CamtrapDP validation, and backend activation. The input was treated as raw media, and no metadata-only placeholder records were permitted.\n\n### Video sampling and model inference\n- The video was sampled at 1.0-second intervals with at most one frame per video (max_video_frames = 1).\n- Real MegaDetector and SpeciesNet inference were executed (`perception_executed = true`); the species classification for the single processed record originated from the SpeciesNet classifier (prediction_source = classifier) with model version 4.0.2a.\n- One video frame was model-inferred, and one structured observation record was produced.\n- The sample prediction identifies a Siberian tiger (*Panthera tigris*) with classifier confidence 0.9989. The tool did not report bounding-box outputs, so no detector-derived boxes are claimed.\n\n### Field timestamp recovery\n- The field timestamp was recovered from the video overlay using PaddleOCR from at most one frame (timestamp_ocr_max_frames = 1).\n- The recovered field time is 2024-09-22 16:56:28 in Asia/Shanghai field time, with an OCR score of 0.976 and a vote count of 1.0.\n- The CamtrapDP record normalises to 2024-09-22T08:56:28+00:00 (UTC), which is consistent with the Asia/Shanghai (+) 8-hour offset.\n\n### CamtrapDP construction, validation, and activation\n- The CamtrapDP package was constructed and validated successfully: 0 validation errors and 0 warnings.\n- The prepared dataset was activated as the current analysis backend (`camtrap_dp_tabular`) without persisting that selection, so the activation applies only to the current session.\n\n### Inventory verification after activation\nThe summarised species inventory on the activated backend confirms the prepared data are queryable and registered:\n- Species count: 1\n- Total record count: 1\n- Species: *Panthera tigris* (Siberian tiger), 1 record, covering the single timestamp 2024-09-22T08:56:28+00:00.\n\n### Readiness of registered ecological analyses\nBased on the tool results, registered ecological analyses are ready to run on the current imported camera-trap data. The readiness flags reported are:\n- Taxonomic analysis ready: true\n- Temporal analysis ready: true\n- Spatial analysis ready: true\n- CamtrapDP export ready: true\n- CamtrapDP package ready: true\n- Active for downstream tools: true\n\nNote that the dataset currently contains a single validated record, so any downstream ecological analysis will be limited by this very small sample size.",
+  "visualizations": [],
+  "trace_export": {
+    "detail": "public",
+    "raw_tool_results_included": false,
+    "raw_model_responses_included": false,
+    "sensitive_camera_locations_redacted": true
+  }
+}

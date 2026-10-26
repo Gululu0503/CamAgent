@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.0",
+  "suite_id": "camagent_natural_language_query_experiments",
+  "status": "completed",
+  "started_at_utc": "2026-08-01T18:30:58.751250+00:00",
+  "completed_at_utc": "2026-08-01T18:30:58.758964+00:00",
+  "config": {
+    "path": "configs/paper_query_experiments.json",
+    "sha256": "ba916ced5a498ce90067c3384b9e8e20601c2ce1842b4132b790924f486d4406"
+  },
+  "code": {
+    "files": [
+      {
+        "path": "run_agent.py",
+        "sha256": "a6be801e17fc22a88648418c38d7113130776dd66c5dba5fe1079ba1f103fa31"
+      },
+      {
+        "path": "scripts/run_paper_query_experiments.py",
+        "sha256": "ba2fd9587bfc41a53e5662b0e5080582be66106e18c82d59b0481c353b11802b"
+      },
+      {
+        "path": "src/camagent/base_tools.py",
+        "sha256": "a28b4a7ccd17b904c2d5eea066ee05fa606a06318952a18f31ff3ecac936bd4d"
+      },
+      {
+        "path": "src/camagent/llm_agent.py",
+        "sha256": "b9f47afa56c5f0d5cebc007b86f0400f0662b4fc5b67283fe9e754ba7b1e1669"
+      },
+      {
+        "path": "src/camagent/paths.py",
+        "sha256": "6c547f965eb1bb019cb558cc93a35e108827a1437762335f68461eff161a7eba"
+      },
+      {
+        "path": "src/camagent/tool_registry.py",
+        "sha256": "52b4adfa775424c30f330432ddb61100a845c491de52c7a036e5f4c1f98394ed"
+      },
+      {
+        "path": "src/camagent/agent_router.py",
+        "sha256": "362ffc8f837a53084f0f7920d75ae8e9b70b042c1d0480d2e5bb73094ba8020b"
+      },
+      {
+        "path": "src/camagent/quality_tools.py",
+        "sha256": "b8d308607efbd8e5574904d9eb079ee0cb8ec2edb2ce24f6c16d085fb390d619"
+      },
+      {
+        "path": "src/camagent/temporal_tools.py",
+        "sha256": "eccdf4c7266b7a65dc0c10f74766ec683ccb7b8e12580d61a64aa4ccc9316ff0"
+      },
+      {
+        "path": "src/camagent/spatial_tools.py",
+        "sha256": "f8904b962967287532f589ad0dc226e35c1e0a9f93f27eb8ec5927aae9c43971"
+      },
+      {
+        "path": "src/camagent/movement_tools.py",
+        "sha256": "f1516e9f752a0145fe12f821ae332dc6fe084ec1baeb7f740c956528c446acf4"
+      },
+      {
+        "path": "src/camagent/visualization_tools.py",
+        "sha256": "12ccd9ffa0cc32d40779497646eb2bb7547a1a8d2ce0b6ef6a4e7d0a3054e593"
+      }
+    ],
+    "combined_sha256": "399c57e47e2e0b5c5ae00d100a0864c0d3953d428b5e212c5af065d9d238650d"
+  },
+  "endpoint_host": "api.deepseek.com",
+  "external_data_scope": "questions_and_redacted_aggregate_tool_results",
+  "trace_detail": "public",
+  "manifest_assembly_mode": "assembled_from_completed_agent_traces",
+  "resumed_existing": true,
+  "agent_policy": {
+    "max_replan_rounds": 2,
+    "max_tool_calls": 32,
+    "max_tool_retries": 1,
+    "stop_on_repeated_plan": true
+  },
+  "experiments": [
+    {
+      "experiment_id": "QUAL",
+      "question": "Audit the Siberian tiger records for missing fields, invalid timestamps, possible label noise, and duplicate-like records. Explain which downstream ecological analyses remain supported.",
+      "trace_path": "results/paper_query_experiments/QUAL_public_trace.json",
+      "trace_sha256": "e5505d3630456e0cde561c82c46e39a53f5954932eae123d9df22622fe281010",
+      "source_trace_sha256": "e5505d3630456e0cde561c82c46e39a53f5954932eae123d9df22622fe281010",
+      "trace_postprocessing_applied": false,
+      "trace_source": "reused_existing",
+      "trace_started_at_utc": "2026-07-27T17:32:19.511559+00:00",
+      "trace_completed_at_utc": "2026-07-27T17:33:43.520946+00:00",
+      "trace_duration_seconds": 84.009413,
+      "selected_tools": [
+        "check_missing_fields",
+        "detect_invalid_timestamps",
+        "detect_label_noise",
+        "detect_duplicate_like_records",
+        "check_timestamp_quality",
+        "analyze_data_quality"
+      ],
+      "goal_status": "completed",
+      "termination_reason": "goal_satisfied",
+      "synthesis_mode": "llm_synthesis",
+      "runtime": {
+        "client_class": "ChatOpenAI",
+        "model": "deepseek-v4-flash",
+        "deployment": null,
+        "temperature": 0.0
+      },
+      "figure_count": 0
+    },
+    {
+      "experiment_id": "TEMP",
+      "question": "What is the activity pattern of the Siberian tiger, and how much temporal niche overlap does it have with other species?",
+      "trace_path": "results/paper_query_experiments/TEMP_public_trace.json",
+      "trace_sha256": "9f54b78a28653dbcf9734b2dbf8363c35dc9ccf61d4ad3326ca077b98de195b1",
+      "source_trace_sha256": "9f54b78a28653dbcf9734b2dbf8363c35dc9ccf61d4ad3326ca077b98de195b1",
+      "trace_postprocessing_applied": false,
+      "trace_source": "reused_existing",
+      "trace_started_at_utc": "2026-08-01T06:17:09.558424+00:00",
+      "trace_completed_at_utc": "2026-08-01T06:19:27.786828+00:00",
+      "trace_duration_seconds": 138.228479,
+      "selected_tools": [
+        "check_timestamp_quality",
+        "build_independent_events",
+        "build_hourly_activity_distribution",
+        "detect_activity_peaks",
+        "summarize_community_composition",
+        "estimate_pairwise_activity_overlap",
+        "plot_hourly_activity_curve",
+        "plot_pairwise_activity_overlap_panels"
+      ],
+      "goal_status": "completed",
+      "termination_reason": "goal_satisfied",
+      "synthesis_mode": "llm_synthesis",
+      "runtime": {
+        "client_class": "ChatOpenAI",
+        "model": "deepseek-v4-flash",
+        "deployment": null,
+        "temperature": 0.0
+      },
+      "figure_count": 5
+    },
+    {
+      "experiment_id": "SPAT",
+      "question": "Where are Siberian tiger detections concentrated across the camera network, and which cameras are the main detection hotspots? Return a privacy-safe map and do not interpret hotspots as density or occupancy.",
+      "trace_path": "results/paper_query_experiments/SPAT_public_trace.json",
+      "trace_sha256": "764093de3e0ecba86add2590e37b54e395b0769d128f78ec2cb6d6768805ce4b",
+      "source_trace_sha256": "764093de3e0ecba86add2590e37b54e395b0769d128f78ec2cb6d6768805ce4b",
+      "trace_postprocessing_applied": false,
+      "trace_source": "reused_existing",
+      "trace_started_at_utc": "2026-07-27T17:35:03.020080+00:00",
+      "trace_completed_at_utc": "2026-07-27T17:35:55.405799+00:00",
+      "trace_duration_seconds": 52.385739,
+      "selected_tools": [
+        "build_hotspot_rank",
+        "plot_species_distribution_static"
+      ],
+      "goal_status": "completed",
+      "termination_reason": "goal_satisfied",
+      "synthesis_mode": "llm_synthesis",
+      "runtime": {
+        "client_class": "ChatOpenAI",
+        "model": "deepseek-v4-flash",
+        "deployment": null,
+        "temperature": 0.0
+      },
+      "figure_count": 1
+    },
+    {
+      "experiment_id": "COMM",
+      "question": "Using the current camera-trap data, perform dataset-wide community inference across all eligible species rather than a hard-coded focal list. Estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, partition Sorensen beta diversity into turnover and nestedness-resultant components, construct a species-accumulation curve, and test conditional shared-camera associations with false-discovery-rate correction. If documented repeated-survey effort supports it, include multi-species detection-corrected occupancy; otherwise retain the complete detection-based community results. Return a publication-ready community figure.",
+      "trace_path": "results/paper_query_experiments/COMM_public_trace.json",
+      "trace_sha256": "58fbe298bfb92858487d68649594ee08ae11ab4bed4fb4e1c7bc9eb0c8e036cc",
+      "source_trace_sha256": "58fbe298bfb92858487d68649594ee08ae11ab4bed4fb4e1c7bc9eb0c8e036cc",
+      "trace_postprocessing_applied": false,
+      "trace_source": "reused_existing",
+      "trace_started_at_utc": "2026-07-28T19:33:18.390630+00:00",
+      "trace_completed_at_utc": "2026-07-28T19:34:15.628533+00:00",
+      "trace_duration_seconds": 57.237945,
+      "selected_tools": [
+        "infer_complete_community",
+        "plot_complete_community_inference"
+      ],
+      "goal_status": "completed",
+      "termination_reason": "goal_satisfied",
+      "synthesis_mode": "llm_synthesis",
+      "runtime": {
+        "client_class": "ChatOpenAI",
+        "model": "deepseek-v4-flash",
+        "deployment": null,
+        "temperature": 0.0
+      },
+      "figure_count": 1
+    },
+    {
+      "experiment_id": "MOVE",
+      "question": "For Amur leopard detections separated by no more than 72 hours and 100 km, summarize candidate inter-camera distances, directions, and repeated camera pairs. Treat them as adjacency hypotheses, not individual tracks or confirmed corridors.",
+      "trace_path": "results/paper_query_experiments/MOVE_public_trace.json",
+      "trace_sha256": "cd820187a7ff559b059ea6faabe06f1b18f05f92c43c670229fe45304ca6e52d",
+      "source_trace_sha256": "4e71089027ec54ee4564fc08039146a8dc34e357f07d45c5eaa1cafba4b8e1d0",
+      "trace_postprocessing_applied": true,
+      "trace_source": "reused_existing",
+      "trace_started_at_utc": "2026-07-27T17:36:41.936700+00:00",
+      "trace_completed_at_utc": "2026-07-27T17:37:28.080005+00:00",
+      "trace_duration_seconds": 46.143328,
+      "selected_tools": [
+        "analyze_animal_movement_pattern"
+      ],
+      "goal_status": "completed",
+      "termination_reason": "goal_satisfied",
+      "synthesis_mode": "llm_synthesis",
+      "runtime": {
+        "client_class": "ChatOpenAI",
+        "model": "deepseek-v4-flash",
+        "deployment": null,
+        "temperature": 0.0
+      },
+      "figure_count": 0
+    },
+    {
+      "experiment_id": "INTEG",
+      "question": "Analyze Siberian tiger diel activity and overlap with Sika deer, identify its main detection hotspots, summarize shared-camera occurrence between the two species, check the relevant data quality, and return a concise ecological report with figures and limitations.",
+      "trace_path": "results/paper_query_experiments/INTEG_public_trace.json",
+      "trace_sha256": "3731bd6443a18e3c691e204bece0c04f153f2a3e47f793ae0e9c6c2b94ff2ca1",
+      "source_trace_sha256": "3731bd6443a18e3c691e204bece0c04f153f2a3e47f793ae0e9c6c2b94ff2ca1",
+      "trace_postprocessing_applied": false,
+      "trace_source": "reused_existing",
+      "trace_started_at_utc": "2026-07-30T10:55:55.719904+00:00",
+      "trace_completed_at_utc": "2026-07-30T11:00:58.252649+00:00",
+      "trace_duration_seconds": 302.532773,
+      "selected_tools": [
+        "check_timestamp_quality",
+        "analyze_data_quality",
+        "build_independent_events",
+        "summarize_community_composition",
+        "build_hourly_activity_distribution",
+        "build_hotspot_rank",
+        "analyze_species_pair_relationship",
+        "estimate_pairwise_activity_overlap",
+        "plot_hourly_activity_curve",
+        "plot_pairwise_activity_overlap_panels",
+        "plot_hotspot_rank_barh",
+        "plot_species_pair_relationship_panel"
+      ],
+      "goal_status": "completed",
+      "termination_reason": "goal_satisfied",
+      "synthesis_mode": "llm_synthesis",
+      "runtime": {
+        "client_class": "ChatOpenAI",
+        "model": "deepseek-v4-flash",
+        "deployment": null,
+        "temperature": 0.0
+      },
+      "figure_count": 4
+    }
+  ],
+  "review_artifact_postprocessing": {
+    "applied": true,
+    "scope": "MOVE_public_trace.json only",
+    "operation": "Recursive redaction of from_camera and to_camera values missed by the original public-trace exporter.",
+    "scientific_values_changed": false
+  },
+  "review_artifact_code_layout": {
+    "package_namespace": "camagent",
+    "manifest_scope": "distributed review files",
+    "scientific_values_changed": false
+  },
+  "review_artifact_code_edits": {
+    "applied": true,
+    "operation": "Replaced a default endpoint string with a neutral placeholder; used only when no endpoint is configured.",
+    "files": [
+      {
+        "path": "run_agent.py",
+        "previous_sha256": "ea066678d61f3e2e961d893b3e386605b29bcc2b3d09328fa95b52483345e4a4",
+        "sha256": "a6be801e17fc22a88648418c38d7113130776dd66c5dba5fe1079ba1f103fa31"
+      },
+      {
+        "path": "scripts/run_paper_query_experiments.py",
+        "previous_sha256": "3e84d82690a3bd48bb1d464c952856884494e63a6d988b5dc0caf66ff53f7355",
+        "sha256": "ba2fd9587bfc41a53e5662b0e5080582be66106e18c82d59b0481c353b11802b"
+      }
+    ],
+    "previous_combined_sha256": "276f6a2297b49f52f86ef4ca702cffd766ed0c570ae0ee6d288227cc0211649a",
+    "scientific_values_changed": false,
+    "traces_changed": false
+  },
+  "experiment_count": 6,
+  "manifest_assembly_duration_seconds": 0.007714
+}

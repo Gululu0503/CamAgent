@@ -1,0 +1,7 @@
+mediaID,deploymentID,timestamp,filePath,fileName,fileMediatype,captureMethod,mediaComments
+SYN-MED-01,SYN-DEP-01,2026-01-01T01:00:00Z,synthetic/01.jpg,01.jpg,image/jpeg,activityDetection,Synthetic record; no media file is distributed.
+SYN-MED-02,SYN-DEP-01,2026-01-01T01:40:00Z,synthetic/02.jpg,02.jpg,image/jpeg,activityDetection,Synthetic record; no media file is distributed.
+SYN-MED-03,SYN-DEP-01,2026-01-01T12:00:00Z,synthetic/03.jpg,03.jpg,image/jpeg,activityDetection,Synthetic record; no media file is distributed.
+SYN-MED-04,SYN-DEP-02,2026-01-01T02:00:00Z,synthetic/04.jpg,04.jpg,image/jpeg,activityDetection,Synthetic record; no media file is distributed.
+SYN-MED-05,SYN-DEP-02,2026-01-01T13:00:00Z,synthetic/05.jpg,05.jpg,image/jpeg,activityDetection,Synthetic record; no media file is distributed.
+SYN-MED-06,SYN-DEP-02,2026-01-02T02:00:00Z,synthetic/06.jpg,06.jpg,image/jpeg,activityDetection,Synthetic record; no media file is distributed.

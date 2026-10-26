@@ -1,0 +1,7 @@
+observationID,deploymentID,mediaID,eventID,eventStart,eventEnd,observationLevel,observationType,scientificName,count
+SYN-OBS-01,SYN-DEP-01,SYN-MED-01,SYN-EVT-01,2026-01-01T01:00:00Z,2026-01-01T01:00:00Z,media,animal,Panthera tigris,1
+SYN-OBS-02,SYN-DEP-01,SYN-MED-02,SYN-EVT-02,2026-01-01T01:40:00Z,2026-01-01T01:40:00Z,media,animal,Panthera tigris,1
+SYN-OBS-03,SYN-DEP-01,SYN-MED-03,SYN-EVT-03,2026-01-01T12:00:00Z,2026-01-01T12:00:00Z,media,animal,Cervus nippon,1
+SYN-OBS-04,SYN-DEP-02,SYN-MED-04,SYN-EVT-04,2026-01-01T02:00:00Z,2026-01-01T02:00:00Z,media,animal,Panthera tigris,1
+SYN-OBS-05,SYN-DEP-02,SYN-MED-05,SYN-EVT-05,2026-01-01T13:00:00Z,2026-01-01T13:00:00Z,media,animal,Cervus nippon,1
+SYN-OBS-06,SYN-DEP-02,SYN-MED-06,SYN-EVT-06,2026-01-02T02:00:00Z,2026-01-02T02:00:00Z,media,animal,Cervus nippon,1

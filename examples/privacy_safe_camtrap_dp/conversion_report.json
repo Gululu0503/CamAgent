@@ -1,0 +1,17 @@
+{
+  "filters": {
+    "min_gap_minutes": 30
+  },
+  "independent_events": 6,
+  "license_status": "declared",
+  "species_summary": {
+    "Siberian tiger": {
+      "media_records": 3,
+      "independent_events": 3
+    },
+    "Sika deer": {
+      "media_records": 3,
+      "independent_events": 3
+    }
+  }
+}

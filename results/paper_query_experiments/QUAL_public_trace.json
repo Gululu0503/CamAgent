@@ -1,0 +1,2570 @@
+{
+  "schema_version": "2.0",
+  "run_id": "4c58479e-f67f-4349-b12f-61e79b4e09d5",
+  "started_at_utc": "2026-07-27T17:32:19.511559+00:00",
+  "completed_at_utc": "2026-07-27T17:33:43.520946+00:00",
+  "duration_seconds": 84.009413,
+  "timing": {
+    "planning_seconds": 14.58464,
+    "tool_execution_seconds": 29.073512,
+    "answer_synthesis_seconds": 24.785777
+  },
+  "question": "Audit the Siberian tiger records for missing fields, invalid timestamps, possible label noise, and duplicate-like records. Explain which downstream ecological analyses remain supported.",
+  "experiment_id": "QUAL",
+  "species": "Siberian tiger",
+  "plan": {
+    "species": "Siberian tiger",
+    "tasks": [
+      {
+        "tool_name": "check_missing_fields",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Audit missing fields in Siberian tiger records."
+      },
+      {
+        "tool_name": "detect_invalid_timestamps",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Detect invalid timestamps in Siberian tiger records."
+      },
+      {
+        "tool_name": "detect_label_noise",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Detect possible label noise in Siberian tiger records."
+      },
+      {
+        "tool_name": "detect_duplicate_like_records",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Find duplicate-like records for Siberian tiger."
+      },
+      {
+        "tool_name": "check_timestamp_quality",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Assess whether timestamps are reliable for temporal analyses."
+      },
+      {
+        "tool_name": "analyze_data_quality",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses."
+      }
+    ],
+    "_llm_outputs": {
+      "planner_mode": "llm",
+      "planner_system_prompt_sha256": "83acff9758f8539922b1345ee735f55641c0888c1ba851704366ff9400b4dcad",
+      "planner_user_prompt_sha256": "7e1937162fdd0771caa48e5746b9f85770400a659a5e40ca3c1d9e72f7e8d28d",
+      "planner_input_summary": {
+        "user_query": "Audit the Siberian tiger records for missing fields, invalid timestamps, possible label noise, and duplicate-like records. Explain which downstream ecological analyses remain supported.",
+        "available_tool_names": [
+          "build_independent_events",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_predator_prey_temporal_panel",
+          "plot_tiger_spatial_transition_panel",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "b2dca647c9761462b48d4b2ae3ba8eae9df8f8cdfe88a6002769e93958f6e99d",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ]
+    },
+    "_planner_validation": {
+      "phase": "initial_plan",
+      "plan_errors": [],
+      "invalid_tools": [],
+      "missing_args": [],
+      "invalid_args": [],
+      "filtered_args": [],
+      "action": "validated",
+      "validation_only": true,
+      "local_tool_rewrite": false,
+      "fallback_used": false
+    }
+  },
+  "selected_tools": [
+    "check_missing_fields",
+    "detect_invalid_timestamps",
+    "detect_label_noise",
+    "detect_duplicate_like_records",
+    "check_timestamp_quality",
+    "analyze_data_quality"
+  ],
+  "executed_results": [
+    {
+      "step": 1,
+      "tool_name": "check_missing_fields",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Audit missing fields in Siberian tiger records.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 21.578315,
+      "result": {
+        "species": "Siberian tiger",
+        "total_records": 7745,
+        "field_completeness": [
+          {
+            "field": "camera_id",
+            "missing_count": 0,
+            "missing_ratio": 0.0
+          },
+          {
+            "field": "timestamp",
+            "missing_count": 0,
+            "missing_ratio": 0.0
+          },
+          {
+            "field": "latitude",
+            "missing_count": 0,
+            "missing_ratio": 0.0
+          },
+          {
+            "field": "longitude",
+            "missing_count": 0,
+            "missing_ratio": 0.0
+          },
+          {
+            "field": "species",
+            "missing_count": 0,
+            "missing_ratio": 0.0
+          },
+          {
+            "field": "individuals",
+            "missing_count": 0,
+            "missing_ratio": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "tool_name": "detect_invalid_timestamps",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Detect invalid timestamps in Siberian tiger records.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 0.904233,
+      "result": {
+        "species": "Siberian tiger",
+        "invalid_timestamp_count": 0,
+        "invalid_timestamp_records": [],
+        "suspicious_timestamp_count": 0,
+        "suspicious_timestamp_records": []
+      }
+    },
+    {
+      "step": 3,
+      "tool_name": "detect_label_noise",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Detect possible label noise in Siberian tiger records.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 0.264129,
+      "result": {
+        "species": "Siberian tiger",
+        "label_noise_count": 0,
+        "label_noise_records": [],
+        "check_scope": "record_schema_consistency_only",
+        "image_label_validation_status": "not_evaluated",
+        "note": "The check flags missing/unknown species labels and invalid record fields. It does not validate species identifications against held-out expert-reviewed images."
+      }
+    },
+    {
+      "step": 4,
+      "tool_name": "detect_duplicate_like_records",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Find duplicate-like records for Siberian tiger.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 0.266262,
+      "result": {
+        "species": "Siberian tiger",
+        "duplicate_groups_count": 80,
+        "duplicate_groups": [
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-05-04T16:18:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 202,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2024-02-01T17:04:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 69,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-01-02T14:52:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 18,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-06-15T14:00:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 4,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-01-29T05:41:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 3,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2024-04-28T13:16:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 2,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-04-16T18:01:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 2,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-10-06T15:09:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 2,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-04-03T11:15:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 2,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "timestamp": "2023-01-31T19:54:00Z",
+            "species": "siberian tiger",
+            "duplicate_count": 2,
+            "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+          }
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "tool_name": "check_timestamp_quality",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Assess whether timestamps are reliable for temporal analyses.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 2.506055,
+      "result": {
+        "species": "Siberian tiger",
+        "total_records": 7745,
+        "valid_timestamp_records": 7745,
+        "invalid_timestamp_count": 0,
+        "observed_clock_time_ratio": 1.0,
+        "synthetic_clock_time_ratio": 0.0,
+        "timestamp_source_summary": {
+          "recordtime": 7745
+        },
+        "timestamp_source": "CamtrapDP tabular",
+        "reliability_status": "passed"
+      }
+    },
+    {
+      "step": 6,
+      "tool_name": "analyze_data_quality",
+      "args": {
+        "species": "Siberian tiger"
+      },
+      "input_args": {
+        "species": "Siberian tiger"
+      },
+      "filtered_args": [],
+      "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 3.554378,
+      "result": {
+        "missing_fields": {
+          "species": "Siberian tiger",
+          "total_records": 7745,
+          "field_completeness": [
+            {
+              "field": "camera_id",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "timestamp",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "latitude",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "longitude",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "species",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "individuals",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            }
+          ]
+        },
+        "invalid_timestamps": {
+          "species": "Siberian tiger",
+          "invalid_timestamp_count": 0,
+          "invalid_timestamp_records": [],
+          "suspicious_timestamp_count": 0,
+          "suspicious_timestamp_records": []
+        },
+        "label_noise": {
+          "species": "Siberian tiger",
+          "label_noise_count": 0,
+          "label_noise_records": [],
+          "check_scope": "record_schema_consistency_only",
+          "image_label_validation_status": "not_evaluated",
+          "note": "The check flags missing/unknown species labels and invalid record fields. It does not validate species identifications against held-out expert-reviewed images."
+        },
+        "camera_quality_top10": [
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 206,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 201,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.9757,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.9526,
+            "quality_score": 85.71,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 69,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 68,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.9855,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.9189,
+            "quality_score": 86.22,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 18,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 17,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.9444,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.7391,
+            "quality_score": 88.91,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 10,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 3,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.3,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.2,
+            "quality_score": 97.0,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 11,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 3,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.2727,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.1875,
+            "quality_score": 97.19,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 6,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 2,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.3333,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.1818,
+            "quality_score": 97.27,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 44,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 8,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.1818,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.1633,
+            "quality_score": 97.55,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 14,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 3,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.2143,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.1579,
+            "quality_score": 97.63,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 2,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 1,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.5,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.1429,
+            "quality_score": 97.86,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "total_records": 2,
+            "missing_behavior": 0,
+            "invalid_timestamp": 0,
+            "invalid_individuals": 0,
+            "duplicate_burden": 1,
+            "missing_behavior_ratio": 0.0,
+            "invalid_timestamp_ratio": 0.0,
+            "invalid_individuals_ratio": 0.0,
+            "duplicate_burden_ratio": 0.5,
+            "score_missing_behavior_ratio": 0.0,
+            "score_invalid_timestamp_ratio": 0.0,
+            "score_invalid_individuals_ratio": 0.0,
+            "score_duplicate_burden_ratio": 0.1429,
+            "quality_score": 97.86,
+            "quality_score_type": "heuristic",
+            "quality_score_prior_records": 5,
+            "quality_score_weights": {
+              "missing_behavior_ratio": 25,
+              "invalid_timestamp_ratio": 35,
+              "invalid_individuals_ratio": 25,
+              "duplicate_burden_ratio": 15
+            },
+            "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+          }
+        ],
+        "duplicate_burden_by_camera_top10": [
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 201
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 68
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 17
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 9
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 8
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 4
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 3
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 3
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 3
+          },
+          {
+            "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+            "duplicate_burden": 3
+          }
+        ]
+      }
+    }
+  ],
+  "replan": {
+    "need_replan": false,
+    "new_tasks": [],
+    "reason": "Audit complete: no missing fields, no invalid timestamps, zero schema-level label noise, but 80 duplicate groups detected (largest group has 202 duplicates). Timestamp quality passed (reliability_status='passed'). Label noise check did not validate actual species identifications against expert images. Downstream temporal analyses (activity curves, seasonal patterns) are supported after building independent events with a min_gap_minutes argument to mitigate duplicates. Spatial distribution and hotspot analyses are supported because coordinates are complete. Species co-occurrence and community analyses are feasible after deduplication. Formal occupancy modeling is not supported without independently documented camera-operation effort, which was not verified. Full image-level species validation was not performed, so any analyses relying on absolute species ID accuracy are limited.",
+    "data_quality": "limited",
+    "timestamp_reliability": {
+      "status": "passed",
+      "observed_clock_time_ratio": 1.0,
+      "synthetic_clock_time_ratio": 0.0,
+      "invalid_timestamp_count": 0,
+      "timestamp_source": "CamtrapDP tabular"
+    },
+    "event_independence": {
+      "status": "limited",
+      "min_gap_minutes": "not_applicable"
+    },
+    "event_count_sufficiency": {
+      "status": "not_applicable"
+    },
+    "overlap_analysis": {
+      "status": "not_applicable"
+    },
+    "spatial_data_sufficiency": {
+      "status": "sufficient"
+    },
+    "visualization": "not_applicable",
+    "conservative_answer": true,
+    "figure_count": 0,
+    "figure_outputs": [],
+    "failed_figures": [],
+    "_llm_outputs": {
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "ff2e3c25a24c6cf3080663c13ea194c556c283d27f03dfd3c33c34f53eb53c2b",
+      "replanner_user_prompt_char_count": 58078,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "none"
+    },
+    "reflection_mode": "llm_with_deterministic_consistency_check",
+    "consistency_check": {
+      "missing_fields": [],
+      "inconsistency_check": "passed",
+      "corrections": [],
+      "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+    }
+  },
+  "autonomy": {
+    "loop": "plan-act-observe-reflect",
+    "policy": {
+      "max_replan_rounds": 2,
+      "max_tool_calls": 32,
+      "max_tool_retries": 1,
+      "stop_on_repeated_plan": true
+    },
+    "goal_status": "completed",
+    "termination_reason": "goal_satisfied",
+    "round_count": 1,
+    "reflection_count": 1,
+    "tool_call_count": 6,
+    "successful_tool_call_count": 6,
+    "failed_tool_call_count": 0,
+    "retry_call_count": 0,
+    "recovered_failure_count": 0,
+    "unrecovered_failure_count": 0,
+    "rounds": [
+      {
+        "round_index": 0,
+        "phase": "initial_plan",
+        "proposed_task_count": 6,
+        "accepted_tasks": [
+          {
+            "tool_name": "check_missing_fields",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Audit missing fields in Siberian tiger records."
+          },
+          {
+            "tool_name": "detect_invalid_timestamps",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Detect invalid timestamps in Siberian tiger records."
+          },
+          {
+            "tool_name": "detect_label_noise",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Detect possible label noise in Siberian tiger records."
+          },
+          {
+            "tool_name": "detect_duplicate_like_records",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Find duplicate-like records for Siberian tiger."
+          },
+          {
+            "tool_name": "check_timestamp_quality",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Assess whether timestamps are reliable for temporal analyses."
+          },
+          {
+            "tool_name": "analyze_data_quality",
+            "args": {
+              "species": "Siberian tiger"
+            },
+            "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses."
+          }
+        ],
+        "budget_truncated": false,
+        "execution_statuses": [
+          "success",
+          "success",
+          "success",
+          "success",
+          "success",
+          "success"
+        ],
+        "reflection": {
+          "need_replan": false,
+          "reason": "Audit complete: no missing fields, no invalid timestamps, zero schema-level label noise, but 80 duplicate groups detected (largest group has 202 duplicates). Timestamp quality passed (reliability_status='passed'). Label noise check did not validate actual species identifications against expert images. Downstream temporal analyses (activity curves, seasonal patterns) are supported after building independent events with a min_gap_minutes argument to mitigate duplicates. Spatial distribution and hotspot analyses are supported because coordinates are complete. Species co-occurrence and community analyses are feasible after deduplication. Formal occupancy modeling is not supported without independently documented camera-operation effort, which was not verified. Full image-level species validation was not performed, so any analyses relying on absolute species ID accuracy are limited.",
+          "conservative_answer": true,
+          "elapsed_seconds": 15.562352
+        }
+      }
+    ]
+  },
+  "runtime": {
+    "client_class": "ChatOpenAI",
+    "model": "deepseek-v4-flash",
+    "deployment": null,
+    "temperature": 0.0
+  },
+  "trace": {
+    "planning": {
+      "planner_mode": "llm",
+      "target_species": "Siberian tiger",
+      "planner_input_summary": {
+        "user_query": "Audit the Siberian tiger records for missing fields, invalid timestamps, possible label noise, and duplicate-like records. Explain which downstream ecological analyses remain supported.",
+        "available_tool_names": [
+          "build_independent_events",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_predator_prey_temporal_panel",
+          "plot_tiger_spatial_transition_panel",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_system_prompt_sha256": "83acff9758f8539922b1345ee735f55641c0888c1ba851704366ff9400b4dcad",
+      "planner_user_prompt_sha256": "7e1937162fdd0771caa48e5746b9f85770400a659a5e40ca3c1d9e72f7e8d28d",
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "b2dca647c9761462b48d4b2ae3ba8eae9df8f8cdfe88a6002769e93958f6e99d",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ],
+      "initial_normalized_tasks": [
+        {
+          "tool_name": "check_missing_fields",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Audit missing fields in Siberian tiger records."
+        },
+        {
+          "tool_name": "detect_invalid_timestamps",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Detect invalid timestamps in Siberian tiger records."
+        },
+        {
+          "tool_name": "detect_label_noise",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Detect possible label noise in Siberian tiger records."
+        },
+        {
+          "tool_name": "detect_duplicate_like_records",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Find duplicate-like records for Siberian tiger."
+        },
+        {
+          "tool_name": "check_timestamp_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Assess whether timestamps are reliable for temporal analyses."
+        },
+        {
+          "tool_name": "analyze_data_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses."
+        }
+      ],
+      "normalized_tasks": [
+        {
+          "tool_name": "check_missing_fields",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Audit missing fields in Siberian tiger records."
+        },
+        {
+          "tool_name": "detect_invalid_timestamps",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Detect invalid timestamps in Siberian tiger records."
+        },
+        {
+          "tool_name": "detect_label_noise",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Detect possible label noise in Siberian tiger records."
+        },
+        {
+          "tool_name": "detect_duplicate_like_records",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Find duplicate-like records for Siberian tiger."
+        },
+        {
+          "tool_name": "check_timestamp_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Assess whether timestamps are reliable for temporal analyses."
+        },
+        {
+          "tool_name": "analyze_data_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses."
+        }
+      ],
+      "planner_validation": {
+        "phase": "initial_plan",
+        "plan_errors": [],
+        "invalid_tools": [],
+        "missing_args": [],
+        "invalid_args": [],
+        "filtered_args": [],
+        "action": "validated",
+        "validation_only": true,
+        "local_tool_rewrite": false,
+        "fallback_used": false
+      }
+    },
+    "execution": [
+      {
+        "step": 1,
+        "tool_name": "check_missing_fields",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Audit missing fields in Siberian tiger records.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 21.578315,
+        "result": {
+          "species": "Siberian tiger",
+          "total_records": 7745,
+          "field_completeness": [
+            {
+              "field": "camera_id",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "timestamp",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "latitude",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "longitude",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "species",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            },
+            {
+              "field": "individuals",
+              "missing_count": 0,
+              "missing_ratio": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "tool_name": "detect_invalid_timestamps",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Detect invalid timestamps in Siberian tiger records.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 0.904233,
+        "result": {
+          "species": "Siberian tiger",
+          "invalid_timestamp_count": 0,
+          "invalid_timestamp_records": [],
+          "suspicious_timestamp_count": 0,
+          "suspicious_timestamp_records": []
+        }
+      },
+      {
+        "step": 3,
+        "tool_name": "detect_label_noise",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Detect possible label noise in Siberian tiger records.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 0.264129,
+        "result": {
+          "species": "Siberian tiger",
+          "label_noise_count": 0,
+          "label_noise_records": [],
+          "check_scope": "record_schema_consistency_only",
+          "image_label_validation_status": "not_evaluated",
+          "note": "The check flags missing/unknown species labels and invalid record fields. It does not validate species identifications against held-out expert-reviewed images."
+        }
+      },
+      {
+        "step": 4,
+        "tool_name": "detect_duplicate_like_records",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Find duplicate-like records for Siberian tiger.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 0.266262,
+        "result": {
+          "species": "Siberian tiger",
+          "duplicate_groups_count": 80,
+          "duplicate_groups": [
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-05-04T16:18:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 202,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2024-02-01T17:04:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 69,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-01-02T14:52:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 18,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-06-15T14:00:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 4,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-01-29T05:41:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 3,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2024-04-28T13:16:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 2,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-04-16T18:01:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 2,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-10-06T15:09:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 2,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-04-03T11:15:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 2,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "timestamp": "2023-01-31T19:54:00Z",
+              "species": "siberian tiger",
+              "duplicate_count": 2,
+              "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+            }
+          ]
+        }
+      },
+      {
+        "step": 5,
+        "tool_name": "check_timestamp_quality",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Assess whether timestamps are reliable for temporal analyses.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 2.506055,
+        "result": {
+          "species": "Siberian tiger",
+          "total_records": 7745,
+          "valid_timestamp_records": 7745,
+          "invalid_timestamp_count": 0,
+          "observed_clock_time_ratio": 1.0,
+          "synthetic_clock_time_ratio": 0.0,
+          "timestamp_source_summary": {
+            "recordtime": 7745
+          },
+          "timestamp_source": "CamtrapDP tabular",
+          "reliability_status": "passed"
+        }
+      },
+      {
+        "step": 6,
+        "tool_name": "analyze_data_quality",
+        "args": {
+          "species": "Siberian tiger"
+        },
+        "input_args": {
+          "species": "Siberian tiger"
+        },
+        "filtered_args": [],
+        "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 3.554378,
+        "result": {
+          "missing_fields": {
+            "species": "Siberian tiger",
+            "total_records": 7745,
+            "field_completeness": [
+              {
+                "field": "camera_id",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "timestamp",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "latitude",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "longitude",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "species",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "individuals",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              }
+            ]
+          },
+          "invalid_timestamps": {
+            "species": "Siberian tiger",
+            "invalid_timestamp_count": 0,
+            "invalid_timestamp_records": [],
+            "suspicious_timestamp_count": 0,
+            "suspicious_timestamp_records": []
+          },
+          "label_noise": {
+            "species": "Siberian tiger",
+            "label_noise_count": 0,
+            "label_noise_records": [],
+            "check_scope": "record_schema_consistency_only",
+            "image_label_validation_status": "not_evaluated",
+            "note": "The check flags missing/unknown species labels and invalid record fields. It does not validate species identifications against held-out expert-reviewed images."
+          },
+          "camera_quality_top10": [
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 206,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 201,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.9757,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.9526,
+              "quality_score": 85.71,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 69,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 68,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.9855,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.9189,
+              "quality_score": 86.22,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 18,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 17,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.9444,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.7391,
+              "quality_score": 88.91,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 10,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 3,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.3,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.2,
+              "quality_score": 97.0,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 11,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 3,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.2727,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.1875,
+              "quality_score": 97.19,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 6,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 2,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.3333,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.1818,
+              "quality_score": 97.27,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 44,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 8,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.1818,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.1633,
+              "quality_score": 97.55,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 14,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 3,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.2143,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.1579,
+              "quality_score": 97.63,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 2,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 1,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.5,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.1429,
+              "quality_score": 97.86,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "total_records": 2,
+              "missing_behavior": 0,
+              "invalid_timestamp": 0,
+              "invalid_individuals": 0,
+              "duplicate_burden": 1,
+              "missing_behavior_ratio": 0.0,
+              "invalid_timestamp_ratio": 0.0,
+              "invalid_individuals_ratio": 0.0,
+              "duplicate_burden_ratio": 0.5,
+              "score_missing_behavior_ratio": 0.0,
+              "score_invalid_timestamp_ratio": 0.0,
+              "score_invalid_individuals_ratio": 0.0,
+              "score_duplicate_burden_ratio": 0.1429,
+              "quality_score": 97.86,
+              "quality_score_type": "heuristic",
+              "quality_score_prior_records": 5,
+              "quality_score_weights": {
+                "missing_behavior_ratio": 25,
+                "invalid_timestamp_ratio": 35,
+                "invalid_individuals_ratio": 25,
+                "duplicate_burden_ratio": 15
+              },
+              "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+            }
+          ],
+          "duplicate_burden_by_camera_top10": [
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 201
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 68
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 17
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 9
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 8
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 4
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 3
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 3
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 3
+            },
+            {
+              "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+              "duplicate_burden": 3
+            }
+          ]
+        }
+      }
+    ],
+    "replanning": {
+      "need_replan": false,
+      "new_tasks": [],
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "ff2e3c25a24c6cf3080663c13ea194c556c283d27f03dfd3c33c34f53eb53c2b",
+      "replanner_user_prompt_char_count": 58078,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "none",
+      "timestamp_reliability": {
+        "status": "passed",
+        "observed_clock_time_ratio": 1.0,
+        "synthetic_clock_time_ratio": 0.0,
+        "invalid_timestamp_count": 0,
+        "timestamp_source": "CamtrapDP tabular"
+      },
+      "event_independence": {
+        "status": "limited",
+        "min_gap_minutes": "not_applicable"
+      },
+      "event_count_sufficiency": {
+        "status": "not_applicable"
+      },
+      "overlap_analysis": {
+        "status": "not_applicable"
+      },
+      "visualization": "not_applicable",
+      "figure_count": 0,
+      "figure_outputs": [],
+      "failed_figures": [],
+      "reason": "Audit complete: no missing fields, no invalid timestamps, zero schema-level label noise, but 80 duplicate groups detected (largest group has 202 duplicates). Timestamp quality passed (reliability_status='passed'). Label noise check did not validate actual species identifications against expert images. Downstream temporal analyses (activity curves, seasonal patterns) are supported after building independent events with a min_gap_minutes argument to mitigate duplicates. Spatial distribution and hotspot analyses are supported because coordinates are complete. Species co-occurrence and community analyses are feasible after deduplication. Formal occupancy modeling is not supported without independently documented camera-operation effort, which was not verified. Full image-level species validation was not performed, so any analyses relying on absolute species ID accuracy are limited.",
+      "conservative_answer": true,
+      "reflection_mode": "llm_with_deterministic_consistency_check",
+      "consistency_check": {
+        "missing_fields": [],
+        "inconsistency_check": "passed",
+        "corrections": [],
+        "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+      },
+      "temporal_activity": {},
+      "termination_reason": "goal_satisfied",
+      "rounds": [
+        {
+          "round_index": 0,
+          "phase": "initial_plan",
+          "proposed_task_count": 6,
+          "accepted_tasks": [
+            {
+              "tool_name": "check_missing_fields",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Audit missing fields in Siberian tiger records."
+            },
+            {
+              "tool_name": "detect_invalid_timestamps",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Detect invalid timestamps in Siberian tiger records."
+            },
+            {
+              "tool_name": "detect_label_noise",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Detect possible label noise in Siberian tiger records."
+            },
+            {
+              "tool_name": "detect_duplicate_like_records",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Find duplicate-like records for Siberian tiger."
+            },
+            {
+              "tool_name": "check_timestamp_quality",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Assess whether timestamps are reliable for temporal analyses."
+            },
+            {
+              "tool_name": "analyze_data_quality",
+              "args": {
+                "species": "Siberian tiger"
+              },
+              "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses."
+            }
+          ],
+          "budget_truncated": false,
+          "execution_statuses": [
+            "success",
+            "success",
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "reflection": {
+            "need_replan": false,
+            "reason": "Audit complete: no missing fields, no invalid timestamps, zero schema-level label noise, but 80 duplicate groups detected (largest group has 202 duplicates). Timestamp quality passed (reliability_status='passed'). Label noise check did not validate actual species identifications against expert images. Downstream temporal analyses (activity curves, seasonal patterns) are supported after building independent events with a min_gap_minutes argument to mitigate duplicates. Spatial distribution and hotspot analyses are supported because coordinates are complete. Species co-occurrence and community analyses are feasible after deduplication. Formal occupancy modeling is not supported without independently documented camera-operation effort, which was not verified. Full image-level species validation was not performed, so any analyses relying on absolute species ID accuracy are limited.",
+            "conservative_answer": true,
+            "elapsed_seconds": 15.562352
+          }
+        }
+      ]
+    },
+    "synthesis": {
+      "synthesis_mode": "llm_synthesis",
+      "answer_guard": {
+        "planner_mode": "llm",
+        "target_species": "Siberian tiger",
+        "target_species_display": "Siberian tiger",
+        "local_empty": false,
+        "local_empty_summary": "",
+        "used_tools": [
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "check_timestamp_quality",
+          "analyze_data_quality"
+        ],
+        "must_not_expand_local_to_global": false,
+        "visual_outputs": [],
+        "temporal_visualization_has_synthetic_time": false
+      },
+      "compact_tool_results_used": [
+        {
+          "step": 1,
+          "tool_name": "check_missing_fields",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Audit missing fields in Siberian tiger records.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 21.578315,
+          "result": {
+            "species": "Siberian tiger",
+            "total_records": 7745,
+            "field_completeness": [
+              {
+                "field": "camera_id",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "timestamp",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "latitude",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "longitude",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "species",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              },
+              {
+                "field": "individuals",
+                "missing_count": 0,
+                "missing_ratio": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "tool_name": "detect_invalid_timestamps",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Detect invalid timestamps in Siberian tiger records.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 0.904233,
+          "result": {
+            "species": "Siberian tiger",
+            "invalid_timestamp_count": 0,
+            "invalid_timestamp_records": [],
+            "suspicious_timestamp_count": 0,
+            "suspicious_timestamp_records": []
+          }
+        },
+        {
+          "step": 3,
+          "tool_name": "detect_label_noise",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Detect possible label noise in Siberian tiger records.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 0.264129,
+          "result": {
+            "species": "Siberian tiger",
+            "label_noise_count": 0,
+            "label_noise_records": [],
+            "check_scope": "record_schema_consistency_only",
+            "image_label_validation_status": "not_evaluated",
+            "note": "The check flags missing/unknown species labels and invalid record fields. It does not validate species identifications against held-out expert-reviewed images."
+          }
+        },
+        {
+          "step": 4,
+          "tool_name": "detect_duplicate_like_records",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Find duplicate-like records for Siberian tiger.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 0.266262,
+          "result": {
+            "species": "Siberian tiger",
+            "duplicate_groups_count": 80,
+            "duplicate_groups": [
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-05-04T16:18:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 202,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2024-02-01T17:04:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 69,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-01-02T14:52:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 18,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-06-15T14:00:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 4,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-01-29T05:41:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 3,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2024-04-28T13:16:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 2,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-04-16T18:01:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 2,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-10-06T15:09:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 2,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-04-03T11:15:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 2,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "timestamp": "2023-01-31T19:54:00Z",
+                "species": "siberian tiger",
+                "duplicate_count": 2,
+                "record_ids": "[REDACTED_INTERNAL_IDENTIFIER]"
+              }
+            ]
+          }
+        },
+        {
+          "step": 5,
+          "tool_name": "check_timestamp_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Assess whether timestamps are reliable for temporal analyses.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 2.506055,
+          "result": {
+            "species": "Siberian tiger",
+            "total_records": 7745,
+            "valid_timestamp_records": 7745,
+            "invalid_timestamp_count": 0,
+            "observed_clock_time_ratio": 1.0,
+            "synthetic_clock_time_ratio": 0.0,
+            "timestamp_source_summary": {
+              "recordtime": 7745
+            },
+            "timestamp_source": "CamtrapDP tabular",
+            "reliability_status": "passed"
+          }
+        },
+        {
+          "step": 6,
+          "tool_name": "analyze_data_quality",
+          "args": {
+            "species": "Siberian tiger"
+          },
+          "input_args": {
+            "species": "Siberian tiger"
+          },
+          "filtered_args": [],
+          "reason": "Comprehensive data quality analysis to support interpretation of remaining ecological analyses.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 3.554378,
+          "result": {
+            "missing_fields": {
+              "species": "Siberian tiger",
+              "total_records": 7745,
+              "field_completeness": [
+                {
+                  "field": "camera_id",
+                  "missing_count": 0,
+                  "missing_ratio": 0.0
+                },
+                {
+                  "field": "timestamp",
+                  "missing_count": 0,
+                  "missing_ratio": 0.0
+                },
+                {
+                  "field": "latitude",
+                  "missing_count": 0,
+                  "missing_ratio": 0.0
+                },
+                {
+                  "field": "longitude",
+                  "missing_count": 0,
+                  "missing_ratio": 0.0
+                },
+                {
+                  "field": "species",
+                  "missing_count": 0,
+                  "missing_ratio": 0.0
+                },
+                {
+                  "field": "individuals",
+                  "missing_count": 0,
+                  "missing_ratio": 0.0
+                }
+              ]
+            },
+            "invalid_timestamps": {
+              "species": "Siberian tiger",
+              "invalid_timestamp_count": 0,
+              "invalid_timestamp_records": [],
+              "suspicious_timestamp_count": 0,
+              "suspicious_timestamp_records": []
+            },
+            "label_noise": {
+              "species": "Siberian tiger",
+              "label_noise_count": 0,
+              "label_noise_records": [],
+              "check_scope": "record_schema_consistency_only",
+              "image_label_validation_status": "not_evaluated",
+              "note": "The check flags missing/unknown species labels and invalid record fields. It does not validate species identifications against held-out expert-reviewed images."
+            },
+            "camera_quality_top10": [
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 206,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 201,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.9757,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.9526,
+                "quality_score": 85.71,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 69,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 68,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.9855,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.9189,
+                "quality_score": 86.22,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 18,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 17,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.9444,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.7391,
+                "quality_score": 88.91,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 10,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 3,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.3,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.2,
+                "quality_score": 97.0,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 11,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 3,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.2727,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.1875,
+                "quality_score": 97.19,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 6,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 2,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.3333,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.1818,
+                "quality_score": 97.27,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 44,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 8,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.1818,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.1633,
+                "quality_score": 97.55,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 14,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 3,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.2143,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.1579,
+                "quality_score": 97.63,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 2,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 1,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.5,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.1429,
+                "quality_score": 97.86,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "total_records": 2,
+                "missing_behavior": 0,
+                "invalid_timestamp": 0,
+                "invalid_individuals": 0,
+                "duplicate_burden": 1,
+                "missing_behavior_ratio": 0.0,
+                "invalid_timestamp_ratio": 0.0,
+                "invalid_individuals_ratio": 0.0,
+                "duplicate_burden_ratio": 0.5,
+                "score_missing_behavior_ratio": 0.0,
+                "score_invalid_timestamp_ratio": 0.0,
+                "score_invalid_individuals_ratio": 0.0,
+                "score_duplicate_burden_ratio": 0.1429,
+                "quality_score": 97.86,
+                "quality_score_type": "heuristic",
+                "quality_score_prior_records": 5,
+                "quality_score_weights": {
+                  "missing_behavior_ratio": 25,
+                  "invalid_timestamp_ratio": 35,
+                  "invalid_individuals_ratio": 25,
+                  "duplicate_burden_ratio": 15
+                },
+                "quality_score_note": "Evidence-adjusted heuristic engineering score; not a formal ecological data-quality metric."
+              }
+            ],
+            "duplicate_burden_by_camera_top10": [
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 201
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 68
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 17
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 9
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 8
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 4
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 3
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 3
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 3
+              },
+              {
+                "camera_id": "[REDACTED_SENSITIVE_LOCATION]",
+                "duplicate_burden": 3
+              }
+            ]
+          }
+        }
+      ],
+      "synthesis_input_evidence": {
+        "activity_pattern": {},
+        "pairwise_overlap": [],
+        "visualization": [],
+        "limitations": [
+          "Use only values present in tool execution or reflection.",
+          "Delta measures similarity in diel activity rhythm, not direct interaction.",
+          "A data-quality audit alone does not establish that formal occupancy modelling is supported; independent camera-operation effort must be confirmed by successful tool evidence.",
+          "Use relative paths only."
+        ],
+        "reflection": {
+          "need_replan": false,
+          "new_tasks": [],
+          "reason": "Audit complete: no missing fields, no invalid timestamps, zero schema-level label noise, but 80 duplicate groups detected (largest group has 202 duplicates). Timestamp quality passed (reliability_status='passed'). Label noise check did not validate actual species identifications against expert images. Downstream temporal analyses (activity curves, seasonal patterns) are supported after building independent events with a min_gap_minutes argument to mitigate duplicates. Spatial distribution and hotspot analyses are supported because coordinates are complete. Species co-occurrence and community analyses are feasible after deduplication. Formal occupancy modeling is not supported without independently documented camera-operation effort, which was not verified. Full image-level species validation was not performed, so any analyses relying on absolute species ID accuracy are limited.",
+          "data_quality": "limited",
+          "timestamp_reliability": {
+            "status": "passed",
+            "observed_clock_time_ratio": 1.0,
+            "synthetic_clock_time_ratio": 0.0,
+            "invalid_timestamp_count": 0,
+            "timestamp_source": "CamtrapDP tabular"
+          },
+          "event_independence": {
+            "status": "limited",
+            "min_gap_minutes": "not_applicable"
+          },
+          "event_count_sufficiency": {
+            "status": "not_applicable"
+          },
+          "overlap_analysis": {
+            "status": "not_applicable"
+          },
+          "spatial_data_sufficiency": {
+            "status": "sufficient"
+          },
+          "visualization": "not_applicable",
+          "conservative_answer": true,
+          "figure_count": 0,
+          "figure_outputs": [],
+          "failed_figures": [],
+          "_llm_outputs": {
+            "replanner_raw_response": "{\n  \"need_replan\": false,\n  \"new_tasks\": [],\n  \"reason\": \"Audit complete: no missing fields, no invalid timestamps, zero schema-level label noise, but 80 duplicate groups detected (largest group has 202 duplicates). Timestamp quality passed (reliability_status='passed'). Label noise check did not validate actual species identifications against expert images. Downstream temporal analyses (activity curves, seasonal patterns) are supported after building independent events with a min_gap_minutes argument to mitigate duplicates. Spatial distribution and hotspot analyses are supported because coordinates are complete. Species co-occurrence and community analyses are feasible after deduplication. Formal occupancy modeling is not supported without independently documented camera-operation effort, which was not verified. Full image-level species validation was not performed, so any analyses relying on absolute species ID accuracy are limited.\",\n  \"data_quality\": \"limited\",\n  \"timestamp_reliability\": {\"status\": \"passed\"},\n  \"event_independence\": {\"status\": \"limited\", \"min_gap_minutes\": \"not_applicable\"},\n  \"event_count_sufficiency\": {\"status\": \"not_applicable\"},\n  \"overlap_analysis\": {\"status\": \"not_applicable\"},\n  \"spatial_data_sufficiency\": {\"status\": \"sufficient\"},\n  \"visualization\": \"not_applicable\",\n  \"conservative_answer\": true\n}",
+            "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+            "replanner_user_prompt_sha256": "ff2e3c25a24c6cf3080663c13ea194c556c283d27f03dfd3c33c34f53eb53c2b",
+            "replanner_user_prompt_char_count": 58078,
+            "replanner_user_prompt_budget_chars": 60000,
+            "replanner_prompt_budget_fallback": "none"
+          },
+          "reflection_mode": "llm_with_deterministic_consistency_check",
+          "consistency_check": {
+            "missing_fields": [],
+            "inconsistency_check": "passed",
+            "corrections": [],
+            "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+          }
+        }
+      },
+      "answer_system_prompt_sha256": "e0fdc66b7d9eb9a0d1b3c34c9ce067b83af292b3c639a67ff83fc935d3b020dd",
+      "answer_user_prompt_sha256": "ad31cffc6ec5383ff2ffc4c5c7fa33ac8a6b00184ebcf00027916fc9ab62e87f",
+      "answer_user_prompt_char_count": 20545,
+      "answer_user_prompt_budget_chars": 40000,
+      "answer_prompt_budget_fallback": "none"
+    }
+  },
+  "final_answer": "**Audit Summary for Siberian Tiger Records**\n\n*   **Missing fields**: None. All 7,745 records have complete entries for camera_id, timestamp, latitude, longitude, species, and individuals (missing ratio = 0 for all fields).\n*   **Invalid timestamps**: None. Zero records with invalid or suspicious timestamps. All 7,745 timestamps originate from CamtrapDP tabular data (source: `recordtime`) and passed quality validation.\n*   **Possible label noise**: The schema-consistency check flagged zero records. However, this check assesses only invalid or missing species labels and record-field consistency; it does **not** include validation against held-out expert-reviewed images. Therefore, zero flagged records do not confirm zero species misidentifications or guarantee taxonomic accuracy of image labels.\n*   **Duplicate-like records**: 80 duplicate groups were detected. The most affected camera has 202 records sharing the same timestamp (2023-05-04T16:18:00Z), representing 97.6% of that camera’s 206 total Siberian tiger records. Other cameras show smaller but notable duplicate counts (69, 18, etc.). The overall duplicate burden is concentrated in a small number of cameras.\n*   **Camera-level quality scores**: The lowest heuristic engineering scores (e.g., 85.71, 86.22) are driven almost entirely by high duplicate-burden ratios. These are heuristic engineering scores, not standard ecological metrics. No missing-behavior, invalid-timestamp, or invalid-individuals issues were identified.\n\n**Implications for Downstream Ecological Analyses**\n\nThe data are free of missing fields and invalid timestamps, and the timestamp source is reliable. The most prominent quality concern is the presence of duplicate-like records—multiple records with identical camera and timestamp for the same species. These are likely burst sequences from a single camera event and, if used uncorrected, would inflate detection counts and skew frequency-based metrics.\n\n*   **Analyses that are supported after appropriate deduplication**: Presence/absence mapping, detection maps, hotspot rankings (based on presence), basic daily or seasonal activity patterns, and species co-occurrence (presence-based) can proceed if the duplicate-like records are first aggregated into independent events. The clean timestamp and location fields make these analyses feasible.\n*   **Analyses requiring caution**: Metrics that rely on raw record counts (e.g., relative abundance indices, raw detection frequencies) would be heavily biased by the duplicate burden and must be computed only after event-building. The high duplicate proportion at certain cameras means that uncorrected count data should not be used for any quantitative inference.\n*   **Analyses whose support cannot be confirmed from this audit alone**: Formal occupancy modelling requires independently documented camera-operation effort (deployment start/end per camera) in addition to deduplication. This audit did not verify camera-effort data, so it is not possible to state that occupancy modelling is supported. Likewise, the absence of expert image validation means species-identity-based analyses (e.g., fine-scale spatial associations, individual recognition) remain unverified.\n\nIn summary, the Siberian tiger records have no missing or timestamp issues, but the substantial duplicate burden necessitates event-based preprocessing. After deduplication, presence and temporal-pattern analyses are viable, while count-based metrics require cautious handling and occupancy modelling cannot be justified by this audit alone.",
+  "visualizations": [],
+  "trace_export": {
+    "detail": "public",
+    "raw_tool_results_included": false,
+    "raw_model_responses_included": false,
+    "sensitive_camera_locations_redacted": true
+  }
+}

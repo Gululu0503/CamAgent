@@ -1,0 +1,34 @@
+{
+  "profile": "https://raw.githubusercontent.com/tdwg/camtrap-dp/1.0.2/camtrap-dp-profile.json",
+  "name": "camagent-synthetic-review-example",
+  "id": "pkg_synthetic_review",
+  "created": "2026-01-01T00:00:00Z",
+  "title": "Synthetic CamAgent review example",
+  "description": "Invented records and coordinates for no-network software testing.",
+  "version": "1.0.2",
+  "licenses": [
+    {
+      "name": "CC0-1.0",
+      "scope": "data"
+    }
+  ],
+  "resources": [
+    {
+      "name": "deployments",
+      "path": "deployments.csv"
+    },
+    {
+      "name": "media",
+      "path": "media.csv"
+    },
+    {
+      "name": "observations",
+      "path": "observations.csv"
+    }
+  ],
+  "agentTimestampProvenance": {
+    "sourceTimezone": "UTC",
+    "storageTimezone": "UTC",
+    "naiveSourceTimesLocalizedBeforeUTCConversion": false
+  }
+}
