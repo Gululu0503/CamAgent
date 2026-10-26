@@ -1,0 +1,2447 @@
+{
+  "schema_version": "2.0",
+  "run_id": "3f73be1a-ccf5-4c3c-bf31-f56b868d224f",
+  "started_at_utc": "2026-07-28T19:33:18.390630+00:00",
+  "completed_at_utc": "2026-07-28T19:34:15.628533+00:00",
+  "duration_seconds": 57.237945,
+  "timing": {
+    "planning_seconds": 19.951673,
+    "tool_execution_seconds": 11.951443,
+    "answer_synthesis_seconds": 18.088471
+  },
+  "question": "Using the current camera-trap data, perform dataset-wide community inference across all eligible species rather than a hard-coded focal list. Estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, partition Sorensen beta diversity into turnover and nestedness-resultant components, construct a species-accumulation curve, and test conditional shared-camera associations with false-discovery-rate correction. If documented repeated-survey effort supports it, include multi-species detection-corrected occupancy; otherwise retain the complete detection-based community results. Return a publication-ready community figure.",
+  "experiment_id": "COMM",
+  "species": "Siberian tiger",
+  "plan": {
+    "species": "Siberian tiger",
+    "tasks": [
+      {
+        "tool_name": "infer_complete_community",
+        "args": {
+          "species_list": null,
+          "min_independent_events": 5,
+          "min_detected_cameras": 2,
+          "min_gap_minutes": 30,
+          "accumulation_permutations": 250,
+          "bootstrap_iters": 500,
+          "association_fdr_alpha": 0.05,
+          "max_beta_pairs": 100000,
+          "fit_detection_corrected_occupancy": true,
+          "occupancy_species_limit": null,
+          "occasion_days": 14,
+          "min_active_occasions": 2,
+          "occupancy_bootstrap_iters": 300,
+          "random_seed": 42
+        },
+        "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort."
+      },
+      {
+        "tool_name": "plot_complete_community_inference",
+        "args": {
+          "species_list": null,
+          "display_top_species": 12,
+          "min_independent_events": 5,
+          "min_detected_cameras": 2,
+          "min_gap_minutes": 30,
+          "accumulation_permutations": 250,
+          "bootstrap_iters": 500,
+          "association_fdr_alpha": 0.05,
+          "fit_detection_corrected_occupancy": true,
+          "occupancy_species_limit": null,
+          "occasion_days": 14,
+          "min_active_occasions": 2,
+          "occupancy_bootstrap_iters": 300,
+          "random_seed": 42,
+          "save_path": ""
+        },
+        "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes."
+      }
+    ],
+    "_llm_outputs": {
+      "planner_mode": "llm",
+      "planner_system_prompt_sha256": "83acff9758f8539922b1345ee735f55641c0888c1ba851704366ff9400b4dcad",
+      "planner_user_prompt_sha256": "407352a043b6bda475b0378ce038e2ed950c1d48dab28aff61e28bb588f6170b",
+      "planner_input_summary": {
+        "user_query": "Using the current camera-trap data, perform dataset-wide community inference across all eligible species rather than a hard-coded focal list. Estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, partition Sorensen beta diversity into turnover and nestedness-resultant components, construct a species-accumulation curve, and test conditional shared-camera associations with false-discovery-rate correction. If documented repeated-survey effort supports it, include multi-species detection-corrected occupancy; otherwise retain the complete detection-based community results. Return a publication-ready community figure.",
+        "available_tool_names": [
+          "build_independent_events",
+          "prepare_camera_trap_dataset",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "infer_complete_community",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "evaluate_perception_benchmark",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_complete_community_inference",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "63eca00627d90adda947d09cbcebcb40e7ecdd6d029ce392264d74b23f3f7f65",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ]
+    },
+    "_planner_validation": {
+      "phase": "initial_plan",
+      "plan_errors": [],
+      "invalid_tools": [],
+      "missing_args": [],
+      "invalid_args": [],
+      "filtered_args": [],
+      "action": "validated",
+      "validation_only": true,
+      "local_tool_rewrite": false,
+      "fallback_used": false
+    }
+  },
+  "selected_tools": [
+    "infer_complete_community",
+    "plot_complete_community_inference"
+  ],
+  "executed_results": [
+    {
+      "step": 1,
+      "tool_name": "infer_complete_community",
+      "args": {
+        "species_list": null,
+        "min_independent_events": 5,
+        "min_detected_cameras": 2,
+        "min_gap_minutes": 30,
+        "accumulation_permutations": 250,
+        "bootstrap_iters": 500,
+        "association_fdr_alpha": 0.05,
+        "max_beta_pairs": 100000,
+        "fit_detection_corrected_occupancy": true,
+        "occupancy_species_limit": null,
+        "occasion_days": 14,
+        "min_active_occasions": 2,
+        "occupancy_bootstrap_iters": 300,
+        "random_seed": 42
+      },
+      "input_args": {
+        "species_list": null,
+        "min_independent_events": 5,
+        "min_detected_cameras": 2,
+        "min_gap_minutes": 30,
+        "accumulation_permutations": 250,
+        "bootstrap_iters": 500,
+        "association_fdr_alpha": 0.05,
+        "max_beta_pairs": 100000,
+        "fit_detection_corrected_occupancy": true,
+        "occupancy_species_limit": null,
+        "occasion_days": 14,
+        "min_active_occasions": 2,
+        "occupancy_bootstrap_iters": 300,
+        "random_seed": 42
+      },
+      "filtered_args": [],
+      "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 5.814192,
+      "result": {
+        "status": "success",
+        "analysis_scope": "dataset_wide_eligible_species",
+        "community_inference_status": "complete_diversity_and_conditional_association",
+        "source_species_count": 5,
+        "eligible_species_count": 5,
+        "analysed_species_count": 5,
+        "camera_count": 17129,
+        "independent_event_count": 870752,
+        "gamma_diversity": {
+          "observed_richness": 5,
+          "singleton_species_q1": 0,
+          "doubleton_species_q2": 0,
+          "chao2_richness": 5.0,
+          "q0_richness": 5.0,
+          "q1_exponential_shannon": 2.210042,
+          "q2_inverse_simpson": 2.022964,
+          "shannon_entropy": 0.793011,
+          "simpson_concentration": 0.494324,
+          "bootstrap_intervals": {
+            "observed_richness": {
+              "ci_low": 5.0,
+              "ci_high": 5.0
+            },
+            "chao2_richness": {
+              "ci_low": 5.0,
+              "ci_high": 5.0
+            },
+            "q1_exponential_shannon": {
+              "ci_low": 2.198051,
+              "ci_high": 2.222344
+            },
+            "q2_inverse_simpson": {
+              "ci_low": 2.008256,
+              "ci_high": 2.036573
+            }
+          }
+        },
+        "alpha_diversity": {
+          "camera_count": 17129,
+          "mean_species_richness": 2.238718,
+          "median_species_richness": 2.0,
+          "mean_hill_q1": 1.684294,
+          "mean_hill_q2": 1.535668
+        },
+        "beta_diversity": {
+          "camera_pair_count": 100000,
+          "pair_sampling": "reproducible_random_pairs",
+          "mean_jaccard_dissimilarity": 0.320228,
+          "median_jaccard_dissimilarity": 0.333333,
+          "mean_bray_curtis_dissimilarity": 0.633974,
+          "median_bray_curtis_dissimilarity": 0.675676,
+          "mean_sorensen_dissimilarity": 0.22122,
+          "mean_turnover_component": 0.040493,
+          "mean_nestedness_component": 0.180728,
+          "partition_identity": "Sørensen dissimilarity = turnover + nestedness-resultant dissimilarity"
+        },
+        "species_summary": [
+          {
+            "species": "Roe deer",
+            "independent_event_count": 505386,
+            "detected_camera_count": 16395,
+            "camera_detection_frequency": 0.957149
+          },
+          {
+            "species": "Sika deer",
+            "independent_event_count": 345300,
+            "detected_camera_count": 15013,
+            "camera_detection_frequency": 0.876467
+          },
+          {
+            "species": "Amur leopard",
+            "independent_event_count": 9882,
+            "detected_camera_count": 2556,
+            "camera_detection_frequency": 0.149221
+          },
+          {
+            "species": "Siberian tiger",
+            "independent_event_count": 6570,
+            "detected_camera_count": 1845,
+            "camera_detection_frequency": 0.107712
+          },
+          {
+            "species": "Black bear",
+            "independent_event_count": 3614,
+            "detected_camera_count": 2538,
+            "camera_detection_frequency": 0.14817
+          }
+        ],
+        "significant_conditional_associations": [
+          {
+            "species_a": "Amur leopard",
+            "species_b": "Siberian tiger",
+            "camera_count_a": 2556,
+            "camera_count_b": 1845,
+            "shared_camera_count": 747,
+            "expected_shared_camera_count": 275.312044,
+            "standardized_effect_size": 32.626352,
+            "p_two_sided": 7.129830985529e-182,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Amur leopard",
+            "species_b": "Black bear",
+            "camera_count_a": 2556,
+            "camera_count_b": 2538,
+            "shared_camera_count": 725,
+            "expected_shared_camera_count": 378.721934,
+            "standardized_effect_size": 20.901,
+            "p_two_sided": 1.7382975987827046e-83,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Black bear",
+            "camera_count_a": 1845,
+            "camera_count_b": 2538,
+            "shared_camera_count": 534,
+            "expected_shared_camera_count": 273.373227,
+            "standardized_effect_size": 18.080037,
+            "p_two_sided": 8.183541616495879e-62,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Sika deer",
+            "species_b": "Black bear",
+            "camera_count_a": 15013,
+            "camera_count_b": 2538,
+            "shared_camera_count": 2439,
+            "expected_shared_camera_count": 2224.472765,
+            "standardized_effect_size": 14.021286,
+            "p_two_sided": 9.34764500115952e-56,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Sika deer",
+            "species_b": "Siberian tiger",
+            "camera_count_a": 15013,
+            "camera_count_b": 1845,
+            "shared_camera_count": 1791,
+            "expected_shared_camera_count": 1617.081266,
+            "standardized_effect_size": 13.026371,
+            "p_two_sided": 3.88163409018118e-51,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Sika deer",
+            "species_b": "Amur leopard",
+            "camera_count_a": 15013,
+            "camera_count_b": 2556,
+            "shared_camera_count": 2411,
+            "expected_shared_camera_count": 2240.249168,
+            "standardized_effect_size": 11.127605,
+            "p_two_sided": 1.763245092139681e-33,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Black bear",
+            "camera_count_a": 16395,
+            "camera_count_b": 2538,
+            "shared_camera_count": 2489,
+            "expected_shared_camera_count": 2429.243388,
+            "standardized_effect_size": 6.345695,
+            "p_two_sided": 5.412403712363993e-12,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Sika deer",
+            "camera_count_a": 16395,
+            "camera_count_b": 15013,
+            "shared_camera_count": 14335,
+            "expected_shared_camera_count": 14369.673361,
+            "standardized_effect_size": -3.975447,
+            "p_two_sided": 3.34257101064649e-05,
+            "direction": "negative",
+            "fdr_q_value": 4.2e-05,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Siberian tiger",
+            "camera_count_a": 16395,
+            "camera_count_b": 1845,
+            "shared_camera_count": 1797,
+            "expected_shared_camera_count": 1765.939343,
+            "standardized_effect_size": 3.779858,
+            "p_two_sided": 7.873796534791225e-05,
+            "direction": "positive",
+            "fdr_q_value": 8.7e-05,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Amur leopard",
+            "camera_count_a": 16395,
+            "camera_count_b": 2556,
+            "shared_camera_count": 2470,
+            "expected_shared_camera_count": 2446.472065,
+            "standardized_effect_size": 2.491211,
+            "p_two_sided": 0.012387130510268764,
+            "direction": "positive",
+            "fdr_q_value": 0.012387,
+            "fdr_significant": true
+          }
+        ],
+        "detection_corrected_occupancy_species_count": 0,
+        "occupancy_effort_basis": "detection_span_proxy",
+        "figures": [],
+        "interpretation": "The community result uses every species meeting prespecified event and camera thresholds, not a hard-coded focal list. Shared-camera tests condition on marginal detection frequencies; detection-corrected occupancy is added when documented repeated-survey effort is available in CamtrapDP."
+      }
+    },
+    {
+      "step": 2,
+      "tool_name": "plot_complete_community_inference",
+      "args": {
+        "species_list": null,
+        "display_top_species": 12,
+        "min_independent_events": 5,
+        "min_detected_cameras": 2,
+        "min_gap_minutes": 30,
+        "accumulation_permutations": 250,
+        "bootstrap_iters": 500,
+        "association_fdr_alpha": 0.05,
+        "fit_detection_corrected_occupancy": true,
+        "occupancy_species_limit": null,
+        "occasion_days": 14,
+        "min_active_occasions": 2,
+        "occupancy_bootstrap_iters": 300,
+        "random_seed": 42,
+        "save_path": ""
+      },
+      "input_args": {
+        "species_list": null,
+        "display_top_species": 12,
+        "min_independent_events": 5,
+        "min_detected_cameras": 2,
+        "min_gap_minutes": 30,
+        "accumulation_permutations": 250,
+        "bootstrap_iters": 500,
+        "association_fdr_alpha": 0.05,
+        "fit_detection_corrected_occupancy": true,
+        "occupancy_species_limit": null,
+        "occasion_days": 14,
+        "min_active_occasions": 2,
+        "occupancy_bootstrap_iters": 300,
+        "random_seed": 42,
+        "save_path": ""
+      },
+      "filtered_args": [],
+      "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes.",
+      "status": "success",
+      "round_index": 0,
+      "attempt_index": 1,
+      "duration_seconds": 6.137175,
+      "result": {
+        "status": "success",
+        "analysis_scope": "dataset_wide_eligible_species",
+        "community_inference_status": "complete_diversity_and_conditional_association",
+        "source_species_count": 5,
+        "eligible_species_count": 5,
+        "analysed_species_count": 5,
+        "camera_count": 17129,
+        "independent_event_count": 870752,
+        "gamma_diversity": {
+          "observed_richness": 5,
+          "singleton_species_q1": 0,
+          "doubleton_species_q2": 0,
+          "chao2_richness": 5.0,
+          "q0_richness": 5.0,
+          "q1_exponential_shannon": 2.210042,
+          "q2_inverse_simpson": 2.022964,
+          "shannon_entropy": 0.793011,
+          "simpson_concentration": 0.494324,
+          "bootstrap_intervals": {
+            "observed_richness": {
+              "ci_low": 5.0,
+              "ci_high": 5.0
+            },
+            "chao2_richness": {
+              "ci_low": 5.0,
+              "ci_high": 5.0
+            },
+            "q1_exponential_shannon": {
+              "ci_low": 2.198051,
+              "ci_high": 2.222344
+            },
+            "q2_inverse_simpson": {
+              "ci_low": 2.008256,
+              "ci_high": 2.036573
+            }
+          }
+        },
+        "alpha_diversity": {
+          "camera_count": 17129,
+          "mean_species_richness": 2.238718,
+          "median_species_richness": 2.0,
+          "mean_hill_q1": 1.684294,
+          "mean_hill_q2": 1.535668
+        },
+        "beta_diversity": {
+          "camera_pair_count": 100000,
+          "pair_sampling": "reproducible_random_pairs",
+          "mean_jaccard_dissimilarity": 0.320228,
+          "median_jaccard_dissimilarity": 0.333333,
+          "mean_bray_curtis_dissimilarity": 0.633974,
+          "median_bray_curtis_dissimilarity": 0.675676,
+          "mean_sorensen_dissimilarity": 0.22122,
+          "mean_turnover_component": 0.040493,
+          "mean_nestedness_component": 0.180728,
+          "partition_identity": "Sørensen dissimilarity = turnover + nestedness-resultant dissimilarity"
+        },
+        "species_summary": [
+          {
+            "species": "Roe deer",
+            "independent_event_count": 505386,
+            "detected_camera_count": 16395,
+            "camera_detection_frequency": 0.957149
+          },
+          {
+            "species": "Sika deer",
+            "independent_event_count": 345300,
+            "detected_camera_count": 15013,
+            "camera_detection_frequency": 0.876467
+          },
+          {
+            "species": "Amur leopard",
+            "independent_event_count": 9882,
+            "detected_camera_count": 2556,
+            "camera_detection_frequency": 0.149221
+          },
+          {
+            "species": "Siberian tiger",
+            "independent_event_count": 6570,
+            "detected_camera_count": 1845,
+            "camera_detection_frequency": 0.107712
+          },
+          {
+            "species": "Black bear",
+            "independent_event_count": 3614,
+            "detected_camera_count": 2538,
+            "camera_detection_frequency": 0.14817
+          }
+        ],
+        "significant_conditional_associations": [
+          {
+            "species_a": "Amur leopard",
+            "species_b": "Siberian tiger",
+            "camera_count_a": 2556,
+            "camera_count_b": 1845,
+            "shared_camera_count": 747,
+            "expected_shared_camera_count": 275.312044,
+            "standardized_effect_size": 32.626352,
+            "p_two_sided": 7.129830985529e-182,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Amur leopard",
+            "species_b": "Black bear",
+            "camera_count_a": 2556,
+            "camera_count_b": 2538,
+            "shared_camera_count": 725,
+            "expected_shared_camera_count": 378.721934,
+            "standardized_effect_size": 20.901,
+            "p_two_sided": 1.7382975987827046e-83,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Siberian tiger",
+            "species_b": "Black bear",
+            "camera_count_a": 1845,
+            "camera_count_b": 2538,
+            "shared_camera_count": 534,
+            "expected_shared_camera_count": 273.373227,
+            "standardized_effect_size": 18.080037,
+            "p_two_sided": 8.183541616495879e-62,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Sika deer",
+            "species_b": "Black bear",
+            "camera_count_a": 15013,
+            "camera_count_b": 2538,
+            "shared_camera_count": 2439,
+            "expected_shared_camera_count": 2224.472765,
+            "standardized_effect_size": 14.021286,
+            "p_two_sided": 9.34764500115952e-56,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Sika deer",
+            "species_b": "Siberian tiger",
+            "camera_count_a": 15013,
+            "camera_count_b": 1845,
+            "shared_camera_count": 1791,
+            "expected_shared_camera_count": 1617.081266,
+            "standardized_effect_size": 13.026371,
+            "p_two_sided": 3.88163409018118e-51,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Sika deer",
+            "species_b": "Amur leopard",
+            "camera_count_a": 15013,
+            "camera_count_b": 2556,
+            "shared_camera_count": 2411,
+            "expected_shared_camera_count": 2240.249168,
+            "standardized_effect_size": 11.127605,
+            "p_two_sided": 1.763245092139681e-33,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Black bear",
+            "camera_count_a": 16395,
+            "camera_count_b": 2538,
+            "shared_camera_count": 2489,
+            "expected_shared_camera_count": 2429.243388,
+            "standardized_effect_size": 6.345695,
+            "p_two_sided": 5.412403712363993e-12,
+            "direction": "positive",
+            "fdr_q_value": 0.0,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Sika deer",
+            "camera_count_a": 16395,
+            "camera_count_b": 15013,
+            "shared_camera_count": 14335,
+            "expected_shared_camera_count": 14369.673361,
+            "standardized_effect_size": -3.975447,
+            "p_two_sided": 3.34257101064649e-05,
+            "direction": "negative",
+            "fdr_q_value": 4.2e-05,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Siberian tiger",
+            "camera_count_a": 16395,
+            "camera_count_b": 1845,
+            "shared_camera_count": 1797,
+            "expected_shared_camera_count": 1765.939343,
+            "standardized_effect_size": 3.779858,
+            "p_two_sided": 7.873796534791225e-05,
+            "direction": "positive",
+            "fdr_q_value": 8.7e-05,
+            "fdr_significant": true
+          },
+          {
+            "species_a": "Roe deer",
+            "species_b": "Amur leopard",
+            "camera_count_a": 16395,
+            "camera_count_b": 2556,
+            "shared_camera_count": 2470,
+            "expected_shared_camera_count": 2446.472065,
+            "standardized_effect_size": 2.491211,
+            "p_two_sided": 0.012387130510268764,
+            "direction": "positive",
+            "fdr_q_value": 0.012387,
+            "fdr_significant": true
+          }
+        ],
+        "detection_corrected_occupancy_species_count": 0,
+        "occupancy_effort_basis": "detection_span_proxy",
+        "figures": [
+          {
+            "figure_id": "complete_community_inference",
+            "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+            "svg_path": "outputs/complete_community_inference.svg",
+            "pdf_path": "outputs/complete_community_inference.pdf"
+          }
+        ],
+        "interpretation": "The community result uses every species meeting prespecified event and camera thresholds, not a hard-coded focal list. Shared-camera tests condition on marginal detection frequencies; detection-corrected occupancy is added when documented repeated-survey effort is available in CamtrapDP."
+      }
+    }
+  ],
+  "replan": {
+    "need_replan": false,
+    "new_tasks": [],
+    "reason": "All requested community inference tasks completed successfully: observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction. Detection-corrected occupancy was not fitted because documented repeated-survey deployment effort was not available in CamtrapDP, matching the user's conditional requirement. A publication-ready community figure was generated at outputs/complete_community_inference.svg and .pdf.",
+    "data_quality": "sufficient",
+    "timestamp_reliability": {
+      "status": "not_applicable",
+      "min_gap_minutes": "not_applicable"
+    },
+    "event_independence": {
+      "status": "applied",
+      "min_gap_minutes": 30
+    },
+    "event_count_sufficiency": {
+      "status": "passed"
+    },
+    "overlap_analysis": {
+      "status": "not_applicable"
+    },
+    "spatial_data_sufficiency": {
+      "status": "sufficient"
+    },
+    "visualization": "generated",
+    "conservative_answer": false,
+    "figure_count": 1,
+    "figure_outputs": [
+      {
+        "figure_id": "complete_community_inference",
+        "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+        "tool_name": "plot_complete_community_inference",
+        "svg_path": "outputs/complete_community_inference.svg",
+        "pdf_path": "outputs/complete_community_inference.pdf"
+      }
+    ],
+    "failed_figures": [],
+    "_llm_outputs": {
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "9d58d5147aeef20992cceeca4facd85f1a038b66d0e2676e49c597a8297daf85",
+      "replanner_user_prompt_char_count": 53487,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "tool_names_and_execution_summaries"
+    },
+    "reflection_mode": "llm_with_deterministic_consistency_check",
+    "consistency_check": {
+      "missing_fields": [],
+      "inconsistency_check": "passed",
+      "corrections": [],
+      "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+    }
+  },
+  "autonomy": {
+    "loop": "plan-act-observe-reflect",
+    "policy": {
+      "max_replan_rounds": 2,
+      "max_tool_calls": 32,
+      "max_tool_retries": 1,
+      "stop_on_repeated_plan": true
+    },
+    "goal_status": "completed",
+    "termination_reason": "goal_satisfied",
+    "round_count": 1,
+    "reflection_count": 1,
+    "tool_call_count": 2,
+    "successful_tool_call_count": 2,
+    "failed_tool_call_count": 0,
+    "retry_call_count": 0,
+    "recovered_failure_count": 0,
+    "unrecovered_failure_count": 0,
+    "rounds": [
+      {
+        "round_index": 0,
+        "phase": "initial_plan",
+        "proposed_task_count": 2,
+        "accepted_tasks": [
+          {
+            "tool_name": "infer_complete_community",
+            "args": {
+              "species_list": null,
+              "min_independent_events": 5,
+              "min_detected_cameras": 2,
+              "min_gap_minutes": 30,
+              "accumulation_permutations": 250,
+              "bootstrap_iters": 500,
+              "association_fdr_alpha": 0.05,
+              "max_beta_pairs": 100000,
+              "fit_detection_corrected_occupancy": true,
+              "occupancy_species_limit": null,
+              "occasion_days": 14,
+              "min_active_occasions": 2,
+              "occupancy_bootstrap_iters": 300,
+              "random_seed": 42
+            },
+            "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort."
+          },
+          {
+            "tool_name": "plot_complete_community_inference",
+            "args": {
+              "species_list": null,
+              "display_top_species": 12,
+              "min_independent_events": 5,
+              "min_detected_cameras": 2,
+              "min_gap_minutes": 30,
+              "accumulation_permutations": 250,
+              "bootstrap_iters": 500,
+              "association_fdr_alpha": 0.05,
+              "fit_detection_corrected_occupancy": true,
+              "occupancy_species_limit": null,
+              "occasion_days": 14,
+              "min_active_occasions": 2,
+              "occupancy_bootstrap_iters": 300,
+              "random_seed": 42,
+              "save_path": ""
+            },
+            "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes."
+          }
+        ],
+        "budget_truncated": false,
+        "execution_statuses": [
+          "success",
+          "success"
+        ],
+        "reflection": {
+          "need_replan": false,
+          "reason": "All requested community inference tasks completed successfully: observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction. Detection-corrected occupancy was not fitted because documented repeated-survey deployment effort was not available in CamtrapDP, matching the user's conditional requirement. A publication-ready community figure was generated at outputs/complete_community_inference.svg and .pdf.",
+          "conservative_answer": false,
+          "elapsed_seconds": 7.243859
+        }
+      }
+    ]
+  },
+  "runtime": {
+    "client_class": "ChatOpenAI",
+    "model": "deepseek-v4-flash",
+    "deployment": null,
+    "temperature": 0.0
+  },
+  "trace": {
+    "planning": {
+      "planner_mode": "llm",
+      "target_species": "Siberian tiger",
+      "planner_input_summary": {
+        "user_query": "Using the current camera-trap data, perform dataset-wide community inference across all eligible species rather than a hard-coded focal list. Estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, partition Sorensen beta diversity into turnover and nestedness-resultant components, construct a species-accumulation curve, and test conditional shared-camera associations with false-discovery-rate correction. If documented repeated-survey effort supports it, include multi-species detection-corrected occupancy; otherwise retain the complete detection-based community results. Return a publication-ready community figure.",
+        "available_tool_names": [
+          "build_independent_events",
+          "prepare_camera_trap_dataset",
+          "run_ecology_figure_suite",
+          "summarize_species_inventory",
+          "summarize_community_composition",
+          "analyze_community_ecology",
+          "infer_complete_community",
+          "export_camtrap_dp",
+          "export_media_by_species",
+          "filter_records",
+          "browse_records",
+          "evidence_lookup",
+          "run_detection_pipeline",
+          "evaluate_perception_benchmark",
+          "build_detection_map",
+          "build_hotspot_rank",
+          "build_occupancy_summary",
+          "build_detection_history_matrix",
+          "fit_single_season_occupancy_model",
+          "build_local_hotspot_rank",
+          "summarize_species_by_camera",
+          "build_camera_species_richness",
+          "build_species_cooccurrence_matrix",
+          "analyze_species_pair_relationship",
+          "summarize_species_relationship_network",
+          "analyze_spatial_distribution",
+          "check_timestamp_quality",
+          "build_hourly_activity_distribution",
+          "detect_activity_peaks",
+          "compute_hourly_relative_frequency",
+          "compare_multi_species_hourly_activity",
+          "build_species_activity_guilds",
+          "circular_time_summary",
+          "compare_day_vs_night_activity",
+          "estimate_activity_overlap",
+          "estimate_pairwise_activity_overlap",
+          "estimate_hourly_activity_curve_with_ci",
+          "build_hourly_activity_figure_data",
+          "build_monthly_activity_distribution",
+          "detect_monthly_activity_peaks",
+          "compare_seasonal_activity",
+          "build_weekday_activity_distribution",
+          "analyze_temporal_activity_pattern",
+          "analyze_camera_data_quality",
+          "check_missing_fields",
+          "detect_invalid_timestamps",
+          "detect_label_noise",
+          "detect_duplicate_like_records",
+          "summarize_camera_record_volume",
+          "summarize_duplicate_burden_by_camera",
+          "analyze_data_quality",
+          "analyze_movement_steps",
+          "summarize_movement_distance",
+          "summarize_movement_direction",
+          "infer_transition_corridors",
+          "infer_longest_transition_steps",
+          "analyze_animal_movement_pattern",
+          "plot_species_distribution_map",
+          "plot_local_hotspot_map",
+          "plot_effort_corrected_hotspot_map",
+          "plot_predator_prey_encounter_index_map",
+          "plot_multi_species_ecology_map",
+          "plot_monthly_activity_bar",
+          "plot_hourly_activity_curve",
+          "plot_activity_overlap_panel",
+          "plot_pairwise_activity_overlap_panels",
+          "plot_pairwise_temporal_overlap",
+          "plot_activity_overlap_triptych",
+          "plot_multi_species_occupancy_forest",
+          "plot_species_inventory_bar",
+          "plot_camera_species_richness_bar",
+          "plot_species_cooccurrence_heatmap",
+          "plot_species_relationship_network",
+          "plot_community_overview_panel",
+          "plot_species_pair_relationship_panel",
+          "plot_multi_species_hourly_activity",
+          "plot_species_rank_abundance_curve",
+          "plot_multi_species_monthly_phenology",
+          "plot_camera_alpha_diversity_panel",
+          "plot_species_accumulation_curve",
+          "plot_species_rai_heatmap",
+          "plot_temporal_overlap_matrix",
+          "plot_community_spatial_association_panel",
+          "plot_complete_community_inference",
+          "plot_transition_corridor_map",
+          "plot_weekday_activity_bar",
+          "plot_seasonal_activity_bar",
+          "plot_hotspot_rank_bar",
+          "plot_movement_direction_bar",
+          "plot_movement_distance_hist",
+          "plot_hotspot_rank_barh",
+          "plot_camera_quality_problem_barh",
+          "plot_species_distribution_static",
+          "plot_local_hotspot_static",
+          "plot_detection_history_heatmap",
+          "plot_occupancy_model_forest",
+          "plot_occupancy_bootstrap_density"
+        ],
+        "species_alias_rules": "Common and scientific aliases are normalized for focal species display; tool choice remains the LLM planner's decision.",
+        "output_schema": "JSON object with species and tasks; each task has tool_name, args, and reason.",
+        "constraints": [
+          "the LLM planner alone chooses tools",
+          "use only registered tools",
+          "do not invent unsupported args",
+          "return a complete dependency-ordered JSON plan",
+          "respect explicit user constraints and scientific boundaries"
+        ]
+      },
+      "planner_system_prompt_sha256": "83acff9758f8539922b1345ee735f55641c0888c1ba851704366ff9400b4dcad",
+      "planner_user_prompt_sha256": "407352a043b6bda475b0378ce038e2ed950c1d48dab28aff61e28bb588f6170b",
+      "planner_attempt_count": 1,
+      "planner_attempts": [
+        {
+          "attempt_index": 0,
+          "raw_response_sha256": "63eca00627d90adda947d09cbcebcb40e7ecdd6d029ce392264d74b23f3f7f65",
+          "validation": {
+            "phase": "initial_plan",
+            "plan_errors": [],
+            "invalid_tools": [],
+            "missing_args": [],
+            "invalid_args": [],
+            "filtered_args": [],
+            "action": "validated",
+            "validation_only": true,
+            "local_tool_rewrite": false,
+            "fallback_used": false
+          }
+        }
+      ],
+      "initial_normalized_tasks": [
+        {
+          "tool_name": "infer_complete_community",
+          "args": {
+            "species_list": null,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "max_beta_pairs": 100000,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42
+          },
+          "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort."
+        },
+        {
+          "tool_name": "plot_complete_community_inference",
+          "args": {
+            "species_list": null,
+            "display_top_species": 12,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42,
+            "save_path": ""
+          },
+          "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes."
+        }
+      ],
+      "normalized_tasks": [
+        {
+          "tool_name": "infer_complete_community",
+          "args": {
+            "species_list": null,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "max_beta_pairs": 100000,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42
+          },
+          "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort."
+        },
+        {
+          "tool_name": "plot_complete_community_inference",
+          "args": {
+            "species_list": null,
+            "display_top_species": 12,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42,
+            "save_path": ""
+          },
+          "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes."
+        }
+      ],
+      "planner_validation": {
+        "phase": "initial_plan",
+        "plan_errors": [],
+        "invalid_tools": [],
+        "missing_args": [],
+        "invalid_args": [],
+        "filtered_args": [],
+        "action": "validated",
+        "validation_only": true,
+        "local_tool_rewrite": false,
+        "fallback_used": false
+      }
+    },
+    "execution": [
+      {
+        "step": 1,
+        "tool_name": "infer_complete_community",
+        "args": {
+          "species_list": null,
+          "min_independent_events": 5,
+          "min_detected_cameras": 2,
+          "min_gap_minutes": 30,
+          "accumulation_permutations": 250,
+          "bootstrap_iters": 500,
+          "association_fdr_alpha": 0.05,
+          "max_beta_pairs": 100000,
+          "fit_detection_corrected_occupancy": true,
+          "occupancy_species_limit": null,
+          "occasion_days": 14,
+          "min_active_occasions": 2,
+          "occupancy_bootstrap_iters": 300,
+          "random_seed": 42
+        },
+        "input_args": {
+          "species_list": null,
+          "min_independent_events": 5,
+          "min_detected_cameras": 2,
+          "min_gap_minutes": 30,
+          "accumulation_permutations": 250,
+          "bootstrap_iters": 500,
+          "association_fdr_alpha": 0.05,
+          "max_beta_pairs": 100000,
+          "fit_detection_corrected_occupancy": true,
+          "occupancy_species_limit": null,
+          "occasion_days": 14,
+          "min_active_occasions": 2,
+          "occupancy_bootstrap_iters": 300,
+          "random_seed": 42
+        },
+        "filtered_args": [],
+        "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 5.814192,
+        "result": {
+          "status": "success",
+          "analysis_scope": "dataset_wide_eligible_species",
+          "community_inference_status": "complete_diversity_and_conditional_association",
+          "source_species_count": 5,
+          "eligible_species_count": 5,
+          "analysed_species_count": 5,
+          "camera_count": 17129,
+          "independent_event_count": 870752,
+          "gamma_diversity": {
+            "observed_richness": 5,
+            "singleton_species_q1": 0,
+            "doubleton_species_q2": 0,
+            "chao2_richness": 5.0,
+            "q0_richness": 5.0,
+            "q1_exponential_shannon": 2.210042,
+            "q2_inverse_simpson": 2.022964,
+            "shannon_entropy": 0.793011,
+            "simpson_concentration": 0.494324,
+            "bootstrap_intervals": {
+              "observed_richness": {
+                "ci_low": 5.0,
+                "ci_high": 5.0
+              },
+              "chao2_richness": {
+                "ci_low": 5.0,
+                "ci_high": 5.0
+              },
+              "q1_exponential_shannon": {
+                "ci_low": 2.198051,
+                "ci_high": 2.222344
+              },
+              "q2_inverse_simpson": {
+                "ci_low": 2.008256,
+                "ci_high": 2.036573
+              }
+            }
+          },
+          "alpha_diversity": {
+            "camera_count": 17129,
+            "mean_species_richness": 2.238718,
+            "median_species_richness": 2.0,
+            "mean_hill_q1": 1.684294,
+            "mean_hill_q2": 1.535668
+          },
+          "beta_diversity": {
+            "camera_pair_count": 100000,
+            "pair_sampling": "reproducible_random_pairs",
+            "mean_jaccard_dissimilarity": 0.320228,
+            "median_jaccard_dissimilarity": 0.333333,
+            "mean_bray_curtis_dissimilarity": 0.633974,
+            "median_bray_curtis_dissimilarity": 0.675676,
+            "mean_sorensen_dissimilarity": 0.22122,
+            "mean_turnover_component": 0.040493,
+            "mean_nestedness_component": 0.180728,
+            "partition_identity": "Sørensen dissimilarity = turnover + nestedness-resultant dissimilarity"
+          },
+          "species_summary": [
+            {
+              "species": "Roe deer",
+              "independent_event_count": 505386,
+              "detected_camera_count": 16395,
+              "camera_detection_frequency": 0.957149
+            },
+            {
+              "species": "Sika deer",
+              "independent_event_count": 345300,
+              "detected_camera_count": 15013,
+              "camera_detection_frequency": 0.876467
+            },
+            {
+              "species": "Amur leopard",
+              "independent_event_count": 9882,
+              "detected_camera_count": 2556,
+              "camera_detection_frequency": 0.149221
+            },
+            {
+              "species": "Siberian tiger",
+              "independent_event_count": 6570,
+              "detected_camera_count": 1845,
+              "camera_detection_frequency": 0.107712
+            },
+            {
+              "species": "Black bear",
+              "independent_event_count": 3614,
+              "detected_camera_count": 2538,
+              "camera_detection_frequency": 0.14817
+            }
+          ],
+          "significant_conditional_associations": [
+            {
+              "species_a": "Amur leopard",
+              "species_b": "Siberian tiger",
+              "camera_count_a": 2556,
+              "camera_count_b": 1845,
+              "shared_camera_count": 747,
+              "expected_shared_camera_count": 275.312044,
+              "standardized_effect_size": 32.626352,
+              "p_two_sided": 7.129830985529e-182,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Amur leopard",
+              "species_b": "Black bear",
+              "camera_count_a": 2556,
+              "camera_count_b": 2538,
+              "shared_camera_count": 725,
+              "expected_shared_camera_count": 378.721934,
+              "standardized_effect_size": 20.901,
+              "p_two_sided": 1.7382975987827046e-83,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Siberian tiger",
+              "species_b": "Black bear",
+              "camera_count_a": 1845,
+              "camera_count_b": 2538,
+              "shared_camera_count": 534,
+              "expected_shared_camera_count": 273.373227,
+              "standardized_effect_size": 18.080037,
+              "p_two_sided": 8.183541616495879e-62,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Sika deer",
+              "species_b": "Black bear",
+              "camera_count_a": 15013,
+              "camera_count_b": 2538,
+              "shared_camera_count": 2439,
+              "expected_shared_camera_count": 2224.472765,
+              "standardized_effect_size": 14.021286,
+              "p_two_sided": 9.34764500115952e-56,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Sika deer",
+              "species_b": "Siberian tiger",
+              "camera_count_a": 15013,
+              "camera_count_b": 1845,
+              "shared_camera_count": 1791,
+              "expected_shared_camera_count": 1617.081266,
+              "standardized_effect_size": 13.026371,
+              "p_two_sided": 3.88163409018118e-51,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Sika deer",
+              "species_b": "Amur leopard",
+              "camera_count_a": 15013,
+              "camera_count_b": 2556,
+              "shared_camera_count": 2411,
+              "expected_shared_camera_count": 2240.249168,
+              "standardized_effect_size": 11.127605,
+              "p_two_sided": 1.763245092139681e-33,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Black bear",
+              "camera_count_a": 16395,
+              "camera_count_b": 2538,
+              "shared_camera_count": 2489,
+              "expected_shared_camera_count": 2429.243388,
+              "standardized_effect_size": 6.345695,
+              "p_two_sided": 5.412403712363993e-12,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Sika deer",
+              "camera_count_a": 16395,
+              "camera_count_b": 15013,
+              "shared_camera_count": 14335,
+              "expected_shared_camera_count": 14369.673361,
+              "standardized_effect_size": -3.975447,
+              "p_two_sided": 3.34257101064649e-05,
+              "direction": "negative",
+              "fdr_q_value": 4.2e-05,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Siberian tiger",
+              "camera_count_a": 16395,
+              "camera_count_b": 1845,
+              "shared_camera_count": 1797,
+              "expected_shared_camera_count": 1765.939343,
+              "standardized_effect_size": 3.779858,
+              "p_two_sided": 7.873796534791225e-05,
+              "direction": "positive",
+              "fdr_q_value": 8.7e-05,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Amur leopard",
+              "camera_count_a": 16395,
+              "camera_count_b": 2556,
+              "shared_camera_count": 2470,
+              "expected_shared_camera_count": 2446.472065,
+              "standardized_effect_size": 2.491211,
+              "p_two_sided": 0.012387130510268764,
+              "direction": "positive",
+              "fdr_q_value": 0.012387,
+              "fdr_significant": true
+            }
+          ],
+          "detection_corrected_occupancy_species_count": 0,
+          "occupancy_effort_basis": "detection_span_proxy",
+          "figures": [],
+          "interpretation": "The community result uses every species meeting prespecified event and camera thresholds, not a hard-coded focal list. Shared-camera tests condition on marginal detection frequencies; detection-corrected occupancy is added when documented repeated-survey effort is available in CamtrapDP."
+        }
+      },
+      {
+        "step": 2,
+        "tool_name": "plot_complete_community_inference",
+        "args": {
+          "species_list": null,
+          "display_top_species": 12,
+          "min_independent_events": 5,
+          "min_detected_cameras": 2,
+          "min_gap_minutes": 30,
+          "accumulation_permutations": 250,
+          "bootstrap_iters": 500,
+          "association_fdr_alpha": 0.05,
+          "fit_detection_corrected_occupancy": true,
+          "occupancy_species_limit": null,
+          "occasion_days": 14,
+          "min_active_occasions": 2,
+          "occupancy_bootstrap_iters": 300,
+          "random_seed": 42,
+          "save_path": ""
+        },
+        "input_args": {
+          "species_list": null,
+          "display_top_species": 12,
+          "min_independent_events": 5,
+          "min_detected_cameras": 2,
+          "min_gap_minutes": 30,
+          "accumulation_permutations": 250,
+          "bootstrap_iters": 500,
+          "association_fdr_alpha": 0.05,
+          "fit_detection_corrected_occupancy": true,
+          "occupancy_species_limit": null,
+          "occasion_days": 14,
+          "min_active_occasions": 2,
+          "occupancy_bootstrap_iters": 300,
+          "random_seed": 42,
+          "save_path": ""
+        },
+        "filtered_args": [],
+        "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes.",
+        "status": "success",
+        "round_index": 0,
+        "attempt_index": 1,
+        "duration_seconds": 6.137175,
+        "result": {
+          "status": "success",
+          "analysis_scope": "dataset_wide_eligible_species",
+          "community_inference_status": "complete_diversity_and_conditional_association",
+          "source_species_count": 5,
+          "eligible_species_count": 5,
+          "analysed_species_count": 5,
+          "camera_count": 17129,
+          "independent_event_count": 870752,
+          "gamma_diversity": {
+            "observed_richness": 5,
+            "singleton_species_q1": 0,
+            "doubleton_species_q2": 0,
+            "chao2_richness": 5.0,
+            "q0_richness": 5.0,
+            "q1_exponential_shannon": 2.210042,
+            "q2_inverse_simpson": 2.022964,
+            "shannon_entropy": 0.793011,
+            "simpson_concentration": 0.494324,
+            "bootstrap_intervals": {
+              "observed_richness": {
+                "ci_low": 5.0,
+                "ci_high": 5.0
+              },
+              "chao2_richness": {
+                "ci_low": 5.0,
+                "ci_high": 5.0
+              },
+              "q1_exponential_shannon": {
+                "ci_low": 2.198051,
+                "ci_high": 2.222344
+              },
+              "q2_inverse_simpson": {
+                "ci_low": 2.008256,
+                "ci_high": 2.036573
+              }
+            }
+          },
+          "alpha_diversity": {
+            "camera_count": 17129,
+            "mean_species_richness": 2.238718,
+            "median_species_richness": 2.0,
+            "mean_hill_q1": 1.684294,
+            "mean_hill_q2": 1.535668
+          },
+          "beta_diversity": {
+            "camera_pair_count": 100000,
+            "pair_sampling": "reproducible_random_pairs",
+            "mean_jaccard_dissimilarity": 0.320228,
+            "median_jaccard_dissimilarity": 0.333333,
+            "mean_bray_curtis_dissimilarity": 0.633974,
+            "median_bray_curtis_dissimilarity": 0.675676,
+            "mean_sorensen_dissimilarity": 0.22122,
+            "mean_turnover_component": 0.040493,
+            "mean_nestedness_component": 0.180728,
+            "partition_identity": "Sørensen dissimilarity = turnover + nestedness-resultant dissimilarity"
+          },
+          "species_summary": [
+            {
+              "species": "Roe deer",
+              "independent_event_count": 505386,
+              "detected_camera_count": 16395,
+              "camera_detection_frequency": 0.957149
+            },
+            {
+              "species": "Sika deer",
+              "independent_event_count": 345300,
+              "detected_camera_count": 15013,
+              "camera_detection_frequency": 0.876467
+            },
+            {
+              "species": "Amur leopard",
+              "independent_event_count": 9882,
+              "detected_camera_count": 2556,
+              "camera_detection_frequency": 0.149221
+            },
+            {
+              "species": "Siberian tiger",
+              "independent_event_count": 6570,
+              "detected_camera_count": 1845,
+              "camera_detection_frequency": 0.107712
+            },
+            {
+              "species": "Black bear",
+              "independent_event_count": 3614,
+              "detected_camera_count": 2538,
+              "camera_detection_frequency": 0.14817
+            }
+          ],
+          "significant_conditional_associations": [
+            {
+              "species_a": "Amur leopard",
+              "species_b": "Siberian tiger",
+              "camera_count_a": 2556,
+              "camera_count_b": 1845,
+              "shared_camera_count": 747,
+              "expected_shared_camera_count": 275.312044,
+              "standardized_effect_size": 32.626352,
+              "p_two_sided": 7.129830985529e-182,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Amur leopard",
+              "species_b": "Black bear",
+              "camera_count_a": 2556,
+              "camera_count_b": 2538,
+              "shared_camera_count": 725,
+              "expected_shared_camera_count": 378.721934,
+              "standardized_effect_size": 20.901,
+              "p_two_sided": 1.7382975987827046e-83,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Siberian tiger",
+              "species_b": "Black bear",
+              "camera_count_a": 1845,
+              "camera_count_b": 2538,
+              "shared_camera_count": 534,
+              "expected_shared_camera_count": 273.373227,
+              "standardized_effect_size": 18.080037,
+              "p_two_sided": 8.183541616495879e-62,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Sika deer",
+              "species_b": "Black bear",
+              "camera_count_a": 15013,
+              "camera_count_b": 2538,
+              "shared_camera_count": 2439,
+              "expected_shared_camera_count": 2224.472765,
+              "standardized_effect_size": 14.021286,
+              "p_two_sided": 9.34764500115952e-56,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Sika deer",
+              "species_b": "Siberian tiger",
+              "camera_count_a": 15013,
+              "camera_count_b": 1845,
+              "shared_camera_count": 1791,
+              "expected_shared_camera_count": 1617.081266,
+              "standardized_effect_size": 13.026371,
+              "p_two_sided": 3.88163409018118e-51,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Sika deer",
+              "species_b": "Amur leopard",
+              "camera_count_a": 15013,
+              "camera_count_b": 2556,
+              "shared_camera_count": 2411,
+              "expected_shared_camera_count": 2240.249168,
+              "standardized_effect_size": 11.127605,
+              "p_two_sided": 1.763245092139681e-33,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Black bear",
+              "camera_count_a": 16395,
+              "camera_count_b": 2538,
+              "shared_camera_count": 2489,
+              "expected_shared_camera_count": 2429.243388,
+              "standardized_effect_size": 6.345695,
+              "p_two_sided": 5.412403712363993e-12,
+              "direction": "positive",
+              "fdr_q_value": 0.0,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Sika deer",
+              "camera_count_a": 16395,
+              "camera_count_b": 15013,
+              "shared_camera_count": 14335,
+              "expected_shared_camera_count": 14369.673361,
+              "standardized_effect_size": -3.975447,
+              "p_two_sided": 3.34257101064649e-05,
+              "direction": "negative",
+              "fdr_q_value": 4.2e-05,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Siberian tiger",
+              "camera_count_a": 16395,
+              "camera_count_b": 1845,
+              "shared_camera_count": 1797,
+              "expected_shared_camera_count": 1765.939343,
+              "standardized_effect_size": 3.779858,
+              "p_two_sided": 7.873796534791225e-05,
+              "direction": "positive",
+              "fdr_q_value": 8.7e-05,
+              "fdr_significant": true
+            },
+            {
+              "species_a": "Roe deer",
+              "species_b": "Amur leopard",
+              "camera_count_a": 16395,
+              "camera_count_b": 2556,
+              "shared_camera_count": 2470,
+              "expected_shared_camera_count": 2446.472065,
+              "standardized_effect_size": 2.491211,
+              "p_two_sided": 0.012387130510268764,
+              "direction": "positive",
+              "fdr_q_value": 0.012387,
+              "fdr_significant": true
+            }
+          ],
+          "detection_corrected_occupancy_species_count": 0,
+          "occupancy_effort_basis": "detection_span_proxy",
+          "figures": [
+            {
+              "figure_id": "complete_community_inference",
+              "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+              "svg_path": "outputs/complete_community_inference.svg",
+              "pdf_path": "outputs/complete_community_inference.pdf"
+            }
+          ],
+          "interpretation": "The community result uses every species meeting prespecified event and camera thresholds, not a hard-coded focal list. Shared-camera tests condition on marginal detection frequencies; detection-corrected occupancy is added when documented repeated-survey effort is available in CamtrapDP."
+        }
+      }
+    ],
+    "replanning": {
+      "need_replan": false,
+      "new_tasks": [],
+      "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+      "replanner_user_prompt_sha256": "9d58d5147aeef20992cceeca4facd85f1a038b66d0e2676e49c597a8297daf85",
+      "replanner_user_prompt_char_count": 53487,
+      "replanner_user_prompt_budget_chars": 60000,
+      "replanner_prompt_budget_fallback": "tool_names_and_execution_summaries",
+      "timestamp_reliability": {
+        "status": "not_applicable",
+        "min_gap_minutes": "not_applicable"
+      },
+      "event_independence": {
+        "status": "applied",
+        "min_gap_minutes": 30
+      },
+      "event_count_sufficiency": {
+        "status": "passed"
+      },
+      "overlap_analysis": {
+        "status": "not_applicable"
+      },
+      "visualization": "generated",
+      "figure_count": 1,
+      "figure_outputs": [
+        {
+          "figure_id": "complete_community_inference",
+          "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+          "tool_name": "plot_complete_community_inference",
+          "svg_path": "outputs/complete_community_inference.svg",
+          "pdf_path": "outputs/complete_community_inference.pdf"
+        }
+      ],
+      "failed_figures": [],
+      "reason": "All requested community inference tasks completed successfully: observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction. Detection-corrected occupancy was not fitted because documented repeated-survey deployment effort was not available in CamtrapDP, matching the user's conditional requirement. A publication-ready community figure was generated at outputs/complete_community_inference.svg and .pdf.",
+      "conservative_answer": false,
+      "reflection_mode": "llm_with_deterministic_consistency_check",
+      "consistency_check": {
+        "missing_fields": [],
+        "inconsistency_check": "passed",
+        "corrections": [],
+        "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+      },
+      "temporal_activity": {},
+      "termination_reason": "goal_satisfied",
+      "rounds": [
+        {
+          "round_index": 0,
+          "phase": "initial_plan",
+          "proposed_task_count": 2,
+          "accepted_tasks": [
+            {
+              "tool_name": "infer_complete_community",
+              "args": {
+                "species_list": null,
+                "min_independent_events": 5,
+                "min_detected_cameras": 2,
+                "min_gap_minutes": 30,
+                "accumulation_permutations": 250,
+                "bootstrap_iters": 500,
+                "association_fdr_alpha": 0.05,
+                "max_beta_pairs": 100000,
+                "fit_detection_corrected_occupancy": true,
+                "occupancy_species_limit": null,
+                "occasion_days": 14,
+                "min_active_occasions": 2,
+                "occupancy_bootstrap_iters": 300,
+                "random_seed": 42
+              },
+              "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort."
+            },
+            {
+              "tool_name": "plot_complete_community_inference",
+              "args": {
+                "species_list": null,
+                "display_top_species": 12,
+                "min_independent_events": 5,
+                "min_detected_cameras": 2,
+                "min_gap_minutes": 30,
+                "accumulation_permutations": 250,
+                "bootstrap_iters": 500,
+                "association_fdr_alpha": 0.05,
+                "fit_detection_corrected_occupancy": true,
+                "occupancy_species_limit": null,
+                "occasion_days": 14,
+                "min_active_occasions": 2,
+                "occupancy_bootstrap_iters": 300,
+                "random_seed": 42,
+                "save_path": ""
+              },
+              "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes."
+            }
+          ],
+          "budget_truncated": false,
+          "execution_statuses": [
+            "success",
+            "success"
+          ],
+          "reflection": {
+            "need_replan": false,
+            "reason": "All requested community inference tasks completed successfully: observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction. Detection-corrected occupancy was not fitted because documented repeated-survey deployment effort was not available in CamtrapDP, matching the user's conditional requirement. A publication-ready community figure was generated at outputs/complete_community_inference.svg and .pdf.",
+            "conservative_answer": false,
+            "elapsed_seconds": 7.243859
+          }
+        }
+      ]
+    },
+    "synthesis": {
+      "synthesis_mode": "llm_synthesis",
+      "answer_guard": {
+        "planner_mode": "llm",
+        "target_species": "Siberian tiger",
+        "target_species_display": "Siberian tiger",
+        "local_empty": false,
+        "local_empty_summary": "",
+        "used_tools": [
+          "infer_complete_community",
+          "plot_complete_community_inference"
+        ],
+        "must_not_expand_local_to_global": false,
+        "visual_outputs": [
+          {
+            "tool_name": "plot_complete_community_inference",
+            "path": "outputs/complete_community_inference.svg",
+            "figure_id": "complete_community_inference"
+          }
+        ],
+        "temporal_visualization_has_synthetic_time": false
+      },
+      "compact_tool_results_used": [
+        {
+          "step": 1,
+          "tool_name": "infer_complete_community",
+          "args": {
+            "species_list": null,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "max_beta_pairs": 100000,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42
+          },
+          "input_args": {
+            "species_list": null,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "max_beta_pairs": 100000,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42
+          },
+          "filtered_args": [],
+          "reason": "Perform dataset-wide community inference across all eligible species to estimate observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction, including multi-species occupancy if supported by effort.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 5.814192,
+          "result": {
+            "status": "success",
+            "analysis_scope": "dataset_wide_eligible_species",
+            "community_inference_status": "complete_diversity_and_conditional_association",
+            "source_species_count": 5,
+            "eligible_species_count": 5,
+            "analysed_species_count": 5,
+            "camera_count": 17129,
+            "independent_event_count": 870752,
+            "gamma_diversity": {
+              "observed_richness": 5,
+              "singleton_species_q1": 0,
+              "doubleton_species_q2": 0,
+              "chao2_richness": 5.0,
+              "q0_richness": 5.0,
+              "q1_exponential_shannon": 2.210042,
+              "q2_inverse_simpson": 2.022964,
+              "shannon_entropy": 0.793011,
+              "simpson_concentration": 0.494324,
+              "bootstrap_intervals": {
+                "observed_richness": {
+                  "ci_low": 5.0,
+                  "ci_high": 5.0
+                },
+                "chao2_richness": {
+                  "ci_low": 5.0,
+                  "ci_high": 5.0
+                },
+                "q1_exponential_shannon": {
+                  "ci_low": 2.198051,
+                  "ci_high": 2.222344
+                },
+                "q2_inverse_simpson": {
+                  "ci_low": 2.008256,
+                  "ci_high": 2.036573
+                }
+              }
+            },
+            "alpha_diversity": {
+              "camera_count": 17129,
+              "mean_species_richness": 2.238718,
+              "median_species_richness": 2.0,
+              "mean_hill_q1": 1.684294,
+              "mean_hill_q2": 1.535668
+            },
+            "beta_diversity": {
+              "camera_pair_count": 100000,
+              "pair_sampling": "reproducible_random_pairs",
+              "mean_jaccard_dissimilarity": 0.320228,
+              "median_jaccard_dissimilarity": 0.333333,
+              "mean_bray_curtis_dissimilarity": 0.633974,
+              "median_bray_curtis_dissimilarity": 0.675676,
+              "mean_sorensen_dissimilarity": 0.22122,
+              "mean_turnover_component": 0.040493,
+              "mean_nestedness_component": 0.180728,
+              "partition_identity": "Sørensen dissimilarity = turnover + nestedness-resultant dissimilarity"
+            },
+            "species_summary": [
+              {
+                "species": "Roe deer",
+                "independent_event_count": 505386,
+                "detected_camera_count": 16395,
+                "camera_detection_frequency": 0.957149
+              },
+              {
+                "species": "Sika deer",
+                "independent_event_count": 345300,
+                "detected_camera_count": 15013,
+                "camera_detection_frequency": 0.876467
+              },
+              {
+                "species": "Amur leopard",
+                "independent_event_count": 9882,
+                "detected_camera_count": 2556,
+                "camera_detection_frequency": 0.149221
+              },
+              {
+                "species": "Siberian tiger",
+                "independent_event_count": 6570,
+                "detected_camera_count": 1845,
+                "camera_detection_frequency": 0.107712
+              },
+              {
+                "species": "Black bear",
+                "independent_event_count": 3614,
+                "detected_camera_count": 2538,
+                "camera_detection_frequency": 0.14817
+              }
+            ],
+            "significant_conditional_associations": [
+              {
+                "species_a": "Amur leopard",
+                "species_b": "Siberian tiger",
+                "camera_count_a": 2556,
+                "camera_count_b": 1845,
+                "shared_camera_count": 747,
+                "expected_shared_camera_count": 275.312044,
+                "standardized_effect_size": 32.626352,
+                "p_two_sided": 7.129830985529e-182,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Amur leopard",
+                "species_b": "Black bear",
+                "camera_count_a": 2556,
+                "camera_count_b": 2538,
+                "shared_camera_count": 725,
+                "expected_shared_camera_count": 378.721934,
+                "standardized_effect_size": 20.901,
+                "p_two_sided": 1.7382975987827046e-83,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Siberian tiger",
+                "species_b": "Black bear",
+                "camera_count_a": 1845,
+                "camera_count_b": 2538,
+                "shared_camera_count": 534,
+                "expected_shared_camera_count": 273.373227,
+                "standardized_effect_size": 18.080037,
+                "p_two_sided": 8.183541616495879e-62,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Sika deer",
+                "species_b": "Black bear",
+                "camera_count_a": 15013,
+                "camera_count_b": 2538,
+                "shared_camera_count": 2439,
+                "expected_shared_camera_count": 2224.472765,
+                "standardized_effect_size": 14.021286,
+                "p_two_sided": 9.34764500115952e-56,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Sika deer",
+                "species_b": "Siberian tiger",
+                "camera_count_a": 15013,
+                "camera_count_b": 1845,
+                "shared_camera_count": 1791,
+                "expected_shared_camera_count": 1617.081266,
+                "standardized_effect_size": 13.026371,
+                "p_two_sided": 3.88163409018118e-51,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Sika deer",
+                "species_b": "Amur leopard",
+                "camera_count_a": 15013,
+                "camera_count_b": 2556,
+                "shared_camera_count": 2411,
+                "expected_shared_camera_count": 2240.249168,
+                "standardized_effect_size": 11.127605,
+                "p_two_sided": 1.763245092139681e-33,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Black bear",
+                "camera_count_a": 16395,
+                "camera_count_b": 2538,
+                "shared_camera_count": 2489,
+                "expected_shared_camera_count": 2429.243388,
+                "standardized_effect_size": 6.345695,
+                "p_two_sided": 5.412403712363993e-12,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Sika deer",
+                "camera_count_a": 16395,
+                "camera_count_b": 15013,
+                "shared_camera_count": 14335,
+                "expected_shared_camera_count": 14369.673361,
+                "standardized_effect_size": -3.975447,
+                "p_two_sided": 3.34257101064649e-05,
+                "direction": "negative",
+                "fdr_q_value": 4.2e-05,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Siberian tiger",
+                "camera_count_a": 16395,
+                "camera_count_b": 1845,
+                "shared_camera_count": 1797,
+                "expected_shared_camera_count": 1765.939343,
+                "standardized_effect_size": 3.779858,
+                "p_two_sided": 7.873796534791225e-05,
+                "direction": "positive",
+                "fdr_q_value": 8.7e-05,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Amur leopard",
+                "camera_count_a": 16395,
+                "camera_count_b": 2556,
+                "shared_camera_count": 2470,
+                "expected_shared_camera_count": 2446.472065,
+                "standardized_effect_size": 2.491211,
+                "p_two_sided": 0.012387130510268764,
+                "direction": "positive",
+                "fdr_q_value": 0.012387,
+                "fdr_significant": true
+              }
+            ],
+            "detection_corrected_occupancy_species_count": 0,
+            "occupancy_effort_basis": "detection_span_proxy",
+            "figures": [],
+            "interpretation": "The community result uses every species meeting prespecified event and camera thresholds, not a hard-coded focal list. Shared-camera tests condition on marginal detection frequencies; detection-corrected occupancy is added when documented repeated-survey effort is available in CamtrapDP."
+          }
+        },
+        {
+          "step": 2,
+          "tool_name": "plot_complete_community_inference",
+          "args": {
+            "species_list": null,
+            "display_top_species": 12,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42,
+            "save_path": ""
+          },
+          "input_args": {
+            "species_list": null,
+            "display_top_species": 12,
+            "min_independent_events": 5,
+            "min_detected_cameras": 2,
+            "min_gap_minutes": 30,
+            "accumulation_permutations": 250,
+            "bootstrap_iters": 500,
+            "association_fdr_alpha": 0.05,
+            "fit_detection_corrected_occupancy": true,
+            "occupancy_species_limit": null,
+            "occasion_days": 14,
+            "min_active_occasions": 2,
+            "occupancy_bootstrap_iters": 300,
+            "random_seed": 42,
+            "save_path": ""
+          },
+          "filtered_args": [],
+          "reason": "Generate a publication-ready community figure from the complete community inference results, including composition, species accumulation, camera detection or occupancy, and conditional association effect sizes.",
+          "status": "success",
+          "round_index": 0,
+          "attempt_index": 1,
+          "duration_seconds": 6.137175,
+          "result": {
+            "status": "success",
+            "analysis_scope": "dataset_wide_eligible_species",
+            "community_inference_status": "complete_diversity_and_conditional_association",
+            "source_species_count": 5,
+            "eligible_species_count": 5,
+            "analysed_species_count": 5,
+            "camera_count": 17129,
+            "independent_event_count": 870752,
+            "gamma_diversity": {
+              "observed_richness": 5,
+              "singleton_species_q1": 0,
+              "doubleton_species_q2": 0,
+              "chao2_richness": 5.0,
+              "q0_richness": 5.0,
+              "q1_exponential_shannon": 2.210042,
+              "q2_inverse_simpson": 2.022964,
+              "shannon_entropy": 0.793011,
+              "simpson_concentration": 0.494324,
+              "bootstrap_intervals": {
+                "observed_richness": {
+                  "ci_low": 5.0,
+                  "ci_high": 5.0
+                },
+                "chao2_richness": {
+                  "ci_low": 5.0,
+                  "ci_high": 5.0
+                },
+                "q1_exponential_shannon": {
+                  "ci_low": 2.198051,
+                  "ci_high": 2.222344
+                },
+                "q2_inverse_simpson": {
+                  "ci_low": 2.008256,
+                  "ci_high": 2.036573
+                }
+              }
+            },
+            "alpha_diversity": {
+              "camera_count": 17129,
+              "mean_species_richness": 2.238718,
+              "median_species_richness": 2.0,
+              "mean_hill_q1": 1.684294,
+              "mean_hill_q2": 1.535668
+            },
+            "beta_diversity": {
+              "camera_pair_count": 100000,
+              "pair_sampling": "reproducible_random_pairs",
+              "mean_jaccard_dissimilarity": 0.320228,
+              "median_jaccard_dissimilarity": 0.333333,
+              "mean_bray_curtis_dissimilarity": 0.633974,
+              "median_bray_curtis_dissimilarity": 0.675676,
+              "mean_sorensen_dissimilarity": 0.22122,
+              "mean_turnover_component": 0.040493,
+              "mean_nestedness_component": 0.180728,
+              "partition_identity": "Sørensen dissimilarity = turnover + nestedness-resultant dissimilarity"
+            },
+            "species_summary": [
+              {
+                "species": "Roe deer",
+                "independent_event_count": 505386,
+                "detected_camera_count": 16395,
+                "camera_detection_frequency": 0.957149
+              },
+              {
+                "species": "Sika deer",
+                "independent_event_count": 345300,
+                "detected_camera_count": 15013,
+                "camera_detection_frequency": 0.876467
+              },
+              {
+                "species": "Amur leopard",
+                "independent_event_count": 9882,
+                "detected_camera_count": 2556,
+                "camera_detection_frequency": 0.149221
+              },
+              {
+                "species": "Siberian tiger",
+                "independent_event_count": 6570,
+                "detected_camera_count": 1845,
+                "camera_detection_frequency": 0.107712
+              },
+              {
+                "species": "Black bear",
+                "independent_event_count": 3614,
+                "detected_camera_count": 2538,
+                "camera_detection_frequency": 0.14817
+              }
+            ],
+            "significant_conditional_associations": [
+              {
+                "species_a": "Amur leopard",
+                "species_b": "Siberian tiger",
+                "camera_count_a": 2556,
+                "camera_count_b": 1845,
+                "shared_camera_count": 747,
+                "expected_shared_camera_count": 275.312044,
+                "standardized_effect_size": 32.626352,
+                "p_two_sided": 7.129830985529e-182,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Amur leopard",
+                "species_b": "Black bear",
+                "camera_count_a": 2556,
+                "camera_count_b": 2538,
+                "shared_camera_count": 725,
+                "expected_shared_camera_count": 378.721934,
+                "standardized_effect_size": 20.901,
+                "p_two_sided": 1.7382975987827046e-83,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Siberian tiger",
+                "species_b": "Black bear",
+                "camera_count_a": 1845,
+                "camera_count_b": 2538,
+                "shared_camera_count": 534,
+                "expected_shared_camera_count": 273.373227,
+                "standardized_effect_size": 18.080037,
+                "p_two_sided": 8.183541616495879e-62,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Sika deer",
+                "species_b": "Black bear",
+                "camera_count_a": 15013,
+                "camera_count_b": 2538,
+                "shared_camera_count": 2439,
+                "expected_shared_camera_count": 2224.472765,
+                "standardized_effect_size": 14.021286,
+                "p_two_sided": 9.34764500115952e-56,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Sika deer",
+                "species_b": "Siberian tiger",
+                "camera_count_a": 15013,
+                "camera_count_b": 1845,
+                "shared_camera_count": 1791,
+                "expected_shared_camera_count": 1617.081266,
+                "standardized_effect_size": 13.026371,
+                "p_two_sided": 3.88163409018118e-51,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Sika deer",
+                "species_b": "Amur leopard",
+                "camera_count_a": 15013,
+                "camera_count_b": 2556,
+                "shared_camera_count": 2411,
+                "expected_shared_camera_count": 2240.249168,
+                "standardized_effect_size": 11.127605,
+                "p_two_sided": 1.763245092139681e-33,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Black bear",
+                "camera_count_a": 16395,
+                "camera_count_b": 2538,
+                "shared_camera_count": 2489,
+                "expected_shared_camera_count": 2429.243388,
+                "standardized_effect_size": 6.345695,
+                "p_two_sided": 5.412403712363993e-12,
+                "direction": "positive",
+                "fdr_q_value": 0.0,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Sika deer",
+                "camera_count_a": 16395,
+                "camera_count_b": 15013,
+                "shared_camera_count": 14335,
+                "expected_shared_camera_count": 14369.673361,
+                "standardized_effect_size": -3.975447,
+                "p_two_sided": 3.34257101064649e-05,
+                "direction": "negative",
+                "fdr_q_value": 4.2e-05,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Siberian tiger",
+                "camera_count_a": 16395,
+                "camera_count_b": 1845,
+                "shared_camera_count": 1797,
+                "expected_shared_camera_count": 1765.939343,
+                "standardized_effect_size": 3.779858,
+                "p_two_sided": 7.873796534791225e-05,
+                "direction": "positive",
+                "fdr_q_value": 8.7e-05,
+                "fdr_significant": true
+              },
+              {
+                "species_a": "Roe deer",
+                "species_b": "Amur leopard",
+                "camera_count_a": 16395,
+                "camera_count_b": 2556,
+                "shared_camera_count": 2470,
+                "expected_shared_camera_count": 2446.472065,
+                "standardized_effect_size": 2.491211,
+                "p_two_sided": 0.012387130510268764,
+                "direction": "positive",
+                "fdr_q_value": 0.012387,
+                "fdr_significant": true
+              }
+            ],
+            "detection_corrected_occupancy_species_count": 0,
+            "occupancy_effort_basis": "detection_span_proxy",
+            "figures": [
+              {
+                "figure_id": "complete_community_inference",
+                "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+                "svg_path": "outputs/complete_community_inference.svg",
+                "pdf_path": "outputs/complete_community_inference.pdf"
+              }
+            ],
+            "interpretation": "The community result uses every species meeting prespecified event and camera thresholds, not a hard-coded focal list. Shared-camera tests condition on marginal detection frequencies; detection-corrected occupancy is added when documented repeated-survey effort is available in CamtrapDP."
+          }
+        }
+      ],
+      "synthesis_input_evidence": {
+        "activity_pattern": {},
+        "pairwise_overlap": [],
+        "visualization": [
+          {
+            "figure_id": "complete_community_inference",
+            "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+            "tool_name": "plot_complete_community_inference",
+            "svg_path": "outputs/complete_community_inference.svg",
+            "pdf_path": "outputs/complete_community_inference.pdf"
+          }
+        ],
+        "limitations": [
+          "Use only values present in tool execution or reflection.",
+          "Delta measures similarity in diel activity rhythm, not direct interaction.",
+          "A data-quality audit alone does not establish that formal occupancy modelling is supported; independent camera-operation effort must be confirmed by successful tool evidence.",
+          "Use relative paths only."
+        ],
+        "reflection": {
+          "need_replan": false,
+          "new_tasks": [],
+          "reason": "All requested community inference tasks completed successfully: observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction. Detection-corrected occupancy was not fitted because documented repeated-survey deployment effort was not available in CamtrapDP, matching the user's conditional requirement. A publication-ready community figure was generated at outputs/complete_community_inference.svg and .pdf.",
+          "data_quality": "sufficient",
+          "timestamp_reliability": {
+            "status": "not_applicable",
+            "min_gap_minutes": "not_applicable"
+          },
+          "event_independence": {
+            "status": "applied",
+            "min_gap_minutes": 30
+          },
+          "event_count_sufficiency": {
+            "status": "passed"
+          },
+          "overlap_analysis": {
+            "status": "not_applicable"
+          },
+          "spatial_data_sufficiency": {
+            "status": "sufficient"
+          },
+          "visualization": "generated",
+          "conservative_answer": false,
+          "figure_count": 1,
+          "figure_outputs": [
+            {
+              "figure_id": "complete_community_inference",
+              "label": "Dataset-wide community richness map, composition, accumulation, and conditional association",
+              "tool_name": "plot_complete_community_inference",
+              "svg_path": "outputs/complete_community_inference.svg",
+              "pdf_path": "outputs/complete_community_inference.pdf"
+            }
+          ],
+          "failed_figures": [],
+          "_llm_outputs": {
+            "replanner_raw_response": "{\n  \"need_replan\": false,\n  \"new_tasks\": [],\n  \"reason\": \"All requested community inference tasks completed successfully: observed and Chao2 richness, Hill alpha and gamma diversity, Jaccard and Bray-Curtis beta diversity, Sorensen beta partition into turnover and nestedness, species accumulation curve, and conditional shared-camera associations with FDR correction. Detection-corrected occupancy was not fitted because documented repeated-survey deployment effort was not available in CamtrapDP, matching the user's conditional requirement. A publication-ready community figure was generated at outputs/complete_community_inference.svg and .pdf.\",\n  \"data_quality\": \"sufficient\",\n  \"timestamp_reliability\": {\n    \"status\": \"not_applicable\",\n    \"min_gap_minutes\": \"not_applicable\"\n  },\n  \"event_independence\": {\n    \"status\": \"applied\",\n    \"min_gap_minutes\": 30\n  },\n  \"event_count_sufficiency\": {\n    \"status\": \"passed\"\n  },\n  \"overlap_analysis\": {\n    \"status\": \"not_applicable\"\n  },\n  \"spatial_data_sufficiency\": {\n    \"status\": \"sufficient\"\n  },\n  \"visualization\": \"generated\",\n  \"conservative_answer\": false\n}",
+            "replanner_system_prompt_sha256": "d8db1541b982d68c14bd650ef4d9af1566c67f66bb3ab356fab24c9d9b7f2626",
+            "replanner_user_prompt_sha256": "9d58d5147aeef20992cceeca4facd85f1a038b66d0e2676e49c597a8297daf85",
+            "replanner_user_prompt_char_count": 53487,
+            "replanner_user_prompt_budget_chars": 60000,
+            "replanner_prompt_budget_fallback": "tool_names_and_execution_summaries"
+          },
+          "reflection_mode": "llm_with_deterministic_consistency_check",
+          "consistency_check": {
+            "missing_fields": [],
+            "inconsistency_check": "passed",
+            "corrections": [],
+            "reason": "Displayed reflection fields were computed from successful tool outputs after LLM reflection."
+          }
+        }
+      },
+      "answer_system_prompt_sha256": "005c38e7ea32244f94559915adcd58ec76f6ca2ab087d35edaab45648cc25faf",
+      "answer_user_prompt_sha256": "c651169df5873dc526b260b577a03f70062b7bf4b892f585891e02da9e9316cb",
+      "answer_user_prompt_char_count": 21836,
+      "answer_user_prompt_budget_chars": 40000,
+      "answer_prompt_budget_fallback": "none"
+    }
+  },
+  "final_answer": "## Dataset‑Wide Community Inference Results\n\nThe analysis was performed on all five species that met the prespecified eligibility thresholds (≥5 independent events and ≥2 detection cameras): **Roe deer**, **Sika deer**, **Amur leopard**, **Siberian tiger**, and **Black bear**. No hard‑coded focal list was used. The community inference was based on 17,129 cameras and 870,752 independent events (30‑minute gap). Multi‑species detection‑corrected occupancy could not be fitted (0 species) because the available effort documentation did not support repeated‑survey occasion structure; therefore the results are entirely detection‑based.\n\n### Gamma Diversity (Dataset‑Wide)\n\n| Metric | Estimate | 95% Bootstrap CI |\n|--------|----------|------------------|\n| Observed richness | 5 | [5, 5] |\n| Chao2 richness | 5.0 | [5.0, 5.0] |\n| Hill q0 (richness) | 5.0 | – |\n| Hill q1 (exponential Shannon) | 2.210 | [2.198, 2.222] |\n| Hill q2 (inverse Simpson) | 2.023 | [2.008, 2.037] |\n| Shannon entropy | 0.793 | – |\n| Simpson concentration | 0.494 | – |\n\n### Alpha Diversity (per Camera, n = 17,129)\n\n- Mean species richness: 2.24 (median 2.0)\n- Mean Hill q1: 1.684\n- Mean Hill q2: 1.536\n\n### Beta Diversity (100,000 randomly sampled camera pairs)\n\n| Dissimilarity Measure | Mean | Median | Interpretation |\n|-----------------------|------|--------|----------------|\n| Jaccard (incidence) | 0.320 | 0.333 | Moderate species composition turnover across cameras |\n| Bray‑Curtis (abundance) | 0.634 | 0.676 | Substantial abundance‑weighted dissimilarity |\n| Sørensen total | 0.221 | – | Partitioned into: |\n| – Turnover component | 0.040 | – | ~18% of total Sørensen |\n| – Nestedness‑resultant component | 0.181 | – | ~82% of total Sørensen – nestedness dominates |\n\n### Species Summary\n\n| Species | Independent Events | Detection Cameras | Camera Detection Frequency |\n|---------|-------------------|-------------------|----------------------------|\n| Roe deer | 505,386 | 16,395 | 0.957 |\n| Sika deer | 345,300 | 15,013 | 0.876 |\n| Amur leopard | 9,882 | 2,556 | 0.149 |\n| Siberian tiger | 6,570 | 1,845 | 0.108 |\n| Black bear | 3,614 | 2,538 | 0.148 |\n\nA species‑accumulation curve was constructed (250 permutations) and is included in the figure.\n\n### Conditional Shared‑Camera Associations (FDR‑Corrected)\n\nTen species pairs showed significant associations after false‑discovery‑rate correction (q < 0.05). The test compares the observed number of cameras shared by two species with the expectation derived from their marginal camera‑detection frequencies; it does not prove simultaneous occurrence or direct interaction.\n\n| Pair | Shared / Expected | Effect Size | Direction | q‑value |\n|------|-------------------|-------------|-----------|---------|\n| Amur leopard – Siberian tiger | 747 / 275 | +32.6 | Positive | 0.000 |\n| Amur leopard – Black bear | 725 / 379 | +20.9 | Positive | 0.000 |\n| Siberian tiger – Black bear | 534 / 273 | +18.1 | Positive | 0.000 |\n| Sika deer – Black bear | 2,439 / 2,224 | +14.0 | Positive | 0.000 |\n| Sika deer – Siberian tiger | 1,791 / 1,617 | +13.0 | Positive | 0.000 |\n| Sika deer – Amur leopard | 2,411 / 2,240 | +11.1 | Positive | 0.000 |\n| Roe deer – Black bear | 2,489 / 2,429 | +6.3 | Positive | 0.000 |\n| Roe deer – Sika deer | 14,335 / 14,370 | –4.0 | Negative | 0.00004 |\n| Roe deer – Siberian tiger | 1,797 / 1,766 | +3.8 | Positive | 0.00009 |\n| Roe deer – Amur leopard | 2,470 / 2,446 | +2.5 | Positive | 0.012 |\n\nAll but one association were positive; the only negative association (Roe deer – Sika deer) indicates that the two deer species share cameras slightly less often than expected from their high individual detection frequencies.\n\n### Detection‑Corrected Occupancy\n\nEffort basis was `detection_span_proxy`, and no species passed the occasion‑fitting criteria; hence occupancy estimates were not produced. The community results remain detection‑based throughout.\n\n### Generated Visualization\n\nThe publication‑ready community figure includes a species richness map, diversity summary panel, species‑accumulation curve, and conditional association effect‑size plot.\n\n- **SVG:** `outputs/complete_community_inference.svg`\n- **PDF:** `outputs/complete_community_inference.pdf`",
+  "visualizations": [
+    {
+      "tool_name": "plot_complete_community_inference",
+      "path": "outputs/complete_community_inference.svg",
+      "figure_id": "complete_community_inference",
+      "svg_path": "outputs/complete_community_inference.svg",
+      "png_path": "",
+      "pdf_path": "outputs/complete_community_inference.pdf"
+    }
+  ],
+  "trace_export": {
+    "detail": "public",
+    "raw_tool_results_included": false,
+    "raw_model_responses_included": false,
+    "sensitive_camera_locations_redacted": true
+  }
+}

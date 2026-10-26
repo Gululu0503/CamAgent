@@ -1,0 +1,43 @@
+{
+  "project_name": "CamAgent privacy-safe synthetic smoke test",
+  "input": {
+    "type": "camtrap_dp",
+    "datapackage": "examples/privacy_safe_camtrap_dp/datapackage.json"
+  },
+  "output_dir": "workspace/outputs/synthetic_smoke_test",
+  "analysis": {
+    "species": [
+      "Siberian tiger",
+      "Sika deer"
+    ],
+    "event_gap_minutes": 30,
+    "event_gap_sensitivity_minutes": [15, 30, 60],
+    "random_seed": 42,
+    "temporal_overlap": {
+      "pairs": [
+        ["Siberian tiger", "Sika deer"]
+      ],
+      "smooth_sigma": 1.25,
+      "bootstrap_iters": 20,
+      "bootstrap_interval_method": "percentile",
+      "bootstrap_cluster_strategy": "joint_camera_network",
+      "permutation_iters": 0
+    },
+    "occupancy": {
+      "enabled": false
+    },
+    "camera_transition_hypotheses": {
+      "enabled": false
+    }
+  },
+  "manuscript_expectations": {
+    "species": [
+      "Siberian tiger",
+      "Sika deer"
+    ],
+    "species_record_counts": {
+      "Siberian tiger": 3,
+      "Sika deer": 3
+    }
+  }
+}

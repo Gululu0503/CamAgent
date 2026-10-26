@@ -1,0 +1,3 @@
+deploymentID,cameraID,locationID,latitude,longitude,deploymentStart,deploymentEnd,deploymentComments
+SYN-DEP-01,SYN-CAM-01,SYN-LOC-01,0.0000,0.0000,2026-01-01T00:00:00Z,2026-01-03T00:00:00Z,Synthetic deployment; invented coordinate.
+SYN-DEP-02,SYN-CAM-02,SYN-LOC-02,0.1000,0.1000,2026-01-01T00:00:00Z,2026-01-03T00:00:00Z,Synthetic deployment; invented coordinate.

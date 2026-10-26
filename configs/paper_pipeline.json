@@ -1,0 +1,98 @@
+{
+  "project_name": "CamAgent manuscript reproducibility run",
+  "validation_site": {
+    "site_id": "nctl-national-park-primary",
+    "ecosystem": "temperate mixed forest",
+    "country_or_region": "north-eastern China",
+    "dataset_role": "primary"
+  },
+  "input": {
+    "type": "camtrap_dp",
+    "datapackage": "data/private/camtrap_dp/datapackage.json"
+  },
+  "output_dir": "workspace/outputs/paper_pipeline_run",
+  "manuscript_assets": {
+    "study_area_map": "data/private/study_area_map.jpeg"
+  },
+  "reproducibility": {
+    "hash_large_inputs": true
+  },
+  "manuscript_scope": {
+    "reports_occupancy_inference": false,
+    "reports_effort_corrected_rai": false,
+    "reports_coordinate_derived_inference": false,
+    "reports_perception_accuracy": false,
+    "reports_confirmatory_agent_benchmark": false
+  },
+  "analysis": {
+    "random_seed": 42,
+    "clock_time_basis": "Source wall-clock components are interpreted as Northeast China Tiger and Leopard National Park local civil time, Asia/Shanghai (UTC+08:00), based on study-author confirmation; no clock-hour conversion is applied to the retained components",
+    "clock_time_verified": true,
+    "clock_timezone": "Asia/Shanghai",
+    "clock_utc_offset": "+08:00",
+    "clock_time_verification": {
+      "status": "author_confirmed",
+      "confirmed_by_role": "study_author",
+      "confirmed_at": "2026-07-25",
+      "evidence_note": "The study author confirmed that source camera clock values use the civil time zone of Northeast China Tiger and Leopard National Park."
+    },
+    "species": [
+      "Siberian tiger",
+      "Amur leopard",
+      "Sika deer",
+      "Roe deer",
+      "Black bear"
+    ],
+    "event_gap_minutes": 30,
+    "event_gap_sensitivity_minutes": [15, 30, 60],
+    "temporal_overlap": {
+      "pairs": [
+        ["Siberian tiger", "Sika deer"],
+        ["Siberian tiger", "Roe deer"],
+        ["Siberian tiger", "Black bear"],
+        ["Siberian tiger", "Amur leopard"]
+      ],
+      "smooth_sigma": 1.25,
+      "sensitivity_smooth_sigma": [0.75, 1.25, 2.0],
+      "bootstrap_iters": 500,
+      "bootstrap_interval_method": "percentile",
+      "bootstrap_cluster_strategy": "joint_camera_network",
+      "permutation_iters": 0
+    },
+    "occupancy": {
+      "enabled": true,
+      "reported_as_inference": false,
+      "species": ["Siberian tiger"],
+      "occasion_days": 14,
+      "min_active_occasions": 2,
+      "bootstrap_iters": 500,
+      "allow_inferred_effort": false
+    },
+    "camera_transition_hypotheses": {
+      "enabled": true,
+      "species": "Amur leopard",
+      "max_time_gap_hours": 72,
+      "max_distance_km": 100
+    }
+  },
+  "manuscript_expectations": {
+    "date_start": "2023-01-01",
+    "date_end": "2024-09-01",
+    "camera_count": 17129,
+    "deployment_count": 17129,
+    "species": [
+      "Siberian tiger",
+      "Amur leopard",
+      "Sika deer",
+      "Roe deer",
+      "Black bear"
+    ],
+    "species_record_counts": {
+      "Siberian tiger": 7745,
+      "Amur leopard": 11704,
+      "Sika deer": 625249,
+      "Roe deer": 727090,
+      "Black bear": 4229
+    }
+  }
+}

@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "camagent"
+version = "0.3.0"
+description = "An auditable LLM agent for natural-language camera-trap ecological analysis with deterministic tools"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Anonymous Authors"}]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "tomli>=2.0; python_version < '3.11'"
+]
+
+[project.optional-dependencies]
+agent = ["chromadb>=0.5", "langchain-core>=0.3", "langchain-openai>=0.2", "python-dotenv>=1.0"]
+visualization = ["folium>=0.16", "geopandas>=0.14", "networkx>=3.2", "seaborn>=0.13"]
+perception = ["opencv-python>=4.9", "pillow>=10", "speciesnet>=5.0,<6"]
+ocr = ["paddleocr>=3.0,<4", "paddlepaddle>=3.0,<4"]
+test = ["pytest>=8", "pytest-cov>=5"]
+all = ["camagent[agent,visualization,perception,ocr,test]"]
+
+[project.scripts]
+camagent-pipeline = "camagent.research_pipeline_cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["camagent"]
+branch = true

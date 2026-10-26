@@ -1,0 +1,30 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Local inputs and generated artifacts are intentionally excluded from the
+# anonymous source-code snapshot.
+data/private/
+workspace/
+results/*
+!results/paper_query_experiments/
+!results/paper_query_experiments/**
+results/paper_query_experiments/paper_query_experiment_summary.json
+!results/raw_media_validation/
+!results/raw_media_validation/raw_media_public_trace.json
+tmp/
+
+# Downloaded model weights and inference runtimes.
+*.pt
+*.pth
+*.onnx
